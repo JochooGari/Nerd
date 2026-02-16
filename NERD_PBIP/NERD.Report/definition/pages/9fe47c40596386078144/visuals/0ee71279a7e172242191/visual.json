@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0ee71279a7e172242191",
+  "position": {
+    "x": 21.25,
+    "y": 1050,
+    "z": 10001,
+    "height": 758.75,
+    "width": 1263.75,
+    "tabOrder": 10001
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_controller_daily"
+                    }
+                  },
+                  "Property": "controller_name"
+                }
+              },
+              "queryRef": "fact_controller_daily.controller_name",
+              "nativeQueryRef": "controller_name"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Nb of total_requests by controller_name'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

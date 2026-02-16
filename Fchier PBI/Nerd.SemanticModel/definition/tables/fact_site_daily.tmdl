@@ -1,0 +1,127 @@
+table fact_site_daily
+	lineageTag: 17235b84-4bfc-4d1b-9ab8-90eeebf9ccfa
+
+	column site_id
+		dataType: double
+		lineageTag: 9af42213-4e9f-45f4-962a-153c8bcca77c
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column request_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 68766a9b-3842-4423-8cd2-eb0ca758a5c7
+		summarizeBy: none
+		sourceColumn: request_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column total_requests
+		dataType: double
+		lineageTag: a03f2640-449b-44b2-b0aa-8f28118cf549
+		summarizeBy: sum
+		sourceColumn: total_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_response_time_ms
+		dataType: double
+		lineageTag: a92a2e9b-45f8-4a36-a088-8b298280e452
+		summarizeBy: sum
+		sourceColumn: total_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cache_hit_requests
+		dataType: double
+		lineageTag: f9df32fa-22be-44e3-ace6-5aff6c533e7c
+		summarizeBy: sum
+		sourceColumn: cache_hit_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error_requests
+		dataType: double
+		lineageTag: c635c049-07d4-4402-a496-422d75c39523
+		summarizeBy: sum
+		sourceColumn: error_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_response_time_ms
+		dataType: double
+		lineageTag: 5e94d54e-99ec-49d9-88e0-2c50a22c863b
+		summarizeBy: sum
+		sourceColumn: avg_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cache_hit_rate
+		dataType: double
+		lineageTag: e26f62f3-5b0c-47a5-bfac-1e559d364a31
+		summarizeBy: sum
+		sourceColumn: cache_hit_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error_rate
+		dataType: double
+		lineageTag: c17eaaed-900f-48c3-b723-19c83707a03c
+		summarizeBy: sum
+		sourceColumn: error_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_site_daily = m
+		mode: import
+		queryGroup: 'Lot 2'
+		source =
+				let
+				  read_csv           = FX_ReadCsv("ccdw_aggr_controller_request_aaqp_prd.csv"),
+				  typecast_fields    = Table.TransformColumns(read_csv,{
+				                        {"site_id", each try Number.From(_) otherwise null, type number},
+				                        {"request_date", each DateTime.Date(DateTime.From(_)), type date},
+				                        {"cache_behavior", each Text.Upper(Text.From(_)), type text},
+				                        {"status_code", each Text.From(_), type text},
+				                        {"num_requests", each try Number.From(_) otherwise 0, type number},
+				                        {"response_time", each try Number.From(_) otherwise 0, type number}}),
+				  add_flags          = Table.TransformColumns(
+				                        Table.AddColumn(
+				                          Table.AddColumn(typecast_fields,"error_requests", each if Text.StartsWith([status_code],"4") or Text.StartsWith([status_code],"5") then [num_requests] else 0, type number),
+				                          "cache_hit_requests", each if [cache_behavior]="HIT" then [num_requests] else 0, type number),
+				                        {}),
+				  group_site_day     = Table.Group(add_flags, {"site_id","request_date"},
+				                        {{"total_requests", each List.Sum([num_requests]), type number},
+				                         {"total_response_time_ms", each List.Sum([response_time]), type number},
+				                         {"cache_hit_requests", each List.Sum([cache_hit_requests]), type number},
+				                         {"error_requests", each List.Sum([error_requests]), type number}}),
+				  add_avg_ms         = Table.AddColumn(group_site_day, "avg_response_time_ms", each if [total_requests]=0 then 0 else [total_response_time_ms]/[total_requests], type number),
+				  add_cache_rate     = Table.AddColumn(add_avg_ms, "cache_hit_rate", each if [total_requests]=0 then 0 else [cache_hit_requests]/[total_requests], type number),
+				  add_error_rate     = Table.AddColumn(add_cache_rate, "error_rate", each if [total_requests]=0 then 0 else [error_requests]/[total_requests], type number)
+				in
+				  add_error_rate
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,111 @@
+table 'fact_api_daily OCAPI + SCAPI'
+	lineageTag: 02fd741a-4bbd-4143-964f-50523162d279
+
+	column site_id
+		dataType: double
+		lineageTag: afbbba99-4463-4301-a056-abcdd9959b7c
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column request_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f4400e63-92c0-4ae4-86b6-f09e5050e0a6
+		summarizeBy: none
+		sourceColumn: request_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column family
+		dataType: string
+		lineageTag: 477562ba-9672-4cc4-a277-4c25323f2a0f
+		summarizeBy: none
+		sourceColumn: family
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_requests
+		dataType: double
+		lineageTag: 4fd24af6-1c33-4d03-9f2e-0360ff750a03
+		summarizeBy: sum
+		sourceColumn: total_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_response_time_ms
+		dataType: double
+		lineageTag: 66a3857d-ca42-49c8-a914-12b1792adc2c
+		summarizeBy: sum
+		sourceColumn: total_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error_requests
+		dataType: double
+		lineageTag: bfe30c22-88dc-4744-b40d-e4d1e40724dc
+		summarizeBy: sum
+		sourceColumn: error_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_response_time_ms
+		dataType: double
+		lineageTag: 889d7aca-826e-4f12-bd02-ea7555d9de35
+		summarizeBy: sum
+		sourceColumn: avg_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'fact_api_daily OCAPI + SCAPI' = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  read_ocapi          = FX_ReadCsv("ccdw_aggr_ocapi_request_aaqp_prd.csv"),
+				  read_scapi          = FX_ReadCsv("ccdw_aggr_scapi_request_aaqp_prd.csv"),
+				
+				  typecast_ocapi      = Table.TransformColumns(read_ocapi,{
+				                        {"site_id", each try Number.From(_) otherwise null, type number},
+				                        {"request_date", each DateTime.Date(DateTime.From(_)), type date},
+				                        {"status_code", each Text.From(_), type text},
+				                        {"num_requests", each try Number.From(_) otherwise 0, type number},
+				                        {"response_time", each try Number.From(_) otherwise 0, type number}}),
+				  add_fam_ocapi       = Table.AddColumn(typecast_ocapi,"family", each "OCAPI", type text),
+				
+				  typecast_scapi      = Table.TransformColumns(read_scapi,{
+				                        {"site_id", each try Number.From(_) otherwise null, type number},
+				                        {"request_date", each DateTime.Date(DateTime.From(_)), type date},
+				                        {"status_code", each Text.From(_), type text},
+				                        {"num_requests", each try Number.From(_) otherwise 0, type number},
+				                        {"response_time", each try Number.From(_) otherwise 0, type number}}),
+				  add_fam_scapi       = Table.AddColumn(typecast_scapi,"family", each "SCAPI", type text),
+				
+				  append_families     = Table.Combine({add_fam_ocapi, add_fam_scapi}),
+				  add_error_flag      = Table.AddColumn(append_families,"error_requests", each if Text.StartsWith([status_code],"4") or Text.StartsWith([status_code],"5") then [num_requests] else 0, type number),
+				
+				  group_site_family   = Table.Group(add_error_flag, {"site_id","request_date","family"},
+				                        {{"total_requests", each List.Sum([num_requests]), type number},
+				                         {"total_response_time_ms", each List.Sum([response_time]), type number},
+				                         {"error_requests", each List.Sum([error_requests]), type number}}),
+				  add_avg_ms          = Table.AddColumn(group_site_family, "avg_response_time_ms", each if [total_requests]=0 then 0 else [total_response_time_ms]/[total_requests], type number)
+				in
+				  add_avg_ms
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

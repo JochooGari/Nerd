@@ -1,0 +1,76 @@
+table dim_Date_Projection
+	lineageTag: 3e5ee68e-4076-4402-b544-cac3a9877ac1
+
+	column Date
+		formatString: General Date
+		lineageTag: 88934107-bd93-4562-b443-6698a5406b8a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Année
+		formatString: 0
+		lineageTag: 01f952f6-4df8-4889-8f85-a762cb871811
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Année]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mois
+		formatString: 0
+		lineageTag: 49c52543-6958-40e3-b38a-6a65da2c3fa5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Mois]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mois Nom'
+		lineageTag: fd9203bf-ccd9-45a2-aea7-e0350a540977
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mois Nom]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semaine
+		formatString: 0
+		lineageTag: ac77e1bf-6e34-483e-81d1-ccc93072a6fb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Semaine]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Est Projection'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 61fa4f89-ba67-4f1e-b9d4-e8188ef786bf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Est Projection]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_Date_Projection = calculated
+		mode: import
+		source = ```
+				
+				VAR MinDate = MIN('Fact ODS'[date])
+				VAR MaxDate = DATE(2027, 10, 31)
+				RETURN
+				ADDCOLUMNS(
+				    CALENDAR(MinDate, MaxDate),
+				    "Année", YEAR([Date]),
+				    "Mois", MONTH([Date]),
+				    "Mois Nom", FORMAT([Date], "MMM YYYY"),
+				    "Semaine", WEEKNUM([Date]),
+				    "Est Projection", IF([Date] > MAX('Fact ODS'[date]), TRUE(), FALSE())
+				)
+				
+				```
+
+	annotation PBI_Id = 1d463e8aff474249b17e67fee71eb035
+

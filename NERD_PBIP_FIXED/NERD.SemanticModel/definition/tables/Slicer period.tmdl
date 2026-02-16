@@ -1,0 +1,48 @@
+table 'Slicer period'
+	lineageTag: c179321c-6723-459f-aef0-076dab073236
+
+	column 'Slicer period'
+		lineageTag: f715326d-e09c-4a31-8775-7abb69448fe4
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Slicer period Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Slicer period Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer period Fields'
+		isHidden
+		lineageTag: 4e0b3072-bc6a-4c60-974c-f3918738a3b0
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Slicer period Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Slicer period Order'
+		isHidden
+		formatString: 0
+		lineageTag: 09ea326d-8e8b-43be-bfb5-deb92807b754
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Slicer period' = calculated
+		mode: import
+		source =
+				{
+				    ("Monthly", NAMEOF('dim_Date'[month year]), 0),
+				    ("Weekly", NAMEOF('dim_Date'[week start]), 1)
+				}
+
+	annotation PBI_Id = 4c3b3976a17348adb058a4a4a3b94454
+

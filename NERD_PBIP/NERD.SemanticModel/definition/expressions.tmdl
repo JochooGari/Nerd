@@ -1,0 +1,195 @@
+expression pFolderPath = "/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data/" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 2367feee-55bf-45e9-81d0-b6a987fca982
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression pStartDate = #date(2024, 2, 1) meta [IsParameterQuery=true, Type="Date", IsParameterQueryRequired=true]
+	lineageTag: 10efa5a1-24ff-439f-88de-a0029ad9c394
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+
+expression pFolderPath_lot_2 = "/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data Lot 2/Souce data" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 9a4b0fed-f028-447e-9b27-fde95488c884
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression FX_ReadCsv =
+		(fileName as text) as table =>
+		let
+		    Rows     = Table.SelectRows(Data_Source, each [Name] = fileName),
+		    FirstRow = if Table.RowCount(Rows) = 0
+		               then error ("File not found: " & fileName)
+		               else Rows{0},
+		    Content  = FirstRow[Content],
+		    Csv      = Csv.Document(Content, [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Csv, [PromoteAllScalars=true])
+		in
+		    Promoted
+	lineageTag: b43996ee-f559-4499-a2ef-2415ec0ffa25
+	queryGroup: '1 Parametres Env'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Data_Source =
+		let
+		    Site = pSPSite,
+		    Folder = pFolderPath_lot_2,
+		    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+		    Filter_Folder = Table.SelectRows(AllFiles, each [Folder Path] = "https://loreal.sharepoint.com/sites/-FR-GLOBALD2CITTEAM/Documents partages/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data Lot 2/Source data/")
+		in
+		    Filter_Folder
+	lineageTag: 7665bb56-3511-4382-b3fe-6104c37e5f67
+	queryGroup: '3 JDBC'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression pEnvironment = "nerd-dev" meta [IsParameterQuery=true, List={"nerd-dev", "nerd"}, DefaultValue="nerd-dev", Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 6f3cf3ae-bbbf-485e-8e43-945fabca9bf0
+	queryGroup: '1 Parametres Env'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression pAzureBlobUrl = "https://nerdsa.blob.core.windows.net/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 1544e470-0560-475f-9ccd-987124fef974
+	queryGroup: '1 Parametres Env'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression pSPSite = "https://loreal.sharepoint.com/sites/-FR-GLOBALD2CITTEAM" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 80ca494b-b606-452a-bed4-9a136352487b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression FX_ReadJsonFromBlob =
+		(fileName as text) as any =>
+		let
+		    BlobUrl = pAzureBlobUrl & "/" & pEnvironment & "/" & fileName,
+		    Source = Json.Document(Web.Contents(BlobUrl))
+		in
+		    Source
+	lineageTag: 28eb053b-b21a-4d63-8a23-75b710eb5a37
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression SRC_ODS =
+		let
+		    Source = AzureStorage.Blobs(pAzureBlobUrl),
+		    FilterFolder = Table.SelectRows(Source, each [Name] = pEnvironment),
+		    ExpandData = FilterFolder{0}[Data],
+		    FilterFile = Table.SelectRows(ExpandData, each [Name] = "B2C/ods.json"),
+		    Content = FilterFile{0}[Content],
+		    JsonContent = Json.Document(Content),
+		    Transform_Table = Table.FromRecords(JsonContent),
+		    AddXlarge = Table.AddColumn(Transform_Table, "minutes_up_by_profile.xlarge", each try Record.Field([minutes_up_by_profile], "xlarge") otherwise null),
+		    AddLarge = Table.AddColumn(AddXlarge, "minutes_up_by_profile.large", each try Record.Field([minutes_up_by_profile], "large") otherwise null),
+		    AddMedium = Table.AddColumn(AddLarge, "minutes_up_by_profile.medium", each try Record.Field([minutes_up_by_profile], "medium") otherwise null),
+		    RemoveOldColumn = Table.RemoveColumns(AddMedium, {"minutes_up_by_profile"}),
+		    TypedTable = Table.TransformColumnTypes(RemoveOldColumn, {
+		        {"date", type date},
+		        {"realm_id", type text},
+		        {"total_minutes_up", Int64.Type},
+		        {"total_minutes_down", Int64.Type},
+		        {"limits_enabled", type logical},
+		        {"max_nb_ods", Int64.Type},
+		        {"minutes_up_by_profile.xlarge", Int64.Type},
+		        {"minutes_up_by_profile.large", Int64.Type},
+		        {"minutes_up_by_profile.medium", Int64.Type}
+		    })
+		in
+		    TypedTable
+	lineageTag: 30195abf-b5e3-4191-b286-7f750424287d
+	queryGroup: '2 B2C'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SRC_Realm =
+		let
+		    Source = AzureStorage.Blobs(pAzureBlobUrl),
+		    FilterFolder = Table.SelectRows(Source, each [Name] = pEnvironment),
+		    ExpandData = FilterFolder{0}[Data],
+		    FilterFile = Table.SelectRows(ExpandData, each [Name] = "B2C/realms.json"),
+		    Content = FilterFile{0}[Content],
+		    JsonContent = Json.Document(Content),
+		    Tbl = Table.FromRecords(JsonContent, {"realm_id", "active_ods", "org_credits", "resource_profiles"}, MissingField.UseNull),
+		    // Extraire resource_profiles.medium
+		    AddMediumStarted = Table.AddColumn(Tbl, "medium_started", each try [resource_profiles][medium][started] otherwise null),
+		    AddMediumStopped = Table.AddColumn(AddMediumStarted, "medium_stopped", each try [resource_profiles][medium][stopped] otherwise null),
+		    AddMediumScheduled = Table.AddColumn(AddMediumStopped, "medium_scheduled", each try [resource_profiles][medium][scheduled] otherwise null),
+		    // Extraire resource_profiles.large
+		    AddLargeStarted = Table.AddColumn(AddMediumScheduled, "large_started", each try [resource_profiles][large][started] otherwise null),
+		    AddLargeStopped = Table.AddColumn(AddLargeStarted, "large_stopped", each try [resource_profiles][large][stopped] otherwise null),
+		    AddLargeScheduled = Table.AddColumn(AddLargeStopped, "large_scheduled", each try [resource_profiles][large][scheduled] otherwise null),
+		    // Extraire resource_profiles.xlarge
+		    AddXlargeStarted = Table.AddColumn(AddLargeScheduled, "xlarge_started", each try [resource_profiles][xlarge][started] otherwise null),
+		    AddXlargeStopped = Table.AddColumn(AddXlargeStarted, "xlarge_stopped", each try [resource_profiles][xlarge][stopped] otherwise null),
+		    AddXlargeScheduled = Table.AddColumn(AddXlargeStopped, "xlarge_scheduled", each try [resource_profiles][xlarge][scheduled] otherwise null),
+		    // Extraire resource_profiles.xxlarge
+		    AddXxlargeStarted = Table.AddColumn(AddXlargeScheduled, "xxlarge_started", each try [resource_profiles][xxlarge][started] otherwise null),
+		    AddXxlargeStopped = Table.AddColumn(AddXxlargeStarted, "xxlarge_stopped", each try [resource_profiles][xxlarge][stopped] otherwise null),
+		    AddXxlargeScheduled = Table.AddColumn(AddXxlargeStopped, "xxlarge_scheduled", each try [resource_profiles][xxlarge][scheduled] otherwise null),
+		    // Supprimer la colonne resource_profiles originale
+		    RemoveOldColumn = Table.RemoveColumns(AddXxlargeScheduled, {"resource_profiles"}),
+		    // Typer les colonnes
+		    TypedTable = Table.TransformColumnTypes(RemoveOldColumn, {
+		        {"realm_id", type text},
+		        {"medium_started", Int64.Type},
+		        {"medium_stopped", Int64.Type},
+		        {"medium_scheduled", Int64.Type},
+		        {"large_started", Int64.Type},
+		        {"large_stopped", Int64.Type},
+		        {"large_scheduled", Int64.Type},
+		        {"xlarge_started", Int64.Type},
+		        {"xlarge_stopped", Int64.Type},
+		        {"xlarge_scheduled", Int64.Type},
+		        {"xxlarge_started", Int64.Type},
+		        {"xxlarge_stopped", Int64.Type},
+		        {"xxlarge_scheduled", Int64.Type}
+		    })
+		in
+		    TypedTable
+	lineageTag: 2a6cbd03-5e2d-4748-904e-08ded5635f12
+	queryGroup: '2 B2C'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SRC_Static =
+		let
+		    Source = AzureStorage.Blobs(pAzureBlobUrl),
+		    FilterFolder = Table.SelectRows(Source, each [Name] = pEnvironment),
+		    ExpandData = FilterFolder{0}[Data],
+		    FilterFile = Table.SelectRows(ExpandData, each [Name] = "B2C/static.json"),
+		    Content = FilterFile{0}[Content],
+		    JsonContent = Json.Document(Content),
+		    Tbl = if JsonContent is list then Table.FromRecords(JsonContent) else Record.ToTable(JsonContent),
+		    #"Changed Type" = Table.TransformColumnTypes(Tbl,{{"realm_id", type text}, {"active_ods", Int64.Type}, {"org_credits", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: 16b91b79-577d-4e26-a18d-c832556f5b77
+	queryGroup: '2 B2C'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

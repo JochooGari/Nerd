@@ -1,0 +1,26 @@
+table 'Param Jours Projection'
+	lineageTag: 348e458f-b009-4732-8c88-89670b8a43f8
+
+	measure 'Param Jours Projection Value' = SELECTEDVALUE('Param Jours Projection'[Nb jours], 30)
+		formatString: 0
+		lineageTag: 3f290c2f-dd9f-448c-867b-63cde880b171
+
+	column 'Nb jours'
+		formatString: 0
+		lineageTag: e1a91e12-e39d-49a2-b013-2799c1bd0c5f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition 'Param Jours Projection' = calculated
+		mode: import
+		source = GENERATESERIES(7, 365, 1)
+
+	annotation PBI_Id = e4e601488b15485c9ebd76f518ce3bef
+

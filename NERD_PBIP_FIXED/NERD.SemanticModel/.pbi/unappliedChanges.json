@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/unappliedChanges/1.0.0/schema.json",
+  "conceptualSchemaSettings": {},
+  "queries": [
+    {
+      "name": "dim_localisation",
+      "description": "Dimension table listing realms and their geographical location based on first site timezone",
+      "navigationStepName": "Navigation",
+      "text": [
+        "let",
+        "    // Read CSV from Azure Blob Storage: nerd-dev/JDBC/ccdw_dim_site.csv",
+        "    Source = AzureStorage.Blobs(pAzureBlobUrl),",
+        "    FilterFolder = Table.SelectRows(Source, each [Name] = \"nerd-dev\"),",
+        "    ExpandData = FilterFolder{0}[Data],",
+        "    FilterFile = Table.SelectRows(ExpandData, each Text.StartsWith([Name], \"JDBC/\") and Text.EndsWith([Name], \".csv\")),",
+        "    Content = FilterFile{0}[Content],",
+        "    CsvContent = Csv.Document(Content, [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+        "    PromotedHeaders = Table.PromoteHeaders(CsvContent, [PromoteAllScalars=true]),",
+        "    ",
+        "    // Select relevant columns",
+        "    SelectColumns = Table.SelectColumns(PromotedHeaders, {\"nrealm_id\", \"site_sitezone\", \"realm_currency\", \"realm_timezone\"}),",
+        "    ",
+        "    // Rename columns",
+        "    RenamedColumns = Table.RenameColumns(SelectColumns, {",
+        "        {\"nrealm_id\", \"realm_id\"},",
+        "        {\"site_sitezone\", \"timezone\"},",
+        "        {\"realm_currency\", \"currency\"}",
+        "    }),",
+        "    ",
+        "    // Type the columns",
+        "    TypedTable = Table.TransformColumnTypes(RenamedColumns, {",
+        "        {\"realm_id\", type text},",
+        "        {\"timezone\", type text},",
+        "        {\"currency\", type text},",
+        "        {\"realm_timezone\", type text}",
+        "    }),",
+        "    ",
+        "    // Group by realm_id and take first value for each field",
+        "    Grouped = Table.Group(TypedTable, {\"realm_id\"}, {",
+        "        {\"timezone\", each List.First([timezone]), type text},",
+        "        {\"currency\", each List.First([currency]), type text},",
+        "        {\"realm_timezone\", each List.First([realm_timezone]), type text}",
+        "    })",
+        "in",
+        "    Grouped"
+      ],
+      "isDirectQuery": false,
+      "lastLoadedAsTableFormulaText": "{\"IncludesReferencedQueries\":false,\"RootFormulaText\":\"let\\n    // Read CSV from Azure Blob Storage: nerd-dev/JDBC/ccdw_dim_site.csv\\n    Source = AzureStorage.Blobs(pAzureBlobUrl),\\n    FilterFolder = Table.SelectRows(Source, each [Name] = \\\"nerd-dev\\\"),\\n    ExpandData = FilterFolder{0}[Data],\\n    FilterFile = Table.SelectRows(ExpandData, each Text.StartsWith([Name], \\\"JDBC/\\\") and Text.EndsWith([Name], \\\".csv\\\")),\\n    Content = FilterFile{0}[Content],\\n    CsvContent = Csv.Document(Content, [Delimiter=\\\",\\\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\\n    PromotedHeaders = Table.PromoteHeaders(CsvContent, [PromoteAllScalars=true]),\\n    \\n    // Select relevant columns\\n    SelectColumns = Table.SelectColumns(PromotedHeaders, {\\\"nrealm_id\\\", \\\"site_sitezone\\\", \\\"realm_currency\\\", \\\"realm_timezone\\\"}),\\n    \\n    // Rename columns\\n    RenamedColumns = Table.RenameColumns(SelectColumns, {\\n        {\\\"nrealm_id\\\", \\\"realm_id\\\"},\\n        {\\\"site_sitezone\\\", \\\"timezone\\\"},\\n        {\\\"realm_currency\\\", \\\"currency\\\"}\\n    }),\\n    \\n    // Type the columns\\n    TypedTable = Table.TransformColumnTypes(RenamedColumns, {\\n        {\\\"realm_id\\\", type text},\\n        {\\\"timezone\\\", type text},\\n        {\\\"currency\\\", type text},\\n        {\\\"realm_timezone\\\", type text}\\n    }),\\n    \\n    // Group by realm_id and take first value for each field\\n    Grouped = Table.Group(TypedTable, {\\\"realm_id\\\"}, {\\n        {\\\"timezone\\\", each List.First([timezone]), type text},\\n        {\\\"currency\\\", each List.First([currency]), type text},\\n        {\\\"realm_timezone\\\", each List.First([realm_timezone]), type text}\\n    })\\nin\\n    Grouped\",\"ReferencedQueriesFormulaText\":{}}",
+      "loadAsTableDisabled": false,
+      "resultType": "Exception",
+      "isHidden": false
+    }
+  ],
+  "queryGroups": [
+    {
+      "name": "Transform File from F_ODS Daily",
+      "id": "d36f8b80-a90e-4698-928b-d7c473ecf30c",
+      "order": 3,
+      "description": ""
+    },
+    {
+      "name": "Lot 2",
+      "id": "5fb76399-9cb7-45e0-ae1c-dcbcf4f5537e",
+      "order": 1,
+      "description": ""
+    },
+    {
+      "name": "Lot 1",
+      "id": "3a0b4991-665d-4291-8c8c-9f22b403a057",
+      "order": 2,
+      "description": ""
+    },
+    {
+      "name": "Helper Queries",
+      "id": "b12cbe86-5c62-4ca9-8da3-55a3bb244a44",
+      "description": "",
+      "parentId": "d36f8b80-a90e-4698-928b-d7c473ecf30c"
+    }
+  ],
+  "culture": "fr-FR",
+  "firewallEnabled": true
+}

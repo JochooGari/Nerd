@@ -1,0 +1,184 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8c7c92d0c159a3d7e88d",
+  "position": {
+    "x": 552.72727272727263,
+    "y": 186.36363636363635,
+    "z": 2000,
+    "height": 353.63636363636363,
+    "width": 567.27272727272725,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_0_499"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_0_499)",
+              "nativeQueryRef": "bucket_0_499",
+              "displayName": "bucket_0_499"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_1000_1499"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_1000_1499)",
+              "nativeQueryRef": "bucket_1000_1499",
+              "displayName": "bucket_1000_1499"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_1500_1999"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_1500_1999)",
+              "nativeQueryRef": "bucket_1500_1999",
+              "displayName": "bucket_1500_1999"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_2000_plus"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_2000_plus)",
+              "nativeQueryRef": "bucket_2000_plus",
+              "displayName": "bucket_2000_plus"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_500_999"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_500_999)",
+              "nativeQueryRef": "bucket_500_999",
+              "displayName": "bucket_500_999"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "fact_api_resource_daily"
+                      }
+                    },
+                    "Property": "bucket_0_499"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "logAxisScale": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Repartition bucket'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

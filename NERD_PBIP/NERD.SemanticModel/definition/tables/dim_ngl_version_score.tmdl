@@ -1,0 +1,45 @@
+table dim_ngl_version_score
+	lineageTag: 4c17167d-c840-4a71-8a5e-af6b80f8330a
+
+	column version
+		dataType: string
+		lineageTag: 35cea041-c17d-46c6-b30e-b5045fdf280e
+		summarizeBy: none
+		sourceColumn: version
+
+		annotation SummarizationSetBy = Automatic
+
+	column poids_version
+		dataType: double
+		lineageTag: 820bdec4-b020-44f0-80ab-0de96388833a
+		summarizeBy: sum
+		sourceColumn: poids_version
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_ngl_version_score = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  // create_records: poids par version (à ajuster librement)
+				  create_records = {
+				    [version="78.0.0", poids_version=0],
+				    [version="79.0.0", poids_version=0.5],
+				    [version="80.0.0", poids_version=0.75],
+				    [version="81.0.0", poids_version=1.0]
+				  },
+				
+				  // to_table: conversion en table typée
+				  to_table = Table.FromRecords(
+				    create_records,
+				    type table [version=text, poids_version=number]
+				  )
+				in   to_table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

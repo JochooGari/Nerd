@@ -1,0 +1,150 @@
+table 'Fact Realm'
+	lineageTag: 75d0f186-fbfe-4fec-8936-ae301eb419e3
+
+	column realm_id
+		dataType: string
+		lineageTag: 35776680-e064-4536-aa5c-a9f3d8fb4857
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_ods
+		dataType: string
+		lineageTag: e6bd0c9e-6ec5-4ef7-af27-6af571ee2de1
+		summarizeBy: none
+		sourceColumn: active_ods
+
+		annotation SummarizationSetBy = Automatic
+
+	column org_credits
+		dataType: string
+		lineageTag: 8e11c4a4-671e-4015-8b37-a3ab471b2c0a
+		summarizeBy: none
+		sourceColumn: org_credits
+
+		annotation SummarizationSetBy = Automatic
+
+	column medium_started
+		dataType: int64
+		formatString: 0
+		lineageTag: f3eba556-448f-4a9e-97ea-bf82fe28a40c
+		summarizeBy: sum
+		sourceColumn: medium_started
+
+		annotation SummarizationSetBy = Automatic
+
+	column medium_stopped
+		dataType: int64
+		formatString: 0
+		lineageTag: 2283b251-922e-4cad-a43d-0b2056177d0b
+		summarizeBy: sum
+		sourceColumn: medium_stopped
+
+		annotation SummarizationSetBy = Automatic
+
+	column medium_scheduled
+		dataType: int64
+		formatString: 0
+		lineageTag: 2cf574d8-2b0a-40a9-8711-f1bec020db1a
+		summarizeBy: sum
+		sourceColumn: medium_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column large_started
+		dataType: int64
+		formatString: 0
+		lineageTag: caca863c-0a66-4a3f-8a4e-56be11903042
+		summarizeBy: sum
+		sourceColumn: large_started
+
+		annotation SummarizationSetBy = Automatic
+
+	column large_stopped
+		dataType: int64
+		formatString: 0
+		lineageTag: 1daa6d1b-e7a0-421e-95db-0b0997521731
+		summarizeBy: sum
+		sourceColumn: large_stopped
+
+		annotation SummarizationSetBy = Automatic
+
+	column large_scheduled
+		dataType: int64
+		formatString: 0
+		lineageTag: 69b47964-b05b-458e-81c9-d894ef55a52a
+		summarizeBy: sum
+		sourceColumn: large_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column xlarge_started
+		dataType: int64
+		formatString: 0
+		lineageTag: 4335d3dc-2d42-44e1-b4d2-7c16afe3e7aa
+		summarizeBy: sum
+		sourceColumn: xlarge_started
+
+		annotation SummarizationSetBy = Automatic
+
+	column xlarge_stopped
+		dataType: int64
+		formatString: 0
+		lineageTag: c3fa27a9-15e4-4bfc-9553-2725c227f633
+		summarizeBy: sum
+		sourceColumn: xlarge_stopped
+
+		annotation SummarizationSetBy = Automatic
+
+	column xlarge_scheduled
+		dataType: int64
+		formatString: 0
+		lineageTag: 4094f372-4e20-43f1-b047-3d36ce538ee9
+		summarizeBy: sum
+		sourceColumn: xlarge_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	column xxlarge_started
+		dataType: int64
+		formatString: 0
+		lineageTag: 837eed8a-b462-41e7-8993-573e28540d30
+		summarizeBy: sum
+		sourceColumn: xxlarge_started
+
+		annotation SummarizationSetBy = Automatic
+
+	column xxlarge_stopped
+		dataType: int64
+		formatString: 0
+		lineageTag: af5a796f-4bf6-417d-a899-2c1020b9618f
+		summarizeBy: sum
+		sourceColumn: xxlarge_stopped
+
+		annotation SummarizationSetBy = Automatic
+
+	column xxlarge_scheduled
+		dataType: int64
+		formatString: 0
+		lineageTag: 040caf3c-bf31-45d0-b1fd-334878ab4476
+		summarizeBy: sum
+		sourceColumn: xxlarge_scheduled
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact Realm' = m
+		mode: import
+		queryGroup: '2 B2C'
+		source = ```
+				let
+				    Source = SRC_Realm
+				    
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

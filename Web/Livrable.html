@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Description courte et percutante de votre produit ou service.">
+    <title>Nom du Projet | Slogan Principal</title>
+    <style>
+        /* --- RESET & BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- VARIABLES --- */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --light-bg: #f3f4f6;
+            --white: #ffffff;
+        }
+
+        /* --- HEADER --- */
+        header { background: var(--white); box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: fixed; width: 100%; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary-color); }
+        .nav-links a { margin-left: 2rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .cta-btn { background: var(--primary-color); color: white; padding: 0.5rem 1.2rem; border-radius: 5px; transition: background 0.3s; }
+        .cta-btn:hover { background: var(--secondary-color); }
+
+        /* --- HERO SECTION --- */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); padding: 0 2rem; margin-top: 60px; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; color: #111; }
+        .hero p { font-size: 1.25rem; color: #555; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-buttons .btn { display: inline-block; padding: 1rem 2rem; border-radius: 5px; font-weight: bold; margin: 0 10px; }
+        .btn-primary { background: var(--primary-color); color: white; }
+        .btn-outline { border: 2px solid var(--primary-color); color: var(--primary-color); }
+
+        /* --- FEATURES --- */
+        .features { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 3rem; font-size: 2rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .card { background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center; }
+        .card h3 { margin-bottom: 1rem; color: var(--primary-color); }
+
+        /* --- FOOTER --- */
+        footer { background: #1f2937; color: white; padding: 3rem 2rem; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; }
+        .footer-column { margin-bottom: 1.5rem; text-align: left; }
+        .footer-bottom { margin-top: 2rem; border-top: 1px solid #374151; padding-top: 1rem; font-size: 0.9rem; color: #9ca3af; }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            nav { flex-direction: column; }
+            .nav-links { margin-top: 1rem; }
+            .nav-links a { margin: 0 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">MonProjet</div>
+            <div class="nav-links">
+                <a href="#features">Fonctionnalités</a>
+                <a href="#about">À propos</a>
+                <a href="#contact" class="cta-btn">Nous contacter</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>La solution idéale pour votre besoin</h1>
+            <p>Une phrase d'accroche engageante qui explique la valeur ajoutée de votre produit ou service en quelques mots.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn btn-primary">Commencer maintenant</a>
+                <a href="#" class="btn btn-outline">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <h2 class="section-title">Pourquoi nous choisir ?</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Rapidité</h3>
+                <p>Description de l'avantage concurrentiel numéro 1. Explication brève et claire.</p>
+            </div>
+            <div class="card">
+                <h3>Sécurité</h3>
+                <p>Description de l'avantage concurrentiel numéro 2. Vos données sont protégées.</p>
+            </div>
+            <div class="card">
+                <h3>Support 24/7</h3>
+                <p>Description de l'avantage concurrentiel numéro 3. Nous sommes toujours là pour vous.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>MonProjet</h4>
+                <p>Slogan ou adresse de l'entreprise.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Liens utiles</h4>
+                <ul>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 MonProjet. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>

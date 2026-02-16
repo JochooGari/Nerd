@@ -1,0 +1,2418 @@
+[
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-01",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2871,
+            "large": 5742,
+            "medium": 60946
+        },
+        "total_minutes_up": 69553,
+        "total_minutes_down": 2397,
+        "credits_up": 83906,
+        "credits_down": 719.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-02",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 61118,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69751,
+        "total_minutes_down": 2199,
+        "credits_up": 84141,
+        "credits_down": 659.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-03",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2877,
+            "large": 5748,
+            "medium": 60383
+        },
+        "total_minutes_up": 69001,
+        "total_minutes_down": 2949,
+        "credits_up": 83379,
+        "credits_down": 884.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-04",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 60438,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69072,
+        "total_minutes_down": 2878,
+        "credits_up": 83462,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-05",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61087
+        },
+        "total_minutes_up": 69721,
+        "total_minutes_down": 2229,
+        "credits_up": 84111,
+        "credits_down": 668.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-06",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 61097,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69731,
+        "total_minutes_down": 2219,
+        "credits_up": 84121,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-07",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 61095,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69728,
+        "total_minutes_down": 2222,
+        "credits_up": 84118,
+        "credits_down": 666.59
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-08",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2874,
+            "large": 5742,
+            "medium": 61825
+        },
+        "total_minutes_up": 70430,
+        "total_minutes_down": 1520,
+        "credits_up": 84791,
+        "credits_down": 456
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-09",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 62046
+        },
+        "total_minutes_up": 70680,
+        "total_minutes_down": 1270,
+        "credits_up": 85070,
+        "credits_down": 381
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-10",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2876,
+            "large": 5751,
+            "medium": 60394
+        },
+        "total_minutes_up": 69013,
+        "total_minutes_down": 2937,
+        "credits_up": 83392,
+        "credits_down": 881.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-11",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 60438
+        },
+        "total_minutes_up": 69072,
+        "total_minutes_down": 2878,
+        "credits_up": 83462,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-12",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-13",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61097
+        },
+        "total_minutes_up": 69731,
+        "total_minutes_down": 2219,
+        "credits_up": 84121,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-14",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-15",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61095
+        },
+        "total_minutes_up": 69728,
+        "total_minutes_down": 2222,
+        "credits_up": 84118,
+        "credits_down": 666.59
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-16",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 61095,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69729,
+        "total_minutes_down": 2221,
+        "credits_up": 84119,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-17",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2877,
+            "large": 5756,
+            "medium": 60416
+        },
+        "total_minutes_up": 69045,
+        "total_minutes_down": 2905,
+        "credits_up": 83432,
+        "credits_down": 871.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-18",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 60438
+        },
+        "total_minutes_up": 69072,
+        "total_minutes_down": 2878,
+        "credits_up": 83462,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-19",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-20",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61097
+        },
+        "total_minutes_up": 69731,
+        "total_minutes_down": 2219,
+        "credits_up": 84121,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-21",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-22",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-23",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5753,
+            "medium": 61044,
+            "xlarge": 2876
+        },
+        "total_minutes_up": 69658,
+        "total_minutes_down": 2292,
+        "credits_up": 84038,
+        "credits_down": 687.6
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-24",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5754,
+            "medium": 60408,
+            "xlarge": 2876
+        },
+        "total_minutes_up": 69033,
+        "total_minutes_down": 2917,
+        "credits_up": 83412,
+        "credits_down": 875.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-25",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 60438,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69072,
+        "total_minutes_down": 2878,
+        "credits_up": 83462,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-26",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61090
+        },
+        "total_minutes_up": 69723,
+        "total_minutes_down": 2227,
+        "credits_up": 84113,
+        "credits_down": 668.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-27",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5743,
+            "medium": 60929,
+            "xlarge": 2869
+        },
+        "total_minutes_up": 69520,
+        "total_minutes_down": 2430,
+        "credits_up": 83865,
+        "credits_down": 729
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-28",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61096
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-02-29",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61097
+        },
+        "total_minutes_up": 69731,
+        "total_minutes_down": 2219,
+        "credits_up": 84121,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-01",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 61096,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 69730,
+        "total_minutes_down": 2220,
+        "credits_up": 84120,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-02",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5751,
+            "medium": 60400,
+            "xlarge": 2875
+        },
+        "total_minutes_up": 69014,
+        "total_minutes_down": 2936,
+        "credits_up": 83387,
+        "credits_down": 880.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-03",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 60438
+        },
+        "total_minutes_up": 69072,
+        "total_minutes_down": 2878,
+        "credits_up": 83462,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-04",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 61092
+        },
+        "total_minutes_up": 69725,
+        "total_minutes_down": 2225,
+        "credits_up": 84115,
+        "credits_down": 667.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-05",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2870,
+            "large": 5740,
+            "medium": 59198
+        },
+        "total_minutes_up": 67799,
+        "total_minutes_down": 2440,
+        "credits_up": 82145,
+        "credits_down": 732
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-06",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58218
+        },
+        "total_minutes_up": 66852,
+        "total_minutes_down": 2220,
+        "credits_up": 81242,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-07",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5737,
+            "medium": 58107,
+            "xlarge": 2868
+        },
+        "total_minutes_up": 66701,
+        "total_minutes_down": 2371,
+        "credits_up": 81038,
+        "credits_down": 711.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-08",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58219
+        },
+        "total_minutes_up": 66853,
+        "total_minutes_down": 2219,
+        "credits_up": 81243,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-09",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2874,
+            "large": 5753,
+            "medium": 57528
+        },
+        "total_minutes_up": 66146,
+        "total_minutes_down": 2926,
+        "credits_up": 80516,
+        "credits_down": 877.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-10",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57560,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66194,
+        "total_minutes_down": 2878,
+        "credits_up": 80584,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-11",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58213,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66847,
+        "total_minutes_down": 2225,
+        "credits_up": 81237,
+        "credits_down": 667.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-12",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58217
+        },
+        "total_minutes_up": 66851,
+        "total_minutes_down": 2221,
+        "credits_up": 81241,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-13",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58217
+        },
+        "total_minutes_up": 66851,
+        "total_minutes_down": 2221,
+        "credits_up": 81241,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-14",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58217,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66851,
+        "total_minutes_down": 2221,
+        "credits_up": 81241,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-15",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58218,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66852,
+        "total_minutes_down": 2220,
+        "credits_up": 81242,
+        "credits_down": 666
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-16",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5749,
+            "medium": 57458,
+            "xlarge": 2874
+        },
+        "total_minutes_up": 66066,
+        "total_minutes_down": 3006,
+        "credits_up": 80432,
+        "credits_down": 901.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-17",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57560,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66194,
+        "total_minutes_down": 2878,
+        "credits_up": 80584,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-18",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58209
+        },
+        "total_minutes_up": 66842,
+        "total_minutes_down": 2230,
+        "credits_up": 81232,
+        "credits_down": 669
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-19",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58219
+        },
+        "total_minutes_up": 66853,
+        "total_minutes_down": 2219,
+        "credits_up": 81243,
+        "credits_down": 665.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-20",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2880,
+            "large": 5752,
+            "medium": 58167
+        },
+        "total_minutes_up": 66761,
+        "total_minutes_down": 2311,
+        "credits_up": 81141,
+        "credits_down": 693.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-21",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58721
+        },
+        "total_minutes_up": 67355,
+        "total_minutes_down": 1717,
+        "credits_up": 81745,
+        "credits_down": 515.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-22",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58964,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 67598,
+        "total_minutes_down": 1474,
+        "credits_up": 81988,
+        "credits_down": 442.2
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-23",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2874,
+            "large": 5753,
+            "medium": 57538
+        },
+        "total_minutes_up": 66150,
+        "total_minutes_down": 2922,
+        "credits_up": 80522,
+        "credits_down": 876.6
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-24",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57560,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66194,
+        "total_minutes_down": 2878,
+        "credits_up": 80584,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-25",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58212
+        },
+        "total_minutes_up": 66845,
+        "total_minutes_down": 2227,
+        "credits_up": 81234,
+        "credits_down": 668.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-26",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5739,
+            "medium": 58037,
+            "xlarge": 2868
+        },
+        "total_minutes_up": 66631,
+        "total_minutes_down": 2441,
+        "credits_up": 80970,
+        "credits_down": 732.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-27",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 58322
+        },
+        "total_minutes_up": 66956,
+        "total_minutes_down": 2116,
+        "credits_up": 81346,
+        "credits_down": 634.79
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-28",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58217,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66851,
+        "total_minutes_down": 2221,
+        "credits_up": 81241,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-29",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 58217,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66851,
+        "total_minutes_down": 2221,
+        "credits_up": 81241,
+        "credits_down": 666.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-30",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2874,
+            "large": 5751,
+            "medium": 57531
+        },
+        "total_minutes_up": 66147,
+        "total_minutes_down": 2925,
+        "credits_up": 80519,
+        "credits_down": 877.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-03-31",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57560,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66194,
+        "total_minutes_down": 2878,
+        "credits_up": 80584,
+        "credits_down": 863.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-01",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 57263
+        },
+        "total_minutes_up": 65897,
+        "total_minutes_down": 3175,
+        "credits_up": 80287,
+        "credits_down": 952.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-02",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5741,
+            "medium": 56593,
+            "xlarge": 2867
+        },
+        "total_minutes_up": 65193,
+        "total_minutes_down": 3879,
+        "credits_up": 79534,
+        "credits_down": 1163.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-03",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56781,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 65415,
+        "total_minutes_down": 3657,
+        "credits_up": 79805,
+        "credits_down": 1097.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-04",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56780
+        },
+        "total_minutes_up": 65413,
+        "total_minutes_down": 3659,
+        "credits_up": 79803,
+        "credits_down": 1097.69
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-05",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5752,
+            "medium": 56729,
+            "xlarge": 2876
+        },
+        "total_minutes_up": 65345,
+        "total_minutes_down": 3727,
+        "credits_up": 79723,
+        "credits_down": 1118.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-06",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5753,
+            "medium": 56100,
+            "xlarge": 2876
+        },
+        "total_minutes_up": 64721,
+        "total_minutes_down": 4351,
+        "credits_up": 79099,
+        "credits_down": 1305.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-07",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56121
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 4317,
+        "credits_up": 79145,
+        "credits_down": 1295.09
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-08",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56776,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 65410,
+        "total_minutes_down": 3662,
+        "credits_up": 79800,
+        "credits_down": 1098.59
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-09",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56855,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 65489,
+        "total_minutes_down": 3583,
+        "credits_up": 79879,
+        "credits_down": 1074.9
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-10",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56778
+        },
+        "total_minutes_up": 65411,
+        "total_minutes_down": 3661,
+        "credits_up": 79801,
+        "credits_down": 1098.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-11",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57159,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 65793,
+        "total_minutes_down": 4080,
+        "credits_up": 80183,
+        "credits_down": 1224
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-12",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 57377
+        },
+        "total_minutes_up": 66011,
+        "total_minutes_down": 4500,
+        "credits_up": 80401,
+        "credits_down": 1350
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-13",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5749,
+            "medium": 56101,
+            "xlarge": 2877
+        },
+        "total_minutes_up": 64723,
+        "total_minutes_down": 5788,
+        "credits_up": 79102,
+        "credits_down": 1736.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-14",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56121
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 5756,
+        "credits_up": 79145,
+        "credits_down": 1726.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-15",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 57357
+        },
+        "total_minutes_up": 65990,
+        "total_minutes_down": 4521,
+        "credits_up": 80380,
+        "credits_down": 1356.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-16",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57378,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66012,
+        "total_minutes_down": 4499,
+        "credits_up": 80402,
+        "credits_down": 1349.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-17",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 57376
+        },
+        "total_minutes_up": 66010,
+        "total_minutes_down": 4501,
+        "credits_up": 80400,
+        "credits_down": 1350.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-18",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 57378
+        },
+        "total_minutes_up": 66011,
+        "total_minutes_down": 4500,
+        "credits_up": 80401,
+        "credits_down": 1350
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-19",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57377,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66011,
+        "total_minutes_down": 4500,
+        "credits_up": 80401,
+        "credits_down": 1350
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-20",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5755,
+            "medium": 56098
+        },
+        "total_minutes_up": 64730,
+        "total_minutes_down": 5781,
+        "credits_up": 79119,
+        "credits_down": 1734.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-21",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56121
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 5756,
+        "credits_up": 79145,
+        "credits_down": 1726.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-22",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57371,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66005,
+        "total_minutes_down": 4506,
+        "credits_up": 80395,
+        "credits_down": 1351.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-23",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5740,
+            "medium": 57204,
+            "xlarge": 2868
+        },
+        "total_minutes_up": 65798,
+        "total_minutes_down": 4713,
+        "credits_up": 80139,
+        "credits_down": 1413.9
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-24",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 57377,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 66011,
+        "total_minutes_down": 4500,
+        "credits_up": 80401,
+        "credits_down": 1350
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-25",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6329,
+            "medium": 57378
+        },
+        "total_minutes_up": 66585,
+        "total_minutes_down": 4801,
+        "credits_up": 81548,
+        "credits_down": 1440.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-26",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 57375
+        },
+        "total_minutes_up": 66849,
+        "total_minutes_down": 5101,
+        "credits_up": 82079,
+        "credits_down": 1530.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-27",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2875,
+            "large": 5751,
+            "medium": 56084
+        },
+        "total_minutes_up": 64696,
+        "total_minutes_down": 7254,
+        "credits_up": 79071,
+        "credits_down": 2176.19
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-28",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56121,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 7195,
+        "credits_up": 79145,
+        "credits_down": 2158.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-29",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 57368
+        },
+        "total_minutes_up": 66842,
+        "total_minutes_down": 5108,
+        "credits_up": 82072,
+        "credits_down": 1532.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-04-30",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6580,
+            "medium": 58045,
+            "xlarge": 2867
+        },
+        "total_minutes_up": 67480,
+        "total_minutes_down": 6947,
+        "credits_up": 82661,
+        "credits_down": 2084.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-01",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 60731,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 70205,
+        "total_minutes_down": 7501,
+        "credits_up": 85435,
+        "credits_down": 2250.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-02",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 61337,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 70810,
+        "total_minutes_down": 8105,
+        "credits_up": 86039,
+        "credits_down": 2431.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-03",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 62415
+        },
+        "total_minutes_up": 71888,
+        "total_minutes_down": 8696,
+        "credits_up": 87117,
+        "credits_down": 2608.79
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-04",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2874,
+            "large": 5752,
+            "medium": 56104
+        },
+        "total_minutes_up": 64718,
+        "total_minutes_down": 15866,
+        "credits_up": 79089,
+        "credits_down": 4759.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-05",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56121,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 15829,
+        "credits_up": 79145,
+        "credits_down": 4748.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-06",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 62416,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71889,
+        "total_minutes_down": 8695,
+        "credits_up": 87118,
+        "credits_down": 2608.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-07",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 62416
+        },
+        "total_minutes_up": 71889,
+        "total_minutes_down": 8695,
+        "credits_up": 87118,
+        "credits_down": 2608.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-08",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62415
+        },
+        "total_minutes_up": 71889,
+        "total_minutes_down": 8695,
+        "credits_up": 87119,
+        "credits_down": 2608.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-09",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62414
+        },
+        "total_minutes_up": 71888,
+        "total_minutes_down": 8696,
+        "credits_up": 87118,
+        "credits_down": 2608.79
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-10",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 62414,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71887,
+        "total_minutes_down": 8697,
+        "credits_up": 87116,
+        "credits_down": 2609.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-11",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5755,
+            "medium": 56102,
+            "xlarge": 2872
+        },
+        "total_minutes_up": 64724,
+        "total_minutes_down": 15860,
+        "credits_up": 79095,
+        "credits_down": 4758
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-12",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56121
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 15829,
+        "credits_up": 79145,
+        "credits_down": 4748.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-13",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62397
+        },
+        "total_minutes_up": 71867,
+        "total_minutes_down": 8717,
+        "credits_up": 87097,
+        "credits_down": 2615.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-14",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 62410
+        },
+        "total_minutes_up": 71883,
+        "total_minutes_down": 8701,
+        "credits_up": 87112,
+        "credits_down": 2610.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-15",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 62407,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71881,
+        "total_minutes_down": 8703,
+        "credits_up": 87111,
+        "credits_down": 2610.9
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-16",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62414
+        },
+        "total_minutes_up": 71888,
+        "total_minutes_down": 8696,
+        "credits_up": 87118,
+        "credits_down": 2608.79
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-17",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 62415,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71889,
+        "total_minutes_down": 8695,
+        "credits_up": 87119,
+        "credits_down": 2608.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-18",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2876,
+            "large": 5755,
+            "medium": 56089
+        },
+        "total_minutes_up": 64717,
+        "total_minutes_down": 15867,
+        "credits_up": 79100,
+        "credits_down": 4760.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-19",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56121,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 15829,
+        "credits_up": 79145,
+        "credits_down": 4748.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-20",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 62408,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71880,
+        "total_minutes_down": 8704,
+        "credits_up": 87109,
+        "credits_down": 2611.19
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-21",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6579,
+            "medium": 62239,
+            "xlarge": 2870
+        },
+        "total_minutes_up": 71680,
+        "total_minutes_down": 8904,
+        "credits_up": 86866,
+        "credits_down": 2671.2
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-22",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 62351
+        },
+        "total_minutes_up": 71824,
+        "total_minutes_down": 8760,
+        "credits_up": 87053,
+        "credits_down": 2628
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-23",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 62471
+        },
+        "total_minutes_up": 71944,
+        "total_minutes_down": 8640,
+        "credits_up": 87173,
+        "credits_down": 2592
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-24",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62472
+        },
+        "total_minutes_up": 71946,
+        "total_minutes_down": 8638,
+        "credits_up": 87176,
+        "credits_down": 2591.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-25",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2875,
+            "large": 5752,
+            "medium": 56088
+        },
+        "total_minutes_up": 64708,
+        "total_minutes_down": 15876,
+        "credits_up": 79084,
+        "credits_down": 4762.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-26",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 56121,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 15829,
+        "credits_up": 79145,
+        "credits_down": 4748.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-27",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 62464,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71936,
+        "total_minutes_down": 8648,
+        "credits_up": 87165,
+        "credits_down": 2594.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-28",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62476
+        },
+        "total_minutes_up": 71949,
+        "total_minutes_down": 8635,
+        "credits_up": 87179,
+        "credits_down": 2590.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-29",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 62474,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71948,
+        "total_minutes_down": 8636,
+        "credits_up": 87178,
+        "credits_down": 2590.79
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-30",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62476
+        },
+        "total_minutes_up": 71950,
+        "total_minutes_down": 8634,
+        "credits_up": 87180,
+        "credits_down": 2590.19
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-05-31",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6578,
+            "medium": 62244,
+            "xlarge": 2869
+        },
+        "total_minutes_up": 71645,
+        "total_minutes_down": 8939,
+        "credits_up": 86824,
+        "credits_down": 2681.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-01",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5754,
+            "medium": 56112
+        },
+        "total_minutes_up": 64741,
+        "total_minutes_down": 15843,
+        "credits_up": 79129,
+        "credits_down": 4752.89
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-02",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 56121
+        },
+        "total_minutes_up": 64755,
+        "total_minutes_down": 15829,
+        "credits_up": 79145,
+        "credits_down": 4748.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-03",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62470
+        },
+        "total_minutes_up": 71944,
+        "total_minutes_down": 8640,
+        "credits_up": 87174,
+        "credits_down": 2592
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-04",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2871,
+            "large": 6578,
+            "medium": 62311
+        },
+        "total_minutes_up": 71748,
+        "total_minutes_down": 8836,
+        "credits_up": 86934,
+        "credits_down": 2650.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-05",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 62476,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 71949,
+        "total_minutes_down": 8635,
+        "credits_up": 87178,
+        "credits_down": 2590.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-06",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 62132
+        },
+        "total_minutes_up": 71606,
+        "total_minutes_down": 8879,
+        "credits_up": 86836,
+        "credits_down": 2663.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-07",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 61286
+        },
+        "total_minutes_up": 70760,
+        "total_minutes_down": 9900,
+        "credits_up": 85990,
+        "credits_down": 2970
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-08",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5750,
+            "medium": 53206,
+            "xlarge": 2876
+        },
+        "total_minutes_up": 61819,
+        "total_minutes_down": 18765,
+        "credits_up": 76195,
+        "credits_down": 5629.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-09",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 53301
+        },
+        "total_minutes_up": 61935,
+        "total_minutes_down": 18649,
+        "credits_up": 76325,
+        "credits_down": 5594.7
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-10",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 57934
+        },
+        "total_minutes_up": 67407,
+        "total_minutes_down": 9857,
+        "credits_up": 82637,
+        "credits_down": 2957.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-11",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 54075,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63548,
+        "total_minutes_down": 9166,
+        "credits_up": 78778,
+        "credits_down": 2749.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-12",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 54076
+        },
+        "total_minutes_up": 63550,
+        "total_minutes_down": 8400,
+        "credits_up": 78780,
+        "credits_down": 2520
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-13",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 54077,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63549,
+        "total_minutes_down": 8401,
+        "credits_up": 78778,
+        "credits_down": 2520.3
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-14",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 54014
+        },
+        "total_minutes_up": 63487,
+        "total_minutes_down": 8463,
+        "credits_up": 78716,
+        "credits_down": 2538.9
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-15",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5755,
+            "medium": 45974,
+            "xlarge": 2872
+        },
+        "total_minutes_up": 54557,
+        "total_minutes_down": 17393,
+        "credits_up": 68924,
+        "credits_down": 5217.89
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-16",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5756,
+            "medium": 46106,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 54740,
+        "total_minutes_down": 17210,
+        "credits_up": 69130,
+        "credits_down": 5163
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-17",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 54069,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63542,
+        "total_minutes_down": 8408,
+        "credits_up": 78772,
+        "credits_down": 2522.39
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-18",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6596,
+            "medium": 54080
+        },
+        "total_minutes_up": 63552,
+        "total_minutes_down": 8398,
+        "credits_up": 78782,
+        "credits_down": 2519.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-19",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 54071,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63544,
+        "total_minutes_down": 8406,
+        "credits_up": 78773,
+        "credits_down": 2521.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-20",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 54077
+        },
+        "total_minutes_up": 63550,
+        "total_minutes_down": 8400,
+        "credits_up": 78779,
+        "credits_down": 2520
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-21",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6595,
+            "medium": 54017,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63490,
+        "total_minutes_down": 8460,
+        "credits_up": 78719,
+        "credits_down": 2538
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-22",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2875,
+            "large": 5755,
+            "medium": 46030
+        },
+        "total_minutes_up": 54656,
+        "total_minutes_down": 17294,
+        "credits_up": 69033,
+        "credits_down": 5188.2
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-23",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 46106
+        },
+        "total_minutes_up": 54740,
+        "total_minutes_down": 17210,
+        "credits_up": 69130,
+        "credits_down": 5163
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-24",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 54070,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63542,
+        "total_minutes_down": 8408,
+        "credits_up": 78772,
+        "credits_down": 2522.4
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-25",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6577,
+            "medium": 53930,
+            "xlarge": 2868
+        },
+        "total_minutes_up": 63363,
+        "total_minutes_down": 8587,
+        "credits_up": 78543,
+        "credits_down": 2576.1
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-26",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 54077,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63551,
+        "total_minutes_down": 8399,
+        "credits_up": 78781,
+        "credits_down": 2519.69
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-27",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 6596,
+            "medium": 54074,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 63547,
+        "total_minutes_down": 8403,
+        "credits_up": 78777,
+        "credits_down": 2520.9
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-28",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 6595,
+            "medium": 54021
+        },
+        "total_minutes_up": 63494,
+        "total_minutes_down": 8456,
+        "credits_up": 78723,
+        "credits_down": 2536.8
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-29",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "large": 5753,
+            "medium": 45873,
+            "xlarge": 2878
+        },
+        "total_minutes_up": 54495,
+        "total_minutes_down": 17455,
+        "credits_up": 68880,
+        "credits_down": 5236.5
+    },
+    {
+        "realm_id": "bdcr",
+        "date": "2024-06-30",
+        "limits_enabled": true,
+        "max_nb_ods": 300,
+        "minutes_up_by_profile":
+        {
+            "xlarge": 2878,
+            "large": 5756,
+            "medium": 46106
+        },
+        "total_minutes_up": 54740,
+        "total_minutes_down": 17210,
+        "credits_up": 69130,
+        "credits_down": 5163
+    }
+]

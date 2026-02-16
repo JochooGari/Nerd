@@ -1,0 +1,619 @@
+timezone_id,ntimezone_id,display_name,standard_time_short,daylight_time_short,standard_time_long,daylight_time_long,utc_offset_millis,observes_dst,dst_savings_millis
+1,__UNKNOWN__,__UNKNOWN__,__UNKNOWN__,__UNKNOWN__,__UNKNOWN__,__UNKNOWN__,0,false,0
+11,Africa/Abidjan,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+12,Africa/Accra,Ghana Mean Time,GMT,GHST,Ghana Mean Time,Ghana Summer Time,0,false,0
+13,Africa/Addis_Ababa,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+14,Africa/Algiers,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,false,0
+15,Africa/Asmara,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+16,Africa/Asmera,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+17,Africa/Bamako,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+18,Africa/Bangui,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+19,Africa/Banjul,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+20,Africa/Bissau,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+21,Africa/Blantyre,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+22,Africa/Brazzaville,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+23,Africa/Bujumbura,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+24,Africa/Cairo,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+25,Africa/Casablanca,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+26,Africa/Ceuta,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+27,Africa/Conakry,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+28,Africa/Dakar,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+29,Africa/Dar_es_Salaam,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+30,Africa/Djibouti,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+31,Africa/Douala,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+32,Africa/El_Aaiun,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+33,Africa/Freetown,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+34,Africa/Gaborone,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+35,Africa/Harare,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+36,Africa/Johannesburg,South Africa Standard Time,SAST,SAST,South Africa Standard Time,South Africa Summer Time,7200000,false,0
+37,Africa/Juba,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+38,Africa/Kampala,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+39,Africa/Khartoum,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+40,Africa/Kigali,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+41,Africa/Kinshasa,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+42,Africa/Lagos,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+43,Africa/Libreville,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+44,Africa/Lome,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+45,Africa/Luanda,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+46,Africa/Lubumbashi,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+47,Africa/Lusaka,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+48,Africa/Malabo,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+49,Africa/Maputo,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+50,Africa/Maseru,South Africa Standard Time,SAST,SAST,South Africa Standard Time,South Africa Summer Time,7200000,false,0
+51,Africa/Mbabane,South Africa Standard Time,SAST,SAST,South Africa Standard Time,South Africa Summer Time,7200000,false,0
+52,Africa/Mogadishu,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+53,Africa/Monrovia,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+54,Africa/Nairobi,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+55,Africa/Ndjamena,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+56,Africa/Niamey,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+57,Africa/Nouakchott,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+58,Africa/Ouagadougou,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+59,Africa/Porto-Novo,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,false,0
+60,Africa/Sao_Tome,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+61,Africa/Timbuktu,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+62,Africa/Tripoli,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,false,0
+63,Africa/Tunis,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,false,0
+64,Africa/Windhoek,Western African Time,WAT,WAST,Western African Time,Western African Summer Time,3600000,true,3600000
+65,America/Adak,Hawaii-Aleutian Standard Time,HAST,HADT,Hawaii-Aleutian Standard Time,Hawaii-Aleutian Daylight Time,-36000000,true,3600000
+66,America/Anchorage,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+67,America/Anguilla,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+68,America/Antigua,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+69,America/Araguaina,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+70,America/Argentina/Buenos_Aires,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+71,America/Argentina/Catamarca,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+72,America/Argentina/ComodRivadavia,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+73,America/Argentina/Cordoba,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+74,America/Argentina/Jujuy,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+75,America/Argentina/La_Rioja,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+76,America/Argentina/Mendoza,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+77,America/Argentina/Rio_Gallegos,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+78,America/Argentina/Salta,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+79,America/Argentina/San_Juan,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+80,America/Argentina/San_Luis,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+81,America/Argentina/Tucuman,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+82,America/Argentina/Ushuaia,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+83,America/Aruba,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+84,America/Asuncion,Paraguay Time,PYT,PYST,Paraguay Time,Paraguay Summer Time,-14400000,true,3600000
+85,America/Atikokan,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+86,America/Atka,Hawaii-Aleutian Standard Time,HAST,HADT,Hawaii-Aleutian Standard Time,Hawaii-Aleutian Daylight Time,-36000000,true,3600000
+87,America/Bahia,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+88,America/Bahia_Banderas,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+89,America/Barbados,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+90,America/Belem,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+91,America/Belize,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+92,America/Blanc-Sablon,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+93,America/Boa_Vista,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,false,0
+94,America/Bogota,Colombia Time,COT,COST,Colombia Time,Colombia Summer Time,-18000000,false,0
+95,America/Boise,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+96,America/Buenos_Aires,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+97,America/Cambridge_Bay,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+98,America/Campo_Grande,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,true,3600000
+99,America/Cancun,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+100,America/Caracas,Venezuela Time,VET,VEST,Venezuela Time,Venezuela Summer Time,-16200000,false,0
+101,America/Catamarca,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+102,America/Cayenne,French Guiana Time,GFT,GFST,French Guiana Time,French Guiana Summer Time,-10800000,false,0
+103,America/Cayman,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+104,America/Chicago,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+105,America/Chihuahua,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+106,America/Coral_Harbour,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+107,America/Cordoba,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+108,America/Costa_Rica,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+109,America/Creston,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+110,America/Cuiaba,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,true,3600000
+111,America/Curacao,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+112,America/Danmarkshavn,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+113,America/Dawson,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+114,America/Dawson_Creek,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+115,America/Denver,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+116,America/Detroit,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+117,America/Dominica,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+118,America/Edmonton,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+119,America/Eirunepe,Acre Time,ACT,ACST,Acre Time,Acre Summer Time,-18000000,false,0
+120,America/El_Salvador,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+121,America/Ensenada,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+122,America/Fort_Wayne,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+123,America/Fortaleza,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+124,America/Glace_Bay,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+125,America/Godthab,Western Greenland Time,WGT,WGST,Western Greenland Time,Western Greenland Summer Time,-10800000,true,3600000
+126,America/Goose_Bay,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+127,America/Grand_Turk,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-18000000,true,0
+128,America/Grenada,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+129,America/Guadeloupe,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+130,America/Guatemala,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+131,America/Guayaquil,Ecuador Time,ECT,ECST,Ecuador Time,Ecuador Summer Time,-18000000,false,0
+132,America/Guyana,Guyana Time,GYT,GYST,Guyana Time,Guyana Summer Time,-14400000,false,0
+133,America/Halifax,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+134,America/Havana,Cuba Standard Time,CST,CDT,Cuba Standard Time,Cuba Daylight Time,-18000000,true,3600000
+135,America/Hermosillo,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+136,America/Indiana/Indianapolis,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+137,America/Indiana/Knox,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+138,America/Indiana/Marengo,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+139,America/Indiana/Petersburg,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+140,America/Indiana/Tell_City,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+141,America/Indiana/Vevay,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+142,America/Indiana/Vincennes,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+143,America/Indiana/Winamac,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+144,America/Indianapolis,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+145,America/Inuvik,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+146,America/Iqaluit,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+147,America/Jamaica,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+148,America/Jujuy,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+149,America/Juneau,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+150,America/Kentucky/Louisville,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+151,America/Kentucky/Monticello,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+152,America/Knox_IN,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+153,America/Kralendijk,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+154,America/La_Paz,Bolivia Time,BOT,BOST,Bolivia Time,Bolivia Summer Time,-14400000,false,0
+155,America/Lima,Peru Time,PET,PEST,Peru Time,Peru Summer Time,-18000000,false,0
+156,America/Los_Angeles,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+157,America/Louisville,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+158,America/Lower_Princes,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+159,America/Maceio,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+160,America/Managua,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+161,America/Manaus,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,false,0
+162,America/Marigot,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+163,America/Martinique,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+164,America/Matamoros,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+165,America/Mazatlan,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+166,America/Mendoza,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+167,America/Menominee,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+168,America/Merida,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+169,America/Metlakatla,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,false,0
+170,America/Mexico_City,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+171,America/Miquelon,Pierre & Miquelon Standard Time,PMST,PMDT,Pierre & Miquelon Standard Time,Pierre & Miquelon Daylight Time,-10800000,true,3600000
+172,America/Moncton,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+173,America/Monterrey,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+174,America/Montevideo,Uruguay Time,UYT,UYST,Uruguay Time,Uruguay Summer Time,-10800000,true,3600000
+175,America/Montreal,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+176,America/Montserrat,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+177,America/Nassau,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+178,America/New_York,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+179,America/Nipigon,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+180,America/Nome,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+181,America/Noronha,Fernando de Noronha Time,FNT,FNST,Fernando de Noronha Time,Fernando de Noronha Summer Time,-7200000,false,0
+182,America/North_Dakota/Beulah,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+183,America/North_Dakota/Center,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+184,America/North_Dakota/New_Salem,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+185,America/Ojinaga,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+186,America/Panama,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+187,America/Pangnirtung,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+188,America/Paramaribo,Suriname Time,SRT,SRST,Suriname Time,Suriname Summer Time,-10800000,false,0
+189,America/Phoenix,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+190,America/Port-au-Prince,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+191,America/Port_of_Spain,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+192,America/Porto_Acre,Acre Time,ACT,ACST,Acre Time,Acre Summer Time,-18000000,false,0
+193,America/Porto_Velho,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,false,0
+194,America/Puerto_Rico,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+195,America/Rainy_River,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+196,America/Rankin_Inlet,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+197,America/Recife,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+198,America/Regina,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+199,America/Resolute,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+200,America/Rio_Branco,Acre Time,ACT,ACST,Acre Time,Acre Summer Time,-18000000,false,0
+201,America/Rosario,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+202,America/Santa_Isabel,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+203,America/Santarem,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,false,0
+204,America/Santiago,Chile Time,CLT,CLST,Chile Time,Chile Summer Time,-10800000,false,0
+205,America/Santo_Domingo,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+206,America/Sao_Paulo,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,true,3600000
+207,America/Scoresbysund,Eastern Greenland Time,EGT,EGST,Eastern Greenland Time,Eastern Greenland Summer Time,-3600000,true,3600000
+208,America/Shiprock,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+209,America/Sitka,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+210,America/St_Barthelemy,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+211,America/St_Johns,Newfoundland Standard Time,NST,NDT,Newfoundland Standard Time,Newfoundland Daylight Time,-12600000,true,3600000
+212,America/St_Kitts,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+213,America/St_Lucia,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+214,America/St_Thomas,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+215,America/St_Vincent,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+216,America/Swift_Current,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+217,America/Tegucigalpa,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+218,America/Thule,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+219,America/Thunder_Bay,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+220,America/Tijuana,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+221,America/Toronto,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+222,America/Tortola,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+223,America/Vancouver,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+224,America/Virgin,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+225,America/Whitehorse,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+226,America/Winnipeg,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+227,America/Yakutat,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+228,America/Yellowknife,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+229,Antarctica/Casey,Australian Western Standard Time,AWST,AWDT,Australian Western Standard Time,Australian Western Daylight Time,28800000,false,0
+230,Antarctica/Davis,Davis Time,DAVT,DAVST,Davis Time,Davis Summer Time,25200000,false,0
+231,Antarctica/DumontDUrville,Dumont-d'Urville Time,DDUT,DDUST,Dumont-d'Urville Time,Dumont-d'Urville Summer Time,36000000,false,0
+232,Antarctica/Macquarie,Macquarie Island Standard Time,MIST,MIDT,Macquarie Island Standard Time,Macquarie Island Daylight Time,39600000,false,0
+233,Antarctica/Mawson,Mawson Time,MAWT,MAWST,Mawson Time,Mawson Summer Time,18000000,false,0
+234,Antarctica/McMurdo,New Zealand Standard Time,NZST,NZDT,New Zealand Standard Time,New Zealand Daylight Time,43200000,true,3600000
+235,Antarctica/Palmer,Chile Time,CLT,CLST,Chile Time,Chile Summer Time,-10800000,false,0
+236,Antarctica/Rothera,Rothera Time,ROTT,ROTST,Rothera Time,Rothera Summer Time,-10800000,false,0
+237,Antarctica/South_Pole,New Zealand Standard Time,NZST,NZDT,New Zealand Standard Time,New Zealand Daylight Time,43200000,true,3600000
+238,Antarctica/Syowa,Syowa Time,SYOT,SYOST,Syowa Time,Syowa Summer Time,10800000,false,0
+239,Antarctica/Troll,Coordinated Universal Time,UTC,CEST,Coordinated Universal Time,Central European Summer Time,0,true,7200000
+240,Antarctica/Vostok,Vostok Time,VOST,VOSST,Vostok Time,Vostok Summer Time,21600000,false,0
+241,Arctic/Longyearbyen,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+242,Asia/Aden,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+243,Asia/Almaty,Alma-Ata Time,ALMT,ALMST,Alma-Ata Time,Alma-Ata Summer Time,21600000,false,0
+244,Asia/Amman,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+245,Asia/Anadyr,Anadyr Time,ANAT,ANAST,Anadyr Time,Anadyr Summer Time,43200000,false,0
+246,Asia/Aqtau,Aqtau Time,AQTT,AQTST,Aqtau Time,Aqtau Summer Time,18000000,false,0
+247,Asia/Aqtobe,Aqtobe Time,AQTT,AQTST,Aqtobe Time,Aqtobe Summer Time,18000000,false,0
+248,Asia/Ashgabat,Turkmenistan Time,TMT,TMST,Turkmenistan Time,Turkmenistan Summer Time,18000000,false,0
+249,Asia/Ashkhabad,Turkmenistan Time,TMT,TMST,Turkmenistan Time,Turkmenistan Summer Time,18000000,false,0
+250,Asia/Baghdad,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+251,Asia/Bahrain,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+252,Asia/Baku,Azerbaijan Time,AZT,AZST,Azerbaijan Time,Azerbaijan Summer Time,14400000,true,3600000
+253,Asia/Bangkok,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0
+254,Asia/Beirut,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+255,Asia/Bishkek,Kirgizstan Time,KGT,KGST,Kirgizstan Time,Kirgizstan Summer Time,21600000,false,0
+256,Asia/Brunei,Brunei Time,BNT,BNST,Brunei Time,Brunei Summer Time,28800000,false,0
+257,Asia/Calcutta,India Standard Time,IST,IDT,India Standard Time,India Daylight Time,19800000,false,0
+258,Asia/Chita,Irkutsk Time,IRKT,IRKST,Irkutsk Time,Irkutsk Summer Time,28800000,false,0
+259,Asia/Choibalsan,Choibalsan Time,CHOT,CHOST,Choibalsan Time,Choibalsan Summer Time,28800000,false,0
+260,Asia/Chongqing,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+261,Asia/Chungking,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+262,Asia/Colombo,India Standard Time,IST,IDT,India Standard Time,India Daylight Time,19800000,false,0
+263,Asia/Dacca,Bangladesh Time,BDT,BDST,Bangladesh Time,Bangladesh Summer Time,21600000,false,0
+264,Asia/Damascus,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+265,Asia/Dhaka,Bangladesh Time,BDT,BDST,Bangladesh Time,Bangladesh Summer Time,21600000,false,0
+266,Asia/Dili,Timor-Leste Time,TLT,TLST,Timor-Leste Time,Timor-Leste Summer Time,32400000,false,0
+267,Asia/Dubai,Gulf Standard Time,GST,GDT,Gulf Standard Time,Gulf Daylight Time,14400000,false,0
+268,Asia/Dushanbe,Tajikistan Time,TJT,TJST,Tajikistan Time,Tajikistan Summer Time,18000000,false,0
+269,Asia/Gaza,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+270,Asia/Harbin,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+271,Asia/Hebron,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+272,Asia/Ho_Chi_Minh,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0
+273,Asia/Hong_Kong,Hong Kong Time,HKT,HKST,Hong Kong Time,Hong Kong Summer Time,28800000,false,0
+274,Asia/Hovd,Hovd Time,HOVT,HOVST,Hovd Time,Hovd Summer Time,25200000,false,0
+275,Asia/Irkutsk,Irkutsk Time,IRKT,IRKST,Irkutsk Time,Irkutsk Summer Time,28800000,false,0
+276,Asia/Istanbul,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+277,Asia/Jakarta,West Indonesia Time,WIB,WIST,West Indonesia Time,West Indonesia Summer Time,25200000,false,0
+278,Asia/Jayapura,East Indonesia Time,WIT,EIST,East Indonesia Time,East Indonesia Summer Time,32400000,false,0
+279,Asia/Jerusalem,Israel Standard Time,IST,IDT,Israel Standard Time,Israel Daylight Time,7200000,true,3600000
+280,Asia/Kabul,Afghanistan Time,AFT,AFST,Afghanistan Time,Afghanistan Summer Time,16200000,false,0
+281,Asia/Kamchatka,Petropavlovsk-Kamchatski Time,PETT,PETST,Petropavlovsk-Kamchatski Time,Petropavlovsk-Kamchatski Summer Time,43200000,false,0
+282,Asia/Karachi,Pakistan Time,PKT,PKST,Pakistan Time,Pakistan Summer Time,18000000,false,0
+283,Asia/Kashgar,Xinjiang Standard Time,XJT,XJDT,Xinjiang Standard Time,Xinjiang Daylight Time,21600000,false,0
+284,Asia/Kathmandu,Nepal Time,NPT,NPST,Nepal Time,Nepal Summer Time,20700000,false,0
+285,Asia/Katmandu,Nepal Time,NPT,NPST,Nepal Time,Nepal Summer Time,20700000,false,0
+286,Asia/Khandyga,Khandyga Time,YAKT,YAKST,Khandyga Time,Khandyga Summer Time,32400000,false,0
+287,Asia/Kolkata,India Standard Time,IST,IDT,India Standard Time,India Daylight Time,19800000,false,0
+288,Asia/Krasnoyarsk,Krasnoyarsk Time,KRAT,KRAST,Krasnoyarsk Time,Krasnoyarsk Summer Time,25200000,false,0
+289,Asia/Kuala_Lumpur,Malaysia Time,MYT,MYST,Malaysia Time,Malaysia Summer Time,28800000,false,0
+290,Asia/Kuching,Malaysia Time,MYT,MYST,Malaysia Time,Malaysia Summer Time,28800000,false,0
+291,Asia/Kuwait,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+292,Asia/Macao,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+293,Asia/Macau,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+294,Asia/Magadan,Magadan Time,MAGT,MAGST,Magadan Time,Magadan Summer Time,36000000,false,0
+295,Asia/Makassar,Central Indonesia Time,WITA,CIST,Central Indonesia Time,Central Indonesia Summer Time,28800000,false,0
+296,Asia/Manila,Philippines Time,PHT,PHST,Philippines Time,Philippines Summer Time,28800000,false,0
+297,Asia/Muscat,Gulf Standard Time,GST,GDT,Gulf Standard Time,Gulf Daylight Time,14400000,false,0
+298,Asia/Nicosia,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+299,Asia/Novokuznetsk,Krasnoyarsk Time,KRAT,KRAST,Krasnoyarsk Time,Krasnoyarsk Summer Time,25200000,false,0
+300,Asia/Novosibirsk,Novosibirsk Time,NOVT,NOVST,Novosibirsk Time,Novosibirsk Summer Time,21600000,false,0
+301,Asia/Omsk,Omsk Time,OMST,OMSST,Omsk Time,Omsk Summer Time,21600000,false,0
+302,Asia/Oral,Oral Time,ORAT,ORAST,Oral Time,Oral Summer Time,18000000,false,0
+303,Asia/Phnom_Penh,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0
+304,Asia/Pontianak,West Indonesia Time,WIB,WIST,West Indonesia Time,West Indonesia Summer Time,25200000,false,0
+305,Asia/Pyongyang,Korea Standard Time,KST,KDT,Korea Standard Time,Korea Daylight Time,32400000,false,0
+306,Asia/Qatar,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+307,Asia/Qyzylorda,Qyzylorda Time,QYZT,QYZST,Qyzylorda Time,Qyzylorda Summer Time,21600000,false,0
+308,Asia/Rangoon,Myanmar Time,MMT,MMST,Myanmar Time,Myanmar Summer Time,23400000,false,0
+309,Asia/Riyadh,Arabia Standard Time,AST,ADT,Arabia Standard Time,Arabia Daylight Time,10800000,false,0
+310,Asia/Saigon,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0
+311,Asia/Sakhalin,Sakhalin Time,SAKT,SAKST,Sakhalin Time,Sakhalin Summer Time,36000000,false,0
+312,Asia/Samarkand,Uzbekistan Time,UZT,UZST,Uzbekistan Time,Uzbekistan Summer Time,18000000,false,0
+313,Asia/Seoul,Korea Standard Time,KST,KDT,Korea Standard Time,Korea Daylight Time,32400000,false,0
+314,Asia/Shanghai,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+315,Asia/Singapore,Singapore Time,SGT,SGST,Singapore Time,Singapore Summer Time,28800000,false,0
+316,Asia/Srednekolymsk,Srednekolymsk Time,SRET,SREDT,Srednekolymsk Time,Srednekolymsk Daylight Time,39600000,false,0
+317,Asia/Taipei,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+318,Asia/Tashkent,Uzbekistan Time,UZT,UZST,Uzbekistan Time,Uzbekistan Summer Time,18000000,false,0
+319,Asia/Tbilisi,Georgia Time,GET,GEST,Georgia Time,Georgia Summer Time,14400000,false,0
+320,Asia/Tehran,Iran Standard Time,IRST,IRDT,Iran Standard Time,Iran Daylight Time,12600000,true,3600000
+321,Asia/Tel_Aviv,Israel Standard Time,IST,IDT,Israel Standard Time,Israel Daylight Time,7200000,true,3600000
+322,Asia/Thimbu,Bhutan Time,BTT,BTST,Bhutan Time,Bhutan Summer Time,21600000,false,0
+323,Asia/Thimphu,Bhutan Time,BTT,BTST,Bhutan Time,Bhutan Summer Time,21600000,false,0
+324,Asia/Tokyo,Japan Standard Time,JST,JDT,Japan Standard Time,Japan Daylight Time,32400000,false,0
+325,Asia/Ujung_Pandang,Central Indonesia Time,WITA,CIST,Central Indonesia Time,Central Indonesia Summer Time,28800000,false,0
+326,Asia/Ulaanbaatar,Ulaanbaatar Time,ULAT,ULAST,Ulaanbaatar Time,Ulaanbaatar Summer Time,28800000,false,0
+327,Asia/Ulan_Bator,Ulaanbaatar Time,ULAT,ULAST,Ulaanbaatar Time,Ulaanbaatar Summer Time,28800000,false,0
+328,Asia/Urumqi,Xinjiang Standard Time,XJT,XJDT,Xinjiang Standard Time,Xinjiang Daylight Time,21600000,false,0
+329,Asia/Ust-Nera,Ust-Nera Time,VLAT,VLAST,Ust-Nera Time,Ust-Nera Summer Time,36000000,false,0
+330,Asia/Vientiane,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0
+331,Asia/Vladivostok,Vladivostok Time,VLAT,VLAST,Vladivostok Time,Vladivostok Summer Time,36000000,false,0
+332,Asia/Yakutsk,Yakutsk Time,YAKT,YAKST,Yakutsk Time,Yakutsk Summer Time,32400000,false,0
+333,Asia/Yekaterinburg,Yekaterinburg Time,YEKT,YEKST,Yekaterinburg Time,Yekaterinburg Summer Time,18000000,false,0
+334,Asia/Yerevan,Armenia Time,AMT,AMST,Armenia Time,Armenia Summer Time,14400000,false,0
+335,Atlantic/Azores,Azores Time,AZOT,AZOST,Azores Time,Azores Summer Time,-3600000,true,3600000
+336,Atlantic/Bermuda,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+337,Atlantic/Canary,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+338,Atlantic/Cape_Verde,Cape Verde Time,CVT,CVST,Cape Verde Time,Cape Verde Summer Time,-3600000,false,0
+339,Atlantic/Faeroe,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+340,Atlantic/Faroe,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+341,Atlantic/Jan_Mayen,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+342,Atlantic/Madeira,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+343,Atlantic/Reykjavik,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+344,Atlantic/South_Georgia,South Georgia Standard Time,GST,GDT,South Georgia Standard Time,South Georgia Daylight Time,-7200000,false,0
+345,Atlantic/St_Helena,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+346,Atlantic/Stanley,Falkland Is. Time,FKT,FKST,Falkland Is. Time,Falkland Is. Summer Time,-10800000,false,0
+347,Australia/ACT,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+348,Australia/Adelaide,Australian Central Standard Time (South Australia),ACST,ACDT,Australian Central Standard Time (South Australia),Australian Central Daylight Time (South Australia),34200000,true,3600000
+349,Australia/Brisbane,Australian Eastern Standard Time (Queensland),AEST,AEDT,Australian Eastern Standard Time (Queensland),Australian Eastern Daylight Time (Queensland),36000000,false,0
+350,Australia/Broken_Hill,Australian Central Standard Time (South Australia/New South Wales),ACST,ACDT,Australian Central Standard Time (South Australia/New South Wales),Australian Central Daylight Time (South Australia/New South Wales),34200000,true,3600000
+351,Australia/Canberra,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+352,Australia/Currie,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+353,Australia/Darwin,Australian Central Standard Time (Northern Territory),ACST,ACDT,Australian Central Standard Time (Northern Territory),Australian Central Daylight Time (Northern Territory),34200000,false,0
+354,Australia/Eucla,Australian Central Western Standard Time,ACWST,ACWDT,Australian Central Western Standard Time,Australian Central Western Daylight Time,31500000,false,0
+355,Australia/Hobart,Australian Eastern Standard Time (Tasmania),AEST,AEDT,Australian Eastern Standard Time (Tasmania),Australian Eastern Daylight Time (Tasmania),36000000,true,3600000
+356,Australia/LHI,Lord Howe Standard Time,LHST,LHDT,Lord Howe Standard Time,Lord Howe Daylight Time,37800000,true,1800000
+357,Australia/Lindeman,Australian Eastern Standard Time (Queensland),AEST,AEDT,Australian Eastern Standard Time (Queensland),Australian Eastern Daylight Time (Queensland),36000000,false,0
+358,Australia/Lord_Howe,Lord Howe Standard Time,LHST,LHDT,Lord Howe Standard Time,Lord Howe Daylight Time,37800000,true,1800000
+359,Australia/Melbourne,Australian Eastern Standard Time (Victoria),AEST,AEDT,Australian Eastern Standard Time (Victoria),Australian Eastern Daylight Time (Victoria),36000000,true,3600000
+360,Australia/NSW,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+361,Australia/North,Australian Central Standard Time (Northern Territory),ACST,ACDT,Australian Central Standard Time (Northern Territory),Australian Central Daylight Time (Northern Territory),34200000,false,0
+362,Australia/Perth,Australian Western Standard Time,AWST,AWDT,Australian Western Standard Time,Australian Western Daylight Time,28800000,false,0
+546,Pacific/Noumea,New Caledonia Time,NCT,NCST,New Caledonia Time,New Caledonia Summer Time,39600000,false,0
+363,Australia/Queensland,Australian Eastern Standard Time (Queensland),AEST,AEDT,Australian Eastern Standard Time (Queensland),Australian Eastern Daylight Time (Queensland),36000000,false,0
+364,Australia/South,Australian Central Standard Time (South Australia),ACST,ACDT,Australian Central Standard Time (South Australia),Australian Central Daylight Time (South Australia),34200000,true,3600000
+365,Australia/Sydney,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+366,Australia/Tasmania,Australian Eastern Standard Time (Tasmania),AEST,AEDT,Australian Eastern Standard Time (Tasmania),Australian Eastern Daylight Time (Tasmania),36000000,true,3600000
+367,Australia/Victoria,Australian Eastern Standard Time (Victoria),AEST,AEDT,Australian Eastern Standard Time (Victoria),Australian Eastern Daylight Time (Victoria),36000000,true,3600000
+368,Australia/West,Australian Western Standard Time,AWST,AWDT,Australian Western Standard Time,Australian Western Daylight Time,28800000,false,0
+369,Australia/Yancowinna,Australian Central Standard Time (South Australia/New South Wales),ACST,ACDT,Australian Central Standard Time (South Australia/New South Wales),Australian Central Daylight Time (South Australia/New South Wales),34200000,true,3600000
+370,Brazil/Acre,Acre Time,ACT,ACST,Acre Time,Acre Summer Time,-18000000,false,0
+371,Brazil/DeNoronha,Fernando de Noronha Time,FNT,FNST,Fernando de Noronha Time,Fernando de Noronha Summer Time,-7200000,false,0
+372,Brazil/East,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,true,3600000
+373,Brazil/West,Amazon Time,AMT,AMST,Amazon Time,Amazon Summer Time,-14400000,false,0
+374,CET,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+375,CST6CDT,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+376,Canada/Atlantic,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+377,Canada/Central,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+378,Canada/East-Saskatchewan,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+379,Canada/Eastern,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+380,Canada/Mountain,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+381,Canada/Newfoundland,Newfoundland Standard Time,NST,NDT,Newfoundland Standard Time,Newfoundland Daylight Time,-12600000,true,3600000
+382,Canada/Pacific,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+383,Canada/Saskatchewan,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+384,Canada/Yukon,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+385,Chile/Continental,Chile Time,CLT,CLST,Chile Time,Chile Summer Time,-10800000,false,0
+386,Chile/EasterIsland,Easter Is. Time,EAST,EASST,Easter Is. Time,Easter Is. Summer Time,-18000000,false,0
+387,Cuba,Cuba Standard Time,CST,CDT,Cuba Standard Time,Cuba Daylight Time,-18000000,true,3600000
+388,EET,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+389,EST5EDT,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+390,Egypt,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+391,Eire,Greenwich Mean Time,GMT,IST,Greenwich Mean Time,Irish Summer Time,0,true,3600000
+392,Etc/GMT,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+393,Etc/GMT+0,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+394,Etc/GMT+1,GMT-01:00,GMT-01:00,GMT-01:00,GMT-01:00,GMT-01:00,-3600000,false,0
+395,Etc/GMT+10,GMT-10:00,GMT-10:00,GMT-10:00,GMT-10:00,GMT-10:00,-36000000,false,0
+396,Etc/GMT+11,GMT-11:00,GMT-11:00,GMT-11:00,GMT-11:00,GMT-11:00,-39600000,false,0
+397,Etc/GMT+12,GMT-12:00,GMT-12:00,GMT-12:00,GMT-12:00,GMT-12:00,-43200000,false,0
+398,Etc/GMT+2,GMT-02:00,GMT-02:00,GMT-02:00,GMT-02:00,GMT-02:00,-7200000,false,0
+399,Etc/GMT+3,GMT-03:00,GMT-03:00,GMT-03:00,GMT-03:00,GMT-03:00,-10800000,false,0
+400,Etc/GMT+4,GMT-04:00,GMT-04:00,GMT-04:00,GMT-04:00,GMT-04:00,-14400000,false,0
+401,Etc/GMT+5,GMT-05:00,GMT-05:00,GMT-05:00,GMT-05:00,GMT-05:00,-18000000,false,0
+402,Etc/GMT+6,GMT-06:00,GMT-06:00,GMT-06:00,GMT-06:00,GMT-06:00,-21600000,false,0
+403,Etc/GMT+7,GMT-07:00,GMT-07:00,GMT-07:00,GMT-07:00,GMT-07:00,-25200000,false,0
+404,Etc/GMT+8,GMT-08:00,GMT-08:00,GMT-08:00,GMT-08:00,GMT-08:00,-28800000,false,0
+405,Etc/GMT+9,GMT-09:00,GMT-09:00,GMT-09:00,GMT-09:00,GMT-09:00,-32400000,false,0
+406,Etc/GMT-0,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+407,Etc/GMT-1,GMT+01:00,GMT+01:00,GMT+01:00,GMT+01:00,GMT+01:00,3600000,false,0
+408,Etc/GMT-10,GMT+10:00,GMT+10:00,GMT+10:00,GMT+10:00,GMT+10:00,36000000,false,0
+409,Etc/GMT-11,GMT+11:00,GMT+11:00,GMT+11:00,GMT+11:00,GMT+11:00,39600000,false,0
+410,Etc/GMT-12,GMT+12:00,GMT+12:00,GMT+12:00,GMT+12:00,GMT+12:00,43200000,false,0
+411,Etc/GMT-13,GMT+13:00,GMT+13:00,GMT+13:00,GMT+13:00,GMT+13:00,46800000,false,0
+412,Etc/GMT-14,GMT+14:00,GMT+14:00,GMT+14:00,GMT+14:00,GMT+14:00,50400000,false,0
+413,Etc/GMT-2,GMT+02:00,GMT+02:00,GMT+02:00,GMT+02:00,GMT+02:00,7200000,false,0
+414,Etc/GMT-3,GMT+03:00,GMT+03:00,GMT+03:00,GMT+03:00,GMT+03:00,10800000,false,0
+415,Etc/GMT-4,GMT+04:00,GMT+04:00,GMT+04:00,GMT+04:00,GMT+04:00,14400000,false,0
+416,Etc/GMT-5,GMT+05:00,GMT+05:00,GMT+05:00,GMT+05:00,GMT+05:00,18000000,false,0
+417,Etc/GMT-6,GMT+06:00,GMT+06:00,GMT+06:00,GMT+06:00,GMT+06:00,21600000,false,0
+418,Etc/GMT-7,GMT+07:00,GMT+07:00,GMT+07:00,GMT+07:00,GMT+07:00,25200000,false,0
+419,Etc/GMT-8,GMT+08:00,GMT+08:00,GMT+08:00,GMT+08:00,GMT+08:00,28800000,false,0
+420,Etc/GMT-9,GMT+09:00,GMT+09:00,GMT+09:00,GMT+09:00,GMT+09:00,32400000,false,0
+421,Etc/GMT0,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+422,Etc/Greenwich,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+423,Etc/UCT,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+424,Etc/UTC,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+425,Etc/Universal,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+426,Etc/Zulu,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+427,Europe/Amsterdam,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+428,Europe/Andorra,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+429,Europe/Athens,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+430,Europe/Belfast,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+431,Europe/Belgrade,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+432,Europe/Berlin,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+433,Europe/Bratislava,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+434,Europe/Brussels,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+435,Europe/Bucharest,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+436,Europe/Budapest,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+437,Europe/Busingen,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+438,Europe/Chisinau,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+439,Europe/Copenhagen,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+440,Europe/Dublin,Greenwich Mean Time,GMT,IST,Greenwich Mean Time,Irish Summer Time,0,true,3600000
+441,Europe/Gibraltar,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+442,Europe/Guernsey,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+443,Europe/Helsinki,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+444,Europe/Isle_of_Man,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+445,Europe/Istanbul,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+446,Europe/Jersey,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+447,Europe/Kaliningrad,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,false,0
+448,Europe/Kiev,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+449,Europe/Lisbon,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+450,Europe/Ljubljana,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+451,Europe/London,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+452,Europe/Luxembourg,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+453,Europe/Madrid,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+454,Europe/Malta,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+455,Europe/Mariehamn,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+456,Europe/Minsk,Moscow Standard Time,MSK,MSD,Moscow Standard Time,Moscow Daylight Time,10800000,false,0
+457,Europe/Monaco,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+458,Europe/Moscow,Moscow Standard Time,MSK,MSD,Moscow Standard Time,Moscow Daylight Time,10800000,false,0
+459,Europe/Nicosia,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+460,Europe/Oslo,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+461,Europe/Paris,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+462,Europe/Podgorica,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+463,Europe/Prague,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+464,Europe/Riga,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+465,Europe/Rome,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+466,Europe/Samara,Samara Time,SAMT,SAMST,Samara Time,Samara Summer Time,14400000,false,0
+467,Europe/San_Marino,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+468,Europe/Sarajevo,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+469,Europe/Simferopol,Moscow Standard Time,MSK,MSD,Moscow Standard Time,Moscow Daylight Time,10800000,false,0
+470,Europe/Skopje,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+471,Europe/Sofia,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+472,Europe/Stockholm,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+473,Europe/Tallinn,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+474,Europe/Tirane,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+475,Europe/Tiraspol,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+476,Europe/Uzhgorod,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+477,Europe/Vaduz,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+478,Europe/Vatican,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+479,Europe/Vienna,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+480,Europe/Vilnius,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+481,Europe/Volgograd,Moscow Standard Time,MSK,MSD,Moscow Standard Time,Moscow Daylight Time,10800000,false,0
+482,Europe/Warsaw,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+483,Europe/Zagreb,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+484,Europe/Zaporozhye,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+485,Europe/Zurich,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+486,GB,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+487,GB-Eire,Greenwich Mean Time,GMT,BST,Greenwich Mean Time,British Summer Time,0,true,3600000
+488,GMT,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+489,GMT0,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+490,Greenwich,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+491,Hongkong,Hong Kong Time,HKT,HKST,Hong Kong Time,Hong Kong Summer Time,28800000,false,0
+492,Iceland,Greenwich Mean Time,GMT,GMT,Greenwich Mean Time,Greenwich Mean Time,0,false,0
+493,Indian/Antananarivo,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+494,Indian/Chagos,Indian Ocean Territory Time,IOT,IOST,Indian Ocean Territory Time,Indian Ocean Territory Summer Time,21600000,false,0
+495,Indian/Christmas,Christmas Island Time,CXT,CXST,Christmas Island Time,Christmas Island Summer Time,25200000,false,0
+496,Indian/Cocos,Cocos Islands Time,CCT,CCST,Cocos Islands Time,Cocos Islands Summer Time,23400000,false,0
+497,Indian/Comoro,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+498,Indian/Kerguelen,French Southern & Antarctic Lands Time,TFT,TFST,French Southern & Antarctic Lands Time,French Southern & Antarctic Lands Summer Time,18000000,false,0
+499,Indian/Mahe,Seychelles Time,SCT,SCST,Seychelles Time,Seychelles Summer Time,14400000,false,0
+500,Indian/Maldives,Maldives Time,MVT,MVST,Maldives Time,Maldives Summer Time,18000000,false,0
+501,Indian/Mauritius,Mauritius Time,MUT,MUST,Mauritius Time,Mauritius Summer Time,14400000,false,0
+502,Indian/Mayotte,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+503,Indian/Reunion,Reunion Time,RET,REST,Reunion Time,Reunion Summer Time,14400000,false,0
+504,Iran,Iran Standard Time,IRST,IRDT,Iran Standard Time,Iran Daylight Time,12600000,true,3600000
+505,Israel,Israel Standard Time,IST,IDT,Israel Standard Time,Israel Daylight Time,7200000,true,3600000
+506,Jamaica,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+507,Japan,Japan Standard Time,JST,JDT,Japan Standard Time,Japan Daylight Time,32400000,false,0
+508,Kwajalein,Marshall Islands Time,MHT,MHST,Marshall Islands Time,Marshall Islands Summer Time,43200000,false,0
+509,Libya,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,false,0
+510,MET,Middle Europe Time,MET,MEST,Middle Europe Time,Middle Europe Summer Time,3600000,true,3600000
+511,MST7MDT,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+512,Mexico/BajaNorte,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+513,Mexico/BajaSur,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+514,Mexico/General,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+515,NZ,New Zealand Standard Time,NZST,NZDT,New Zealand Standard Time,New Zealand Daylight Time,43200000,true,3600000
+516,NZ-CHAT,Chatham Standard Time,CHAST,CHADT,Chatham Standard Time,Chatham Daylight Time,45900000,true,3600000
+517,Navajo,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+518,PRC,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+519,PST8PDT,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+520,Pacific/Apia,West Samoa Standard Time,WSST,WSDT,West Samoa Standard Time,West Samoa Daylight Time,46800000,true,3600000
+521,Pacific/Auckland,New Zealand Standard Time,NZST,NZDT,New Zealand Standard Time,New Zealand Daylight Time,43200000,true,3600000
+522,Pacific/Bougainville,Bougainville Standard Time,BST,BST,Bougainville Standard Time,Bougainville Daylight Time,39600000,false,0
+523,Pacific/Chatham,Chatham Standard Time,CHAST,CHADT,Chatham Standard Time,Chatham Daylight Time,45900000,true,3600000
+524,Pacific/Chuuk,Chuuk Time,CHUT,CHUST,Chuuk Time,Chuuk Summer Time,36000000,false,0
+525,Pacific/Easter,Easter Is. Time,EAST,EASST,Easter Is. Time,Easter Is. Summer Time,-18000000,false,0
+526,Pacific/Efate,Vanuatu Time,VUT,VUST,Vanuatu Time,Vanuatu Summer Time,39600000,false,0
+527,Pacific/Enderbury,Phoenix Is. Time,PHOT,PHOST,Phoenix Is. Time,Phoenix Is. Summer Time,46800000,false,0
+528,Pacific/Fakaofo,Tokelau Time,TKT,TKST,Tokelau Time,Tokelau Summer Time,46800000,false,0
+529,Pacific/Fiji,Fiji Time,FJT,FJST,Fiji Time,Fiji Summer Time,43200000,true,3600000
+530,Pacific/Funafuti,Tuvalu Time,TVT,TVST,Tuvalu Time,Tuvalu Summer Time,43200000,false,0
+531,Pacific/Galapagos,Galapagos Time,GALT,GALST,Galapagos Time,Galapagos Summer Time,-21600000,false,0
+532,Pacific/Gambier,Gambier Time,GAMT,GAMST,Gambier Time,Gambier Summer Time,-32400000,false,0
+533,Pacific/Guadalcanal,Solomon Is. Time,SBT,SBST,Solomon Is. Time,Solomon Is. Summer Time,39600000,false,0
+534,Pacific/Guam,Chamorro Standard Time,ChST,ChDT,Chamorro Standard Time,Chamorro Daylight Time,36000000,false,0
+535,Pacific/Honolulu,Hawaii Standard Time,HST,HDT,Hawaii Standard Time,Hawaii Daylight Time,-36000000,false,0
+536,Pacific/Johnston,Hawaii Standard Time,HST,HDT,Hawaii Standard Time,Hawaii Daylight Time,-36000000,false,0
+537,Pacific/Kiritimati,Line Is. Time,LINT,LINST,Line Is. Time,Line Is. Summer Time,50400000,false,0
+538,Pacific/Kosrae,Kosrae Time,KOST,KOSST,Kosrae Time,Kosrae Summer Time,39600000,false,0
+539,Pacific/Kwajalein,Marshall Islands Time,MHT,MHST,Marshall Islands Time,Marshall Islands Summer Time,43200000,false,0
+540,Pacific/Majuro,Marshall Islands Time,MHT,MHST,Marshall Islands Time,Marshall Islands Summer Time,43200000,false,0
+541,Pacific/Marquesas,Marquesas Time,MART,MARST,Marquesas Time,Marquesas Summer Time,-34200000,false,0
+542,Pacific/Midway,Samoa Standard Time,SST,SDT,Samoa Standard Time,Samoa Daylight Time,-39600000,false,0
+543,Pacific/Nauru,Nauru Time,NRT,NRST,Nauru Time,Nauru Summer Time,43200000,false,0
+544,Pacific/Niue,Niue Time,NUT,NUST,Niue Time,Niue Summer Time,-39600000,false,0
+545,Pacific/Norfolk,Norfolk Time,NFT,NFST,Norfolk Time,Norfolk Summer Time,41400000,false,0
+547,Pacific/Pago_Pago,Samoa Standard Time,SST,SDT,Samoa Standard Time,Samoa Daylight Time,-39600000,false,0
+548,Pacific/Palau,Palau Time,PWT,PWST,Palau Time,Palau Summer Time,32400000,false,0
+549,Pacific/Pitcairn,Pitcairn Standard Time,PST,PDT,Pitcairn Standard Time,Pitcairn Daylight Time,-28800000,false,0
+550,Pacific/Pohnpei,Pohnpei Time,PONT,PONST,Pohnpei Time,Pohnpei Summer Time,39600000,false,0
+551,Pacific/Ponape,Pohnpei Time,PONT,PONST,Pohnpei Time,Pohnpei Summer Time,39600000,false,0
+552,Pacific/Port_Moresby,Papua New Guinea Time,PGT,PGST,Papua New Guinea Time,Papua New Guinea Summer Time,36000000,false,0
+553,Pacific/Rarotonga,Cook Is. Time,CKT,CKHST,Cook Is. Time,Cook Is. Summer Time,-36000000,false,0
+554,Pacific/Saipan,Chamorro Standard Time,ChST,ChDT,Chamorro Standard Time,Chamorro Daylight Time,36000000,false,0
+555,Pacific/Samoa,Samoa Standard Time,SST,SDT,Samoa Standard Time,Samoa Daylight Time,-39600000,false,0
+556,Pacific/Tahiti,Tahiti Time,TAHT,TAHST,Tahiti Time,Tahiti Summer Time,-36000000,false,0
+557,Pacific/Tarawa,Gilbert Is. Time,GILT,GILST,Gilbert Is. Time,Gilbert Is. Summer Time,43200000,false,0
+558,Pacific/Tongatapu,Tonga Time,TOT,TOST,Tonga Time,Tonga Summer Time,46800000,false,0
+559,Pacific/Truk,Chuuk Time,CHUT,CHUST,Chuuk Time,Chuuk Summer Time,36000000,false,0
+560,Pacific/Wake,Wake Time,WAKT,WAKST,Wake Time,Wake Summer Time,43200000,false,0
+561,Pacific/Wallis,Wallis & Futuna Time,WFT,WFST,Wallis & Futuna Time,Wallis & Futuna Summer Time,43200000,false,0
+562,Pacific/Yap,Chuuk Time,CHUT,CHUST,Chuuk Time,Chuuk Summer Time,36000000,false,0
+563,Poland,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+564,Portugal,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+565,ROK,Korea Standard Time,KST,KDT,Korea Standard Time,Korea Daylight Time,32400000,false,0
+566,Singapore,Singapore Time,SGT,SGST,Singapore Time,Singapore Summer Time,28800000,false,0
+567,SystemV/AST4,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+568,SystemV/AST4ADT,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,true,3600000
+569,SystemV/CST6,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,false,0
+570,SystemV/CST6CDT,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+571,SystemV/EST5,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+572,SystemV/EST5EDT,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+573,SystemV/HST10,Hawaii Standard Time,HST,HDT,Hawaii Standard Time,Hawaii Daylight Time,-36000000,false,0
+574,SystemV/MST7,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+575,SystemV/MST7MDT,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+576,SystemV/PST8,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,false,0
+577,SystemV/PST8PDT,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+578,SystemV/YST9,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,false,0
+579,SystemV/YST9YDT,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+580,Turkey,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+581,UCT,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+582,US/Alaska,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+583,US/Aleutian,Hawaii-Aleutian Standard Time,HAST,HADT,Hawaii-Aleutian Standard Time,Hawaii-Aleutian Daylight Time,-36000000,true,3600000
+584,US/Arizona,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+585,US/Central,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+586,US/East-Indiana,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+587,US/Eastern,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+588,US/Hawaii,Hawaii Standard Time,HST,HDT,Hawaii Standard Time,Hawaii Daylight Time,-36000000,false,0
+589,US/Indiana-Starke,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+590,US/Michigan,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+591,US/Mountain,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,true,3600000
+592,US/Pacific,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+593,US/Pacific-New,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+594,US/Samoa,Samoa Standard Time,SST,SDT,Samoa Standard Time,Samoa Daylight Time,-39600000,false,0
+595,UTC,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+596,Universal,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+597,W-SU,Moscow Standard Time,MSK,MSD,Moscow Standard Time,Moscow Daylight Time,10800000,false,0
+598,WET,Western European Time,WET,WEST,Western European Time,Western European Summer Time,0,true,3600000
+599,Zulu,Coordinated Universal Time,UTC,UTC,Coordinated Universal Time,Coordinated Universal Time,0,false,0
+600,EST,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,false,0
+601,HST,Hawaii Standard Time,HST,HDT,Hawaii Standard Time,Hawaii Daylight Time,-36000000,false,0
+602,MST,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+603,ACT,Australian Central Standard Time (Northern Territory),ACST,ACDT,Australian Central Standard Time (Northern Territory),Australian Central Daylight Time (Northern Territory),34200000,false,0
+604,AET,Australian Eastern Standard Time (New South Wales),AEST,AEDT,Australian Eastern Standard Time (New South Wales),Australian Eastern Daylight Time (New South Wales),36000000,true,3600000
+605,AGT,Argentine Time,ART,ARST,Argentine Time,Argentine Summer Time,-10800000,false,0
+606,ART,Eastern European Time,EET,EEST,Eastern European Time,Eastern European Summer Time,7200000,true,3600000
+607,AST,Alaska Standard Time,AKST,AKDT,Alaska Standard Time,Alaska Daylight Time,-32400000,true,3600000
+608,BET,Brasilia Time,BRT,BRST,Brasilia Time,Brasilia Summer Time,-10800000,true,3600000
+609,BST,Bangladesh Time,BDT,BDST,Bangladesh Time,Bangladesh Summer Time,21600000,false,0
+610,CAT,Central African Time,CAT,CAST,Central African Time,Central African Summer Time,7200000,false,0
+611,CNT,Newfoundland Standard Time,NST,NDT,Newfoundland Standard Time,Newfoundland Daylight Time,-12600000,true,3600000
+612,CST,Central Standard Time,CST,CDT,Central Standard Time,Central Daylight Time,-21600000,true,3600000
+613,CTT,China Standard Time,CST,CDT,China Standard Time,China Daylight Time,28800000,false,0
+614,EAT,Eastern African Time,EAT,EAST,Eastern African Time,Eastern African Summer Time,10800000,false,0
+615,ECT,Central European Time,CET,CEST,Central European Time,Central European Summer Time,3600000,true,3600000
+616,IET,Eastern Standard Time,EST,EDT,Eastern Standard Time,Eastern Daylight Time,-18000000,true,3600000
+617,IST,India Standard Time,IST,IDT,India Standard Time,India Daylight Time,19800000,false,0
+618,JST,Japan Standard Time,JST,JDT,Japan Standard Time,Japan Daylight Time,32400000,false,0
+619,MIT,West Samoa Standard Time,WSST,WSDT,West Samoa Standard Time,West Samoa Daylight Time,46800000,true,3600000
+620,NET,Armenia Time,AMT,AMST,Armenia Time,Armenia Summer Time,14400000,false,0
+621,NST,New Zealand Standard Time,NZST,NZDT,New Zealand Standard Time,New Zealand Daylight Time,43200000,true,3600000
+622,PLT,Pakistan Time,PKT,PKST,Pakistan Time,Pakistan Summer Time,18000000,false,0
+623,PNT,Mountain Standard Time,MST,MDT,Mountain Standard Time,Mountain Daylight Time,-25200000,false,0
+624,PRT,Atlantic Standard Time,AST,ADT,Atlantic Standard Time,Atlantic Daylight Time,-14400000,false,0
+625,PST,Pacific Standard Time,PST,PDT,Pacific Standard Time,Pacific Daylight Time,-28800000,true,3600000
+626,SST,Solomon Is. Time,SBT,SBST,Solomon Is. Time,Solomon Is. Summer Time,39600000,false,0
+627,VST,Indochina Time,ICT,ICST,Indochina Time,Indochina Summer Time,25200000,false,0

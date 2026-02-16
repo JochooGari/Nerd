@@ -1,0 +1,115 @@
+table '0  Measures'
+	lineageTag: eb0b3932-c1d6-41a5-bcd6-6629640556f2
+
+	measure 'Baseline Credits' = 950700000
+		formatString: 0
+		lineageTag: 6716e66c-eead-4c2c-bd88-b5d8c04a483e
+
+	measure 'Total Credits Up' = SUM('fact_ODS Daily'[credits_up])
+		lineageTag: 70180f30-8437-4c6b-aba8-6c0428d2521a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Credits Down' = SUM('fact_ODS Daily'[credits_down])
+		lineageTag: f4085aab-9dea-4ea3-92f4-a92b3d171b8e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Credits Used (To Date)' =
+			
+			VAR _credits =
+			    CALCULATE(
+			        [Total Credits Up],
+			        ALL('dim_Date'),
+			        'dim_Date'[Date] <= MAX('dim_Date'[Date])
+			    )
+			RETURN DIVIDE(_credits, [Baseline Credits])
+		lineageTag: 0a33e01a-4ca0-4189-a732-2d13f3b3cb0e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Minutes Up' = SUM('fact_ODS Daily'[total_minutes_up])
+		formatString: 0
+		lineageTag: 99a7b81a-6153-4387-82db-d92ce172b519
+
+	measure 'Minutes Down' = SUM('fact_ODS Daily'[total_minutes_down])
+		formatString: 0
+		lineageTag: 8b10f86a-c2e4-4f16-b819-13e7151bbca6
+
+	measure 'Nb Sites' = SUM('fact_Realm'[nb_sites])
+		formatString: 0
+		lineageTag: fc9707c5-84e4-4b7f-988f-c2376959a608
+
+	measure 'Active Promotions %' =
+			
+			DIVIDE(
+			    SUM('Fact_Realms Daily'[nb_active_promotions]),
+			    SUM('Fact_Realms Daily'[nb_promotions])
+			)
+		lineageTag: c2375482-827e-40cc-92fe-55c79dc43794
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Scheduled ODS % (placeholder)' = BLANK()
+		formatString: 0
+		lineageTag: 1aa7e388-83d2-4237-b71b-78bbd7a1a33b
+
+	measure 'Up-to-date Environments % (placeholder)' = BLANK()
+		formatString: 0
+		lineageTag: ef50115b-e466-4f0c-83a4-dc4c5b556493
+
+	measure 'Credits Used (To Date)' = ```
+			
+			VAR _credits =
+			    CALCULATE(
+			        [Total Credits Up],
+			        ALL('dim_Date'),
+			        'dim_Date'[Date] <= MAX('dim_Date'[Date])
+			    )
+			return 
+			_credits
+			```
+		lineageTag: fbd1b43a-66d8-4078-9b63-4674fd62f621
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Nb active coupons' =
+			
+			SUM('Fact_Realms Daily'[nb_active_coupons])
+		formatString: 0
+		lineageTag: e63834bc-c526-42a6-a53d-5061dc2d90a1
+
+	measure 'Nb active promotion' =
+			
+			SUM('Fact_Realms Daily'[nb_promotions])
+		formatString: 0
+		lineageTag: 852fffa4-7108-4fe9-b009-c5e16c2d5787
+
+	measure 'Nb coupons' =
+			
+			SUM('Fact_Realms Daily'[nb_coupons])
+		formatString: 0
+		lineageTag: 66fc3f7f-8237-44ff-bc9f-1580d173260e
+
+	column Column1
+		dataType: string
+		lineageTag: 54d97e1b-0b4b-4107-a1cc-91e7bacde001
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '0  Measures' = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

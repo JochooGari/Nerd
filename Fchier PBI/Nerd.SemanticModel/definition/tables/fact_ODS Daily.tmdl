@@ -1,0 +1,136 @@
+table 'fact_ODS Daily'
+	lineageTag: 391ba04a-c9cf-49e6-a8b0-6080595506c9
+
+	column realm_id
+		dataType: string
+		lineageTag: 6fcb3b6a-cd1f-4904-b45a-2591a45a9553
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 362c8894-4e31-470f-a1db-b61a6d7b242f
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column limits_enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e419700a-5b78-4867-b6ee-f41d45892ba2
+		summarizeBy: none
+		sourceColumn: limits_enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_nb_ods
+		dataType: int64
+		formatString: 0
+		lineageTag: 62cb7ef8-6a9b-4b23-80b7-c73a8e52012d
+		summarizeBy: none
+		sourceColumn: max_nb_ods
+
+		annotation SummarizationSetBy = User
+
+	column total_minutes_up
+		dataType: int64
+		formatString: 0
+		lineageTag: db17f61a-3005-408e-982f-b5b923b41440
+		summarizeBy: none
+		sourceColumn: total_minutes_up
+
+		annotation SummarizationSetBy = User
+
+	column total_minutes_down
+		dataType: int64
+		formatString: 0
+		lineageTag: 20718d26-01e3-4331-ac04-00592ac14299
+		summarizeBy: none
+		sourceColumn: total_minutes_down
+
+		annotation SummarizationSetBy = User
+
+	column credits_up
+		dataType: int64
+		lineageTag: 51f5f2c9-60ae-4b05-97c8-9e81a6341cc2
+		summarizeBy: none
+		sourceColumn: credits_up
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column credits_down
+		dataType: double
+		lineageTag: 9e0ce77b-1a18-4648-ad0b-98289c40af5d
+		summarizeBy: none
+		sourceColumn: credits_down
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Source.Name'
+		dataType: string
+		lineageTag: 5967d794-2553-4c9f-b8f3-092160df03bf
+		summarizeBy: none
+		sourceColumn: Source.Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.xlarge'
+		dataType: int64
+		formatString: 0
+		lineageTag: 5236de3e-3653-4d44-9c86-6f4c44041a62
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.xlarge
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.large'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0fee887f-a884-4966-814a-61bd64092385
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.large
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: 29ce66be-f409-46dc-8f84-568614d7883f
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.medium
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fact_ODS Daily' = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				    Site = pSPSite,
+				    Folder = pFolderPath,
+				    FileName = pODSFile,
+				    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+				    #"Filtered Rows2" = Table.SelectRows(AllFiles, each Text.Contains([Name], "ods")),
+				    #"Filtered Hidden Files1" = Table.SelectRows(#"Filtered Rows2", each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"realm_id", type text}, {"date", type date}, {"limits_enabled", type logical}, {"max_nb_ods", Int64.Type}, {"minutes_up_by_profile.xlarge", Int64.Type}, {"minutes_up_by_profile.large", Int64.Type}, {"minutes_up_by_profile.medium", Int64.Type}, {"total_minutes_up", Int64.Type}, {"total_minutes_down", Int64.Type}, {"credits_up", Int64.Type}, {"credits_down", type number}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

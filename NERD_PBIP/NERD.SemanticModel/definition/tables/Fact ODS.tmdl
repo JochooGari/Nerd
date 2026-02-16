@@ -1,0 +1,100 @@
+table 'Fact ODS'
+	lineageTag: ef8a6660-56ac-43eb-9142-b17d4b28dc17
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 42c3b21a-79fd-4003-98fe-de45c51e496b
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column realm_id
+		dataType: string
+		lineageTag: f5240cc0-0a63-440c-ac58-383226617f97
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_minutes_up
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e6d29f5-af67-4f87-9c50-a45b8bde6a45
+		summarizeBy: sum
+		sourceColumn: total_minutes_up
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_minutes_down
+		dataType: int64
+		formatString: 0
+		lineageTag: 612a3324-2cb5-4a6f-b9df-00e190179ee9
+		summarizeBy: sum
+		sourceColumn: total_minutes_down
+
+		annotation SummarizationSetBy = Automatic
+
+	column limits_enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 28273688-8182-4472-b0d7-23ddbaabb2a0
+		summarizeBy: none
+		sourceColumn: limits_enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_nb_ods
+		dataType: int64
+		formatString: 0
+		lineageTag: 622cfa89-e0c4-4f87-8b4b-4457271dfd65
+		summarizeBy: sum
+		sourceColumn: max_nb_ods
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.xlarge'
+		dataType: int64
+		formatString: 0
+		lineageTag: d96ec03d-9eb2-4b93-af1a-c0b344dd005d
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.xlarge
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.large'
+		dataType: int64
+		formatString: 0
+		lineageTag: 53ee22b4-19bf-46a5-b58c-5fbedc466378
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.large
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: a42c2088-90ad-4e52-bc7a-252f9b1333d3
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.medium
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact ODS' = m
+		mode: import
+		queryGroup: '2 B2C'
+		source = ```
+				let
+				    Source = SRC_ODS
+				 
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,319 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "e46fa3bb8d06af373a5d",
+  "position": {
+    "x": 55,
+    "y": 3070,
+    "z": 12507,
+    "height": 447.5,
+    "width": 882.5,
+    "tabOrder": 7010
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Realm"
+                    }
+                  },
+                  "Property": "realm_id"
+                }
+              },
+              "queryRef": "Fact Realm.realm_id",
+              "nativeQueryRef": "REALMS",
+              "displayName": "REALMS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_localisation"
+                    }
+                  },
+                  "Property": "zone_name"
+                }
+              },
+              "queryRef": "dim_localisation.zone_name",
+              "nativeQueryRef": "Zone",
+              "displayName": "Zone"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "1 Mesures B2C"
+                    }
+                  },
+                  "Property": "Compatibility Mode"
+                }
+              },
+              "queryRef": "1 Mesures.Compality Mode",
+              "nativeQueryRef": "Compatibility Mode"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "1 Mesures B2C"
+                    }
+                  },
+                  "Property": "NGLORA Version"
+                }
+              },
+              "queryRef": "1 Mesures.NGLORA Version",
+              "nativeQueryRef": "Nglora",
+              "displayName": "Nglora"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "1 Mesures B2C"
+                    }
+                  },
+                  "Property": "Score"
+                }
+              },
+              "queryRef": "1 Mesures.Score",
+              "nativeQueryRef": "Score"
+            }
+          ],
+          "showAll": true
+        }
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.6
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "19D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FCFCFD'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "189.7500003076369D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "1 Mesures.Compality Mode"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "224.75003304280736D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "1 Mesures.NGLORA Version"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140.2500025544849D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fact Realm.realm_id"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ead9b68d4bbd1026d6a4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_localisation"
+              }
+            },
+            "Property": "zone_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ab122db1d46f0a5da265",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact Realm"
+              }
+            },
+            "Property": "realm_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0734bdbaff06e3017e75",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "1 Mesures B2C"
+              }
+            },
+            "Property": "Compatibility Mode"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9dfffd4ebdefb93f8ec5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "1 Mesures B2C"
+              }
+            },
+            "Property": "NGLORA Version"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

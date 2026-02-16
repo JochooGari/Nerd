@@ -1,0 +1,55 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup '3 JDBC'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup '2 B2C'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup '1 Parametres Env'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["SRC_ODS","SRC_Realm","SRC_Static","demo_up_to_date_environnements","demo_Practices","dim_Date","pEnvironment","pAzureBlobUrl","FX_ReadCsv","Data_Source","dim_site","fact_controller_daily","fact_site_daily","fact_include_controller_daily","fact_include_cache_daily","fact_api_daily OCAPI + SCAPI","fact_api_resource_daily","fact_promo_daily","fact_cart_daily","fact_promo_perf","fact_promo_perf_simulation","fact_checkout_daily","dim_ngl_release_calendar","dim_ngl_version_score","pStartDate","pFolderPath_lot_2","2 Mesure technical monitoring","pFolderPath","FX_ReadJsonFromBlob","pSPSite","1 Mesures B2C","dim_localisation","Fact ODS","Fact Realm","Fact Static_info"]
+
+annotation PBI_ProTooling = ["MCP-PBIModeling","DevMode"]
+
+ref table dim_Date
+ref table demo_up_to_date_environnements
+ref table demo_Practices
+ref table fact_controller_daily
+ref table fact_site_daily
+ref table fact_include_controller_daily
+ref table fact_include_cache_daily
+ref table 'fact_api_daily OCAPI + SCAPI'
+ref table fact_api_resource_daily
+ref table fact_promo_daily
+ref table fact_cart_daily
+ref table fact_promo_perf
+ref table fact_promo_perf_simulation
+ref table fact_checkout_daily
+ref table dim_site
+ref table dim_ngl_release_calendar
+ref table dim_ngl_version_score
+ref table '2 Mesure technical monitoring'
+ref table 'Slicer period'
+ref table '1 Mesures B2C'
+ref table dim_localisation
+ref table 'Fact ODS'
+ref table 'Fact Realm'
+ref table 'Fact Static_info'
+ref table 'Param Jours Projection'
+ref table dim_Date_Projection
+
+ref cultureInfo en-US
+

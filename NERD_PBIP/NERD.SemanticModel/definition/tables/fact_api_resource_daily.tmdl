@@ -1,0 +1,235 @@
+table fact_api_resource_daily
+	lineageTag: 7d1d4605-c5cc-436e-a856-21a3c12e0d9d
+
+	column site_id
+		dataType: double
+		lineageTag: 27d328b6-b791-4ff2-8d9e-0daca298686c
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column request_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 26401753-8d9f-4cfc-8a83-30e9ac84aabd
+		summarizeBy: none
+		sourceColumn: request_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column family
+		dataType: string
+		lineageTag: 8e20d313-b3a7-4e34-a651-04d7806674e1
+		summarizeBy: none
+		sourceColumn: family
+
+		annotation SummarizationSetBy = Automatic
+
+	column api_resource
+		dataType: string
+		lineageTag: 660bfc44-94fc-4be7-9c80-4044918ec320
+		summarizeBy: none
+		sourceColumn: api_resource
+
+		annotation SummarizationSetBy = Automatic
+
+	column api_name
+		dataType: string
+		lineageTag: 3034bbd1-e27f-4f5b-87ad-d76be1d48300
+		summarizeBy: none
+		sourceColumn: api_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column api_version
+		dataType: string
+		lineageTag: 4398a99a-1ef8-47fb-a47b-cf704e8f834c
+		summarizeBy: none
+		sourceColumn: api_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column method
+		dataType: string
+		lineageTag: 693b0827-42ed-42e2-bef0-f205adf7f816
+		summarizeBy: none
+		sourceColumn: method
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_requests
+		dataType: double
+		lineageTag: 9f172eef-d48e-4634-98c9-a77cdb3f9832
+		summarizeBy: sum
+		sourceColumn: total_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_response_time_ms
+		dataType: double
+		lineageTag: 75b92271-77a0-4d21-ae8e-c4e066af3ba8
+		summarizeBy: sum
+		sourceColumn: total_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column error_requests
+		dataType: double
+		lineageTag: 05d4e39a-d645-4bd0-ae98-0e730006e1ba
+		summarizeBy: sum
+		sourceColumn: error_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bucket_0_499
+		dataType: double
+		lineageTag: 139a2748-1cf1-41b4-8a70-4f885b98e057
+		summarizeBy: sum
+		sourceColumn: bucket_0_499
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bucket_500_999
+		dataType: double
+		lineageTag: 1afbca4e-d416-4271-b148-a4dd54749f64
+		summarizeBy: sum
+		sourceColumn: bucket_500_999
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bucket_1000_1499
+		dataType: double
+		lineageTag: df56005c-df08-47f7-a2ae-0cf8ce7b481a
+		summarizeBy: sum
+		sourceColumn: bucket_1000_1499
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bucket_1500_1999
+		dataType: double
+		lineageTag: 0c17a051-cf14-4f36-a4db-7c14fabca6c5
+		summarizeBy: sum
+		sourceColumn: bucket_1500_1999
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column bucket_2000_plus
+		dataType: double
+		lineageTag: f6781a0c-54f0-4556-be30-c1105359b835
+		summarizeBy: sum
+		sourceColumn: bucket_2000_plus
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column avg_response_time_ms
+		dataType: double
+		lineageTag: 4d80f114-64d4-4214-9db5-fdd06c17ef93
+		summarizeBy: sum
+		sourceColumn: avg_response_time_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_api_resource_daily = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  read_scapi = FX_ReadCsv("ccdw_aggr_scapi_request_aaqp_prd.csv"),
+				  read_ocapi = FX_ReadCsv("ccdw_aggr_ocapi_request_aaqp_prd.csv"),
+				
+				  typecast_scapi = Table.TransformColumns(read_scapi,{
+				      {"site_id", each try Number.From(_) otherwise null, type number},
+				      {"request_date", each DateTime.Date(DateTime.From(_)), type date},
+				      {"api_resource", each Text.From(_), type text},
+				      {"api_name", each Text.From(_), type text},
+				      {"api_version", each Text.From(_), type text},
+				      {"method", each Text.From(_), type text},
+				      {"status_code", each Text.From(_), type text},
+				      {"num_requests", each try Number.From(_) otherwise 0, type number},
+				      {"response_time", each try Number.From(_) otherwise 0, type number}
+				  }),
+				  add_family_scapi = Table.AddColumn(typecast_scapi, "family", each "SCAPI", type text),
+				
+				  typecast_ocapi = Table.TransformColumns(read_ocapi,{
+				      {"site_id", each try Number.From(_) otherwise null, type number},
+				      {"request_date", each DateTime.Date(DateTime.From(_)), type date},
+				      {"api_resource", each Text.From(_), type text},
+				      {"api_name", each Text.From(_), type text},
+				      {"api_version", each Text.From(_), type text},
+				      {"method", each Text.From(_), type text},
+				      {"status_code", each Text.From(_), type text},
+				      {"num_requests", each try Number.From(_) otherwise 0, type number},
+				      {"response_time", each try Number.From(_) otherwise 0, type number}
+				  }),
+				  add_family_ocapi = Table.AddColumn(typecast_ocapi, "family", each "OCAPI", type text),
+				
+				  append_scapi_ocapi = Table.Combine({add_family_scapi, add_family_ocapi}),
+				
+				  add_totals = Table.TransformColumns(append_scapi_ocapi,{
+				      {"num_requests", each try Number.From(_) otherwise 0, type number},
+				      {"response_time", each try Number.From(_) otherwise 0, type number}
+				  }),
+				  add_bucket_0_499 = Table.AddColumn(add_totals, "bucket_0_499", each List.Sum({
+				      try Number.From([num_requests_bucket1]) otherwise 0,
+				      try Number.From([num_requests_bucket2]) otherwise 0,
+				      try Number.From([num_requests_bucket3]) otherwise 0,
+				      try Number.From([num_requests_bucket4]) otherwise 0,
+				      try Number.From([num_requests_bucket5]) otherwise 0
+				  }), type number),
+				  add_bucket_500_999 = Table.AddColumn(add_bucket_0_499, "bucket_500_999", each List.Sum({
+				      try Number.From([num_requests_bucket6]) otherwise 0,
+				      try Number.From([num_requests_bucket7]) otherwise 0
+				  }), type number),
+				  add_bucket_1000_1499 = Table.AddColumn(add_bucket_500_999, "bucket_1000_1499", each List.Sum({
+				      try Number.From([num_requests_bucket8]) otherwise 0,
+				      try Number.From([num_requests_bucket9]) otherwise 0
+				  }), type number),
+				  add_bucket_1500_1999 = Table.AddColumn(add_bucket_1000_1499, "bucket_1500_1999", each try Number.From([num_requests_bucket10]) otherwise 0, type number),
+				  add_bucket_2000_plus = Table.AddColumn(add_bucket_1500_1999, "bucket_2000_plus", each try Number.From([num_requests_bucket11]) otherwise 0, type number),
+				
+				  add_error_flag = Table.AddColumn(add_bucket_2000_plus, "error_requests", each if Text.StartsWith([status_code], "2") then 0 else [num_requests], type number),
+				
+				  group_resource = Table.Group(add_error_flag,
+				    {"site_id","request_date","family","api_resource","api_name","api_version","method"},
+				    {
+				      {"total_requests", each List.Sum([num_requests]), type number},
+				      {"total_response_time_ms", each List.Sum([response_time]), type number},
+				      {"error_requests", each List.Sum([error_requests]), type number},
+				      {"bucket_0_499", each List.Sum([bucket_0_499]), type number},
+				      {"bucket_500_999", each List.Sum([bucket_500_999]), type number},
+				      {"bucket_1000_1499", each List.Sum([bucket_1000_1499]), type number},
+				      {"bucket_1500_1999", each List.Sum([bucket_1500_1999]), type number},
+				      {"bucket_2000_plus", each List.Sum([bucket_2000_plus]), type number}
+				    }
+				  ),
+				  add_avg = Table.AddColumn(group_resource, "avg_response_time_ms", each if [total_requests]=0 then 0 else [total_response_time_ms]/[total_requests], type number)
+				in
+				  add_avg
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

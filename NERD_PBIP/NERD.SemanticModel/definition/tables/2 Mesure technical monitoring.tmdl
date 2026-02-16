@@ -1,0 +1,414 @@
+table '2 Mesure technical monitoring'
+	lineageTag: b925cdc4-5322-43b8-9036-8c50ec169683
+
+	measure 'Nb controller' = DISTINCTCOUNT(fact_controller_daily[controller_name])
+		formatString: 0
+		lineageTag: de1c4658-6cf2-4ceb-89ee-0f4274ec4e8b
+
+	measure 'Nb request (controller)' = SUM(fact_controller_daily[total_requests])
+		lineageTag: 6f0a9ffc-a0d6-4eb2-8652-c170bfe80853
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average response time (controller)' = AVERAGE(fact_controller_daily[avg_response_time_ms])
+		lineageTag: e884f7b6-33e5-4927-9556-dc8bb04accfd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average cache hit rate' = AVERAGE(fact_controller_daily[cache_hit_rate])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 290030bb-28fe-48f9-83b6-f1e0202f6b20
+
+	measure 'Total Requests (Site)' = SUM(fact_site_daily[total_requests])
+		formatString: #,##0
+
+	measure 'Total Error Requests' = SUM(fact_controller_daily[error_requests])
+		formatString: #,##0
+
+	measure 'Error Rate' = DIVIDE(SUM(fact_controller_daily[error_requests]), SUM(fact_controller_daily[total_requests]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Cache Hit Requests' = SUM(fact_controller_daily[cache_hit_requests])
+		formatString: #,##0
+
+	measure 'Cache Hit Rate (Weighted)' = DIVIDE(SUM(fact_controller_daily[cache_hit_requests]), SUM(fact_controller_daily[total_requests]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Nb Include Controllers' = DISTINCTCOUNT(fact_include_controller_daily[controller_name])
+		formatString: 0
+
+	measure 'Total Include Requests' = SUM(fact_include_controller_daily[total_requests])
+		formatString: #,##0
+
+	measure 'Avg Include Response Time' = AVERAGE(fact_include_controller_daily[avg_response_time_ms])
+		formatString: 0.00
+
+	measure 'Include Cache Hits' = SUM(fact_include_controller_daily[cache_hit_requests])
+		formatString: #,##0
+
+	measure 'Cache Miss Requests' = SUM(fact_include_cache_daily[cache_miss_requests])
+		formatString: #,##0
+
+	measure 'Cache Miss And Store Requests' = SUM(fact_include_cache_daily[cache_miss_and_store_requests])
+		formatString: #,##0
+
+	measure 'Cache Miss Rate' = DIVIDE(SUM(fact_include_cache_daily[cache_miss_requests]), SUM(fact_include_cache_daily[total_requests]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Cache Miss And Store Rate' = DIVIDE(SUM(fact_include_cache_daily[cache_miss_and_store_requests]), SUM(fact_include_cache_daily[total_requests]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Total API Requests' = SUM('fact_api_daily OCAPI + SCAPI'[total_requests])
+		formatString: #,##0
+
+	measure 'API Error Requests' = SUM('fact_api_daily OCAPI + SCAPI'[error_requests])
+		formatString: #,##0
+
+	measure 'API Error Rate' = DIVIDE([API Error Requests], [Total API Requests], 0)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'API Avg Response Time' = AVERAGE('fact_api_daily OCAPI + SCAPI'[avg_response_time_ms])
+		formatString: 0.00
+
+	/// Pourcentage du total des requêtes par rapport à l'ensemble
+	measure '% of Total Requests' =
+			DIVIDE(
+			    [Nb request (controller)],
+			    CALCULATE([Nb request (controller)], ALL(fact_controller_daily)),
+			    0
+			)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+
+	// ==========================================
+	// TRAFFIC SUMMARY MEASURES
+	// ==========================================
+
+	/// Nombre total de jours avec des données
+	measure 'Total Days with Data' =
+		DISTINCTCOUNT(fact_controller_daily[request_date])
+		formatString: 0
+
+	/// Moyenne de requêtes par jour
+	measure 'Avg Requests per Day' =
+		DIVIDE(
+			[Nb request (controller)],
+			[Total Days with Data],
+			0
+		)
+		formatString: #,##0
+
+	/// Moyenne de requêtes par seconde (approximation basée sur 86400 sec/jour)
+	measure 'Avg Requests per Second' =
+		DIVIDE(
+			[Avg Requests per Day],
+			86400,
+			0
+		)
+		formatString: 0.00
+
+	/// Jour le plus chargé (date avec le plus de requêtes)
+	measure 'Busiest Day Requests' =
+		MAXX(
+			SUMMARIZE(
+				fact_controller_daily,
+				fact_controller_daily[request_date],
+				"DayTotal", SUM(fact_controller_daily[total_requests])
+			),
+			[DayTotal]
+		)
+		formatString: #,##0
+
+	/// Date du jour le plus chargé
+	measure 'Busiest Day Date' =
+		VAR MaxRequests = [Busiest Day Requests]
+		VAR BusiestDate =
+			CALCULATE(
+				MIN(fact_controller_daily[request_date]),
+				FILTER(
+					SUMMARIZE(
+						fact_controller_daily,
+						fact_controller_daily[request_date],
+						"DayTotal", SUM(fact_controller_daily[total_requests])
+					),
+					[DayTotal] = MaxRequests
+				)
+			)
+		RETURN BusiestDate
+		formatString: Short Date
+
+	// ==========================================
+	// ERROR ANALYSIS MEASURES
+	// ==========================================
+
+	/// Taux de succès (2xx)
+	measure 'Success Rate' =
+		1 - [Error Rate]
+		formatString: 0.00%;-0.00%;0.00%
+
+	/// Requêtes réussies (2xx)
+	measure 'Successful Requests' =
+		[Nb request (controller)] - [Total Error Requests]
+		formatString: #,##0
+
+	/// Non-2xx Responses (alias de Total Error Requests pour compatibilité)
+	measure 'Non-2xx Responses' =
+		[Total Error Requests]
+		formatString: #,##0
+
+	/// Controller avec le plus d'erreurs
+	measure 'Top Error Controller' =
+		VAR MaxErrors =
+			MAXX(
+				SUMMARIZE(
+					fact_controller_daily,
+					fact_controller_daily[controller_name],
+					"ControllerErrors", SUM(fact_controller_daily[error_requests])
+				),
+				[ControllerErrors]
+			)
+		RETURN
+			CALCULATE(
+				MIN(fact_controller_daily[controller_name]),
+				FILTER(
+					SUMMARIZE(
+						fact_controller_daily,
+						fact_controller_daily[controller_name],
+						"ControllerErrors", SUM(fact_controller_daily[error_requests])
+					),
+					[ControllerErrors] = MaxErrors
+				)
+			)
+
+	/// Nombre d'erreurs du top controller
+	measure 'Top Error Controller Count' =
+		MAXX(
+			SUMMARIZE(
+				fact_controller_daily,
+				fact_controller_daily[controller_name],
+				"ControllerErrors", SUM(fact_controller_daily[error_requests])
+			),
+			[ControllerErrors]
+		)
+		formatString: #,##0
+
+	// ==========================================
+	// PERFORMANCE INSIGHTS MEASURES
+	// ==========================================
+
+	/// Temps de réponse moyen pondéré (basé sur nombre de requêtes)
+	measure 'Weighted Avg Response Time' =
+		DIVIDE(
+			SUM(fact_controller_daily[total_response_time_ms]),
+			SUM(fact_controller_daily[total_requests]),
+			0
+		)
+		formatString: 0.00
+
+	/// Temps de réponse maximum
+	measure 'Max Response Time' =
+		MAX(fact_controller_daily[avg_response_time_ms])
+		formatString: 0.00
+
+	/// Temps de réponse minimum
+	measure 'Min Response Time' =
+		MIN(fact_controller_daily[avg_response_time_ms])
+		formatString: 0.00
+
+	/// Percentile 95 du temps de réponse (approximation)
+	measure 'P95 Response Time' =
+		PERCENTILEX.INC(
+			fact_controller_daily,
+			fact_controller_daily[avg_response_time_ms],
+			0.95
+		)
+		formatString: 0.00
+
+	/// Percentile 99 du temps de réponse (approximation)
+	measure 'P99 Response Time' =
+		PERCENTILEX.INC(
+			fact_controller_daily,
+			fact_controller_daily[avg_response_time_ms],
+			0.99
+		)
+		formatString: 0.00
+
+	/// Controller le plus lent (par temps de réponse moyen)
+	measure 'Slowest Controller' =
+		VAR MaxTime = [Max Response Time]
+		RETURN
+			CALCULATE(
+				MIN(fact_controller_daily[controller_name]),
+				fact_controller_daily[avg_response_time_ms] = MaxTime
+			)
+
+	/// Temps du controller le plus lent
+	measure 'Slowest Controller Time' =
+		[Max Response Time]
+		formatString: 0.00
+
+	/// Cache Miss Rate (inverse du hit rate)
+	measure 'Cache Miss Rate Total' =
+		1 - [Cache Hit Rate (Weighted)]
+		formatString: 0.00%;-0.00%;0.00%
+
+	/// Cache Miss Requests Total
+	measure 'Cache Miss Requests Total' =
+		[Nb request (controller)] - [Cache Hit Requests]
+		formatString: #,##0
+
+	// ==========================================
+	// CONTROLLER TABLE MEASURES
+	// ==========================================
+
+	/// Temps de réponse total
+	measure 'Total Response Time' =
+		SUM(fact_controller_daily[total_response_time_ms])
+		formatString: #,##0
+
+	/// Classement par nombre de requêtes
+	measure 'Requests Rank' =
+		IF(
+			HASONEVALUE(fact_controller_daily[controller_name]),
+			RANKX(
+				ALL(fact_controller_daily[controller_name]),
+				[Nb request (controller)],
+				,
+				DESC,
+				DENSE
+			)
+		)
+		formatString: 0
+
+	/// Classement par temps de réponse
+	measure 'Response Time Rank' =
+		IF(
+			HASONEVALUE(fact_controller_daily[controller_name]),
+			RANKX(
+				ALL(fact_controller_daily[controller_name]),
+				[Average response time (controller)],
+				,
+				DESC,
+				DENSE
+			)
+		)
+		formatString: 0
+
+	// ==========================================
+	// TREND MEASURES (pour graphiques temporels)
+	// ==========================================
+
+	/// Requêtes de la période précédente
+	measure 'Previous Period Requests' =
+		CALCULATE(
+			[Nb request (controller)],
+			DATEADD(dim_Date[Date], -1, MONTH)
+		)
+		formatString: #,##0
+
+	/// Variation des requêtes vs période précédente
+	measure 'Requests Change %' =
+		VAR CurrentPeriod = [Nb request (controller)]
+		VAR PreviousPeriod = [Previous Period Requests]
+		RETURN
+			DIVIDE(
+				CurrentPeriod - PreviousPeriod,
+				PreviousPeriod,
+				0
+			)
+		formatString: 0.00%;-0.00%;0.00%
+
+	/// Erreurs de la période précédente
+	measure 'Previous Period Errors' =
+		CALCULATE(
+			[Total Error Requests],
+			DATEADD(dim_Date[Date], -1, MONTH)
+		)
+		formatString: #,##0
+
+	/// Variation du taux d'erreur vs période précédente
+	measure 'Error Rate Change' =
+		VAR CurrentRate = [Error Rate]
+		VAR PreviousRate =
+			CALCULATE(
+				[Error Rate],
+				DATEADD(dim_Date[Date], -1, MONTH)
+			)
+		RETURN CurrentRate - PreviousRate
+		formatString: 0.00%;-0.00%;0.00%
+
+	/// Cumul des requêtes (running total)
+	measure 'Cumulative Requests' =
+		CALCULATE(
+			[Nb request (controller)],
+			FILTER(
+				ALL(dim_Date[Date]),
+				dim_Date[Date] <= MAX(dim_Date[Date])
+			)
+		)
+		formatString: #,##0
+
+	// ==========================================
+	// RESPONSE TIME DISTRIBUTION MEASURES
+	// ==========================================
+
+	/// Requêtes < 100ms
+	measure 'Requests Under 100ms' =
+		CALCULATE(
+			SUM(fact_controller_daily[total_requests]),
+			fact_controller_daily[avg_response_time_ms] < 100
+		)
+		formatString: #,##0
+
+	/// Requêtes 100-500ms
+	measure 'Requests 100-500ms' =
+		CALCULATE(
+			SUM(fact_controller_daily[total_requests]),
+			fact_controller_daily[avg_response_time_ms] >= 100 && fact_controller_daily[avg_response_time_ms] < 500
+		)
+		formatString: #,##0
+
+	/// Requêtes 500-1000ms
+	measure 'Requests 500-1000ms' =
+		CALCULATE(
+			SUM(fact_controller_daily[total_requests]),
+			fact_controller_daily[avg_response_time_ms] >= 500 && fact_controller_daily[avg_response_time_ms] < 1000
+		)
+		formatString: #,##0
+
+	/// Requêtes 1-2s
+	measure 'Requests 1-2s' =
+		CALCULATE(
+			SUM(fact_controller_daily[total_requests]),
+			fact_controller_daily[avg_response_time_ms] >= 1000 && fact_controller_daily[avg_response_time_ms] < 2000
+		)
+		formatString: #,##0
+
+	/// Requêtes > 2s
+	measure 'Requests Over 2s' =
+		CALCULATE(
+			SUM(fact_controller_daily[total_requests]),
+			fact_controller_daily[avg_response_time_ms] >= 2000
+		)
+		formatString: #,##0
+
+	column Column1
+		dataType: string
+		lineageTag: ca1c44ff-c14b-44ef-944a-da265f31201f
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '2 Mesure technical monitoring' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

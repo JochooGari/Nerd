@@ -1,0 +1,752 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 73
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 4778.36163941536,
+            "y": 118.56497086377334
+          },
+          "nodeIndex": "0  Measures",
+          "nodeLineageTag": "eb0b3932-c1d6-41a5-bcd6-6629640556f2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 852.36163941535972,
+            "y": 293
+          },
+          "nodeIndex": "fact_api_daily OCAPI + SCAPI",
+          "nodeLineageTag": "02fd741a-4bbd-4143-964f-50523162d279",
+          "size": {
+            "height": 248,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1136.3616394153596,
+            "y": 267
+          },
+          "nodeIndex": "fact_api_resource_daily",
+          "nodeLineageTag": "7d1d4605-c5cc-436e-a856-21a3c12e0d9d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 334.18475118062969,
+            "y": 269.80494909510992
+          },
+          "nodeIndex": "fact_cart_daily",
+          "nodeLineageTag": "86c4a02d-e506-41bf-86cd-388a2a63ee0b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1420.3616394153596,
+            "y": 317
+          },
+          "nodeIndex": "fact_checkout_daily",
+          "nodeLineageTag": "5fa9dc10-9649-4264-93dd-83094fe24a99",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1704.3616394153596,
+            "y": 269
+          },
+          "nodeIndex": "fact_controller_daily",
+          "nodeLineageTag": "011d4321-d380-4f29-831f-5c478c7416e2",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1988.3616394153596,
+            "y": 267
+          },
+          "nodeIndex": "fact_include_cache_daily",
+          "nodeLineageTag": "f09cbb6d-cb50-44c6-be4c-0584fc51276f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2272.3616394153596,
+            "y": 267
+          },
+          "nodeIndex": "fact_include_controller_daily",
+          "nodeLineageTag": "27705b89-57ac-44d8-b090-93f35ee7d1e3",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2556.3616394153596,
+            "y": 269
+          },
+          "nodeIndex": "fact_promo_daily",
+          "nodeLineageTag": "6224f8b0-8d0a-4712-bb27-9878c6d93d5d",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 618.36163941535972,
+            "y": 233.12994172754671
+          },
+          "nodeIndex": "fact_promo_perf",
+          "nodeLineageTag": "3f9b6ac9-83d4-452e-a914-53181e9299e5",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 200.87005827245329
+          },
+          "nodeIndex": "fact_promo_perf_simulation",
+          "nodeLineageTag": "f52a9909-0489-43d9-a446-aad584531b92",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 2840.3616394153596,
+            "y": 269
+          },
+          "nodeIndex": "fact_site_daily",
+          "nodeLineageTag": "17235b84-4bfc-4d1b-9ab8-90eeebf9ccfa",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4587.36163941536,
+            "y": 513.5649708637734
+          },
+          "nodeIndex": "Fact_Realms Daily",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4165.36163941536,
+            "y": 529.5649708637734
+          },
+          "nodeIndex": "fact_Realm",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 5062.36163941536,
+            "y": 361.06497086377334
+          },
+          "nodeIndex": "demo_up_to_date_environnements",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3839.3616394153596,
+            "y": 534.5649708637734
+          },
+          "nodeIndex": "fact_ODS Minutes By Profile",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3470.3616394153596,
+            "y": 449.56497086377334
+          },
+          "nodeIndex": "fact_ODS Daily",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3124.3616394153596,
+            "y": 353
+          },
+          "nodeIndex": "demo_Practices",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3358.3616394153596,
+            "y": 58.56497086377334
+          },
+          "nodeIndex": "dim_Date",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 4143.36163941536,
+            "y": 20.56497086377334
+          },
+          "nodeIndex": "dim_Realm",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "dim_ngl_release_calendar",
+          "nodeLineageTag": "6e74f25b-8a8e-4b44-854e-adb16222ba6f",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "dim_ngl_version_score",
+          "nodeLineageTag": "4c17167d-c840-4a71-8a5e-af6b80f8330a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "dim_site",
+          "nodeLineageTag": "37173f7e-f8f9-418b-a61c-ac2427528fda",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "0 Mesure technical monitoring",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "Slicer period",
+          "nodeLineageTag": "c179321c-6723-459f-aef0-076dab073236",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "SRC_ODS",
+          "nodeLineageTag": "a5b7c293-4f8f-4d06-b747-aa7daa571f44",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "SRC_Realm",
+          "nodeLineageTag": "cd3a4edf-3391-4b4d-abdc-fce794c72970",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "SRC_Static",
+          "nodeLineageTag": "fb4d2c31-e98b-47a8-9830-6b9c5e75ec74",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {},
+          "nodeIndex": "1 Mesures",
+          "nodeLineageTag": "97845ba3-f784-4eea-968d-060513d369bd",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 1,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 95,
+            "y": 291
+          },
+          "nodeIndex": "Fact_Realms Daily",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 863,
+            "y": 403
+          },
+          "nodeIndex": "fact_ODS Minutes By Profile",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 502,
+            "y": 412
+          },
+          "nodeIndex": "fact_ODS Daily",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 381,
+            "y": 56
+          },
+          "nodeIndex": "dim_Date",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Date ",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 2,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 324,
+            "y": 347
+          },
+          "nodeIndex": "Fact_Realms Daily",
+          "size": {
+            "height": 369,
+            "width": 242
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 336
+          },
+          "nodeIndex": "fact_Realm",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 884,
+            "y": 398
+          },
+          "nodeIndex": "fact_ODS Minutes By Profile",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 648,
+            "y": 361
+          },
+          "nodeIndex": "fact_ODS Daily",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 436,
+            "y": 59
+          },
+          "nodeIndex": "dim_Realm",
+          "size": {
+            "height": 209,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Realm",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 3,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 117.5,
+            "y": 157.5
+          },
+          "nodeIndex": "fact_api_resource_daily",
+          "nodeLineageTag": "7d1d4605-c5cc-436e-a856-21a3c12e0d9d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 9,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 228,
+            "y": 560.5
+          },
+          "nodeIndex": "fact_cart_daily",
+          "nodeLineageTag": "86c4a02d-e506-41bf-86cd-388a2a63ee0b",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 10,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 403,
+            "y": 745
+          },
+          "nodeIndex": "fact_checkout_daily",
+          "nodeLineageTag": "5fa9dc10-9649-4264-93dd-83094fe24a99",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 11,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 574.25,
+            "y": 327
+          },
+          "nodeIndex": "dim_Date",
+          "nodeLineageTag": "3e495117-bb17-43ed-bb50-eb96cf669027",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 12,
+          "expandedHeight": 224
+        },
+        {
+          "location": {
+            "x": 108.25,
+            "y": 394.75
+          },
+          "nodeIndex": "fact_api_daily OCAPI + SCAPI",
+          "nodeLineageTag": "02fd741a-4bbd-4143-964f-50523162d279",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1,
+          "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 171.25,
+            "y": 8.75
+          },
+          "nodeIndex": "fact_controller_daily",
+          "nodeLineageTag": "011d4321-d380-4f29-831f-5c478c7416e2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2,
+          "expandedHeight": 296
+        },
+        {
+          "location": {
+            "x": 1355.5,
+            "y": 178.75
+          },
+          "nodeIndex": "fact_include_cache_daily",
+          "nodeLineageTag": "f09cbb6d-cb50-44c6-be4c-0584fc51276f",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3,
+          "expandedHeight": 301.25
+        },
+        {
+          "location": {
+            "x": 1199.25,
+            "y": 522.5
+          },
+          "nodeIndex": "fact_include_controller_daily",
+          "nodeLineageTag": "27705b89-57ac-44d8-b090-93f35ee7d1e3",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 830.5,
+            "y": 601.25
+          },
+          "nodeIndex": "fact_ODS Daily",
+          "nodeLineageTag": "391ba04a-c9cf-49e6-a8b0-6080595506c9",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 5,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 821.75,
+            "y": 781.25
+          },
+          "nodeIndex": "fact_ODS Minutes By Profile",
+          "nodeLineageTag": "7b8ac983-10d5-4b71-b232-5fc5742c015e",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 6,
+          "expandedHeight": 176
+        },
+        {
+          "location": {
+            "x": 569.25,
+            "y": 0
+          },
+          "nodeIndex": "fact_promo_daily",
+          "nodeLineageTag": "6224f8b0-8d0a-4712-bb27-9878c6d93d5d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 7,
+          "expandedHeight": 296
+        },
+        {
+          "location": {
+            "x": 833,
+            "y": 17.5
+          },
+          "nodeIndex": "fact_promo_perf",
+          "nodeLineageTag": "3f9b6ac9-83d4-452e-a914-53181e9299e5",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1108,
+            "y": 338.75
+          },
+          "nodeIndex": "fact_promo_perf_simulation",
+          "nodeLineageTag": "f52a9909-0489-43d9-a446-aad584531b92",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 13,
+          "expandedHeight": 300
+        }
+      ],
+      "name": "dim_date",
+      "zoomValue": 80,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    },
+    {
+      "ordinal": 4,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 387,
+            "y": 368
+          },
+          "nodeIndex": "fact_api_resource_daily",
+          "nodeLineageTag": "7d1d4605-c5cc-436e-a856-21a3c12e0d9d",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 263,
+            "y": 0
+          },
+          "nodeIndex": "dim_Date",
+          "nodeLineageTag": "3e495117-bb17-43ed-bb50-eb96cf669027",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 80,
+            "y": 286
+          },
+          "nodeIndex": "fact_controller_daily",
+          "nodeLineageTag": "011d4321-d380-4f29-831f-5c478c7416e2",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Layout 1",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Layout 1",
+  "defaultDiagram": "All tables"
+}

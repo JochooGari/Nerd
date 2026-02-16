@@ -1,0 +1,155 @@
+table fact_Realm
+	lineageTag: f6b956f4-852f-4c00-b15c-20b2cc705b4f
+
+	column realm_id
+		dataType: string
+		lineageTag: 1c0ab9e5-76cb-4da7-8af6-b01e15b41b4b
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0f6368e6-99df-4535-b5b3-90a581d6d3f0
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column zone
+		dataType: string
+		lineageTag: e7c70709-db41-444e-8096-436678fd78a2
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: bc9e5a11-8414-4d99-952a-ac0feaa6ae19
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 22d58e50-d325-45ec-ab5d-5f057aa78021
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: ce6d43b8-1961-47b7-ae19-a677feb3d38b
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column compatibility_mode
+		dataType: string
+		lineageTag: a42ba4d3-82fd-4ac1-b97a-16fe028a7e82
+		summarizeBy: none
+		sourceColumn: compatibility_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column cartridges
+		dataType: string
+		lineageTag: c82e2375-ef39-4c8c-9783-ba9eb3dd7e59
+		summarizeBy: none
+		sourceColumn: cartridges
+
+		annotation SummarizationSetBy = Automatic
+
+	column ngl_version
+		dataType: string
+		lineageTag: 449dd5bd-5d86-4090-9537-847e473ac738
+		summarizeBy: none
+		sourceColumn: ngl_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_sites
+		dataType: int64
+		formatString: 0
+		lineageTag: 6776c84e-0cff-47d6-b2bd-1eb660125000
+		summarizeBy: sum
+		sourceColumn: nb_sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column sites
+		dataType: string
+		lineageTag: f90595d0-8f31-48cb-9470-01c8f5b2beec
+		summarizeBy: none
+		sourceColumn: sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column quotas
+		dataType: string
+		lineageTag: 35217620-6d12-4cd2-bedf-cd64764991be
+		summarizeBy: none
+		sourceColumn: quotas
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ee0c633-b0b0-4cb4-a587-5f0cbf6dc63e
+		summarizeBy: sum
+		sourceColumn: nb_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: 196dfa5d-2365-4cf5-99ed-44cc3d2bd32f
+		summarizeBy: sum
+		sourceColumn: nb_active_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 08e83967-f6e4-4021-8737-77e986b9b5c0
+		summarizeBy: sum
+		sourceColumn: nb_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 8895f954-281e-488c-bb68-77dea0d19089
+		summarizeBy: sum
+		sourceColumn: nb_active_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_Realm = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				  Realms = #"Fact_Realms Daily",
+				  Grouped = Table.Group(Realms, {"realm_id"}, {{"rows", each Table.Sort(_, {{"date", Order.Descending}})}}),
+				  First = Table.AddColumn(Grouped, "top1", each Table.FirstN([rows],1){0}),
+				    bdcr = First{[realm_id="bdcr"]}[rows]
+				in
+				    bdcr
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

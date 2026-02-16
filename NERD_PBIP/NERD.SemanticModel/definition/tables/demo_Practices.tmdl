@@ -1,0 +1,34 @@
+table demo_Practices
+	lineageTag: b4b07c59-3b9a-45d1-bc6c-9d06bbde6a57
+
+	column Zone
+		dataType: string
+		lineageTag: dbcef2df-3de2-4480-bc39-f05bcfb981d4
+		summarizeBy: none
+		sourceColumn: Zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Score
+		dataType: int64
+		formatString: 0
+		lineageTag: 42ccebac-c10d-47ba-b160-2e9d69db008b
+		summarizeBy: none
+		sourceColumn: Score
+
+		annotation SummarizationSetBy = User
+
+	partition demo_Practices = m
+		mode: import
+		queryGroup: '2 B2C'
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45Wcs/JT0rMUdJRMrJUitWJVnItLcovSAXxLcB8P0eFYMcAX1c/R5CYOVjMMTe1KDM5sRgkYqoUGwsA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Zone = _t, Score = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Score", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

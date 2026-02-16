@@ -1,0 +1,70 @@
+table 'fact_ODS Minutes By Profile'
+	lineageTag: 7b8ac983-10d5-4b71-b232-5fc5742c015e
+
+	column realm_id
+		dataType: string
+		lineageTag: 6d1de598-5676-4bef-a01b-449788ed1423
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: eb09f8f3-c5e1-4f04-9833-25e609719a9b
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column profile
+		dataType: string
+		lineageTag: 285dbb65-2cbf-479a-8473-e8f71b533d87
+		summarizeBy: none
+		sourceColumn: profile
+
+		annotation SummarizationSetBy = Automatic
+
+	column minutes_up
+		dataType: int64
+		formatString: 0
+		lineageTag: cb202cde-702a-47d6-972f-cb2068438c7e
+		summarizeBy: sum
+		sourceColumn: minutes_up
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'fact_ODS Minutes By Profile' = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				    Site = pSPSite,
+				    Folder = pFolderPath,
+				    FileName = pODSFile,
+				
+				    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+				    Kept = Table.SelectRows(
+				        AllFiles,
+				        each Text.Contains([Folder Path], Folder) and [Name] = FileName
+				    ),
+				    Binary = Kept{0}[Content],
+				    Source = Json.Document(Binary),
+				
+				    Tbl = Table.FromRecords(Source),
+				    Base = Table.TransformColumnTypes(Tbl, {{"realm_id", type text},{"date", type date}}),
+				    HasProfiles = Table.SelectRows(Base, each Record.HasFields(_, "minutes_up_by_profile")),
+				    ToTable = Table.AddColumn(HasProfiles, "profiles_tbl", each Record.ToTable([minutes_up_by_profile])),
+				    Expand = Table.ExpandTableColumn(ToTable, "profiles_tbl", {"Name","Value"}, {"profile","minutes_up"}),
+				    #"Changed Type" = Table.TransformColumnTypes(Expand, {{"profile", type text},{"minutes_up", Int64.Type}}),
+				    Keep = Table.SelectColumns(#"Changed Type", {"realm_id","date","profile","minutes_up"})
+				in
+				    Keep
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,185 @@
+table 'Fact_Realms Daily'
+	lineageTag: ee047855-a118-4767-af60-8d0de629e5e2
+
+	column realm_id
+		dataType: string
+		lineageTag: ea12fece-e014-4ce0-89d8-c1e5e7cd8da2
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 50e7a81c-9905-4af6-b63d-5c33e2dfd90b
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column zone
+		dataType: string
+		lineageTag: 43f46644-ad9c-4ea3-a0a5-2f90e31ac856
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 801a4224-8107-4e32-b109-44bb08e3f75e
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 78d82703-5496-4e48-91ab-76e345d65309
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 7f039d71-daf2-4026-91ea-1af7f92f4736
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column compatibility_mode
+		dataType: string
+		lineageTag: 20cecc8a-7e96-41cd-a2eb-204c73b789bc
+		summarizeBy: none
+		sourceColumn: compatibility_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column cartridges
+		dataType: string
+		lineageTag: a6ffacc5-ad21-42ed-957a-87e0c928b402
+		summarizeBy: none
+		sourceColumn: cartridges
+
+		annotation SummarizationSetBy = Automatic
+
+	column ngl_version
+		dataType: string
+		lineageTag: b6edc69f-41d7-4ed1-ac85-ebfd8b6c6a18
+		summarizeBy: none
+		sourceColumn: ngl_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_sites
+		dataType: int64
+		formatString: 0
+		lineageTag: 27d87721-1e0f-4176-8213-82f8e538f4c3
+		summarizeBy: sum
+		sourceColumn: nb_sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column sites
+		dataType: string
+		lineageTag: 162a1b47-7853-4e66-9917-0cb659e83529
+		summarizeBy: none
+		sourceColumn: sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column quotas
+		dataType: string
+		lineageTag: 3e7bb3c0-eba4-443e-93c6-f57f5668882e
+		summarizeBy: none
+		sourceColumn: quotas
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: 93421323-25ba-4b4a-9d0c-3b1b85c7148f
+		summarizeBy: sum
+		sourceColumn: nb_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e021135-6476-493b-877f-c9fd976bf578
+		summarizeBy: sum
+		sourceColumn: nb_active_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 7989cf16-82e0-4263-a536-472606bcbeaf
+		summarizeBy: sum
+		sourceColumn: nb_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: b7202e8f-a689-4496-a9e6-44c2b68e61ce
+		summarizeBy: sum
+		sourceColumn: nb_active_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Fact_Realms Daily' = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				    Site = pSPSite,
+				    Folder = pFolderPath,
+				    FileName = pRealmsFile,
+				
+				    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+				    Kept = Table.SelectRows(
+				        AllFiles,
+				        each Text.Contains([Folder Path], Folder) and [Name] = FileName
+				    ),
+				    Binary = Kept{0}[Content],
+				    Source = Json.Document(Binary),
+				
+				    Tbl = Table.FromRecords(Source),
+				    #"Changed Type" = Table.TransformColumnTypes(Tbl, {
+				        {"realm_id", type text},
+				        {"date", type date},
+				        {"zone", type text},
+				        {"region", type text},
+				        {"country", type text},
+				        {"city", type text},
+				        {"compatibility_mode", type text},
+				        {"ngl_version", type text},
+				        {"nb_sites", Int64.Type}
+				    }),
+				    #"Add quotas record" = Table.AddColumn(#"Changed Type", "quotas_rec", each try [quotas] otherwise null),
+				    #"Expand quotas" = Table.ExpandRecordColumn(#"Add quotas record", "quotas_rec",
+				        {"nb_promotions","nb_active_promotions","nb_coupons","nb_active_coupons"},
+				        {"nb_promotions","nb_active_promotions","nb_coupons","nb_active_coupons"}),
+				    #"Fill Missing Quotas" = Table.TransformColumns(#"Expand quotas", {
+				        {"nb_promotions", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_active_promotions", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_coupons", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_active_coupons", each if _ = null then 0 else _, Int64.Type}
+				    })
+				in
+				    #"Fill Missing Quotas"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

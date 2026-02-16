@@ -1,0 +1,169 @@
+locale_id,language,country,locale_tag,locale_code,display_name
+1,UNKNOWN_LANGUAGE,UNKNOWN_COUNTRY,UNKNOWN_LOCALE,UNKNOWN_LOCALE,UNKNOWN_LOCALE
+2,default,default,default,default,default
+101,Arabic,United Arab Emirates,ar-AE,ar_AE,Arabic (United Arab Emirates)
+102,Arabic,Jordan,ar-JO,ar_JO,Arabic (Jordan)
+103,Arabic,Syria,ar-SY,ar_SY,Arabic (Syria)
+104,Croatian,Croatia,hr-HR,hr_HR,Croatian (Croatia)
+105,French,Belgium,fr-BE,fr_BE,French (Belgium)
+106,Spanish,Panama,es-PA,es_PA,Spanish (Panama)
+107,Maltese,Malta,mt-MT,mt_MT,Maltese (Malta)
+108,Spanish,Venezuela,es-VE,es_VE,Spanish (Venezuela)
+109,Bulgarian,Bulgarian,bg,bg,Bulgarian
+110,Chinese,Taiwan,zh-TW,zh_TW,Chinese (Taiwan)
+111,Italian,Italian,it,it,Italian
+112,Korean,Korean,ko,ko,Korean
+113,Ukrainian,Ukrainian,uk,uk,Ukrainian
+114,Latvian,Latvian,lv,lv,Latvian
+115,Danish,Denmark,da-DK,da_DK,Danish (Denmark)
+116,Spanish,Puerto Rico,es-PR,es_PR,Spanish (Puerto Rico)
+117,Vietnamese,Vietnam,vi-VN,vi_VN,Vietnamese (Vietnam)
+118,English,United States,en-US,en_US,English (United States)
+119,Serbian,Montenegro,sr-ME,sr_ME,Serbian (Montenegro)
+120,Swedish,Sweden,sv-SE,sv_SE,Swedish (Sweden)
+121,Spanish,Bolivia,es-BO,es_BO,Spanish (Bolivia)
+122,English,Singapore,en-SG,en_SG,English (Singapore)
+123,Arabic,Bahrain,ar-BH,ar_BH,Arabic (Bahrain)
+124,Portuguese,Portuguese,pt,pt,Portuguese
+125,Arabic,Saudi Arabia,ar-SA,ar_SA,Arabic (Saudi Arabia)
+126,Slovak,Slovak,sk,sk,Slovak
+127,Arabic,Yemen,ar-YE,ar_YE,Arabic (Yemen)
+128,Hindi,India,hi-IN,hi_IN,Hindi (India)
+129,Irish,Irish,ga,ga,Irish
+130,English,Malta,en-MT,en_MT,English (Malta)
+131,Finnish,Finland,fi-FI,fi_FI,Finnish (Finland)
+132,Estonian,Estonian,et,et,Estonian
+133,Swedish,Swedish,sv,sv,Swedish
+134,Czech,Czech,cs,cs,Czech
+135,Serbian,Bosnia and Herzegovina,sr-Latn-BA,sr_Latn_BA,Serbian(Latin Bosnia and Herzegovina)
+136,Greek,Greek,el,el,Greek
+137,Ukrainian,Ukraine,uk-UA,uk_UA,Ukrainian (Ukraine)
+138,Hungarian,Hungarian,hu,hu,Hungarian
+139,French,Switzerland,fr-CH,fr_CH,French (Switzerland)
+140,Indonesian,Indonesian,id,id,Indonesian
+141,Spanish,Argentina,es-AR,es_AR,Spanish (Argentina)
+142,Arabic,Egypt,ar-EG,ar_EG,Arabic (Egypt)
+143,Japanese,Japan,ja-JP-u-ca-japanese-x-lvariant-JP,ja_JP_u_ca_japanese_x_lvariant_JP,Japanese (Japan JP)
+144,Spanish,El Salvador,es-SV,es_SV,Spanish (El Salvador)
+145,Portuguese,Brazil,pt-BR,pt_BR,Portuguese (Brazil)
+146,Belarusian,Belarusian,be,be,Belarusian
+147,Icelandic,Iceland,is-IS,is_IS,Icelandic (Iceland)
+148,Czech,Czech Republic,cs-CZ,cs_CZ,Czech (Czech Republic)
+149,Spanish,Spanish,es,es,Spanish
+150,Polish,Poland,pl-PL,pl_PL,Polish (Poland)
+151,Turkish,Turkish,tr,tr,Turkish
+152,Catalan,Spain,ca-ES,ca_ES,Catalan (Spain)
+153,Serbian,Serbia and Montenegro,sr-CS,sr_CS,Serbian (Serbia and Montenegro)
+154,Malay,Malaysia,ms-MY,ms_MY,Malay (Malaysia)
+155,Croatian,Croatian,hr,hr,Croatian
+156,Lithuanian,Lithuanian,lt,lt,Lithuanian
+157,Spanish,Spain,es-ES,es_ES,Spanish (Spain)
+158,Spanish,Colombia,es-CO,es_CO,Spanish (Colombia)
+159,Bulgarian,Bulgaria,bg-BG,bg_BG,Bulgarian (Bulgaria)
+160,Albanian,Albanian,sq,sq,Albanian
+161,French,French,fr,fr,French
+162,Japanese,Japanese,ja,ja,Japanese
+163,Serbian,Bosnia and Herzegovina,sr-BA,sr_BA,Serbian (Bosnia and Herzegovina)
+164,Icelandic,Icelandic,is,is,Icelandic
+165,Spanish,Paraguay,es-PY,es_PY,Spanish (Paraguay)
+166,German,German,de,de,German
+167,Spanish,Ecuador,es-EC,es_EC,Spanish (Ecuador)
+168,Spanish,United States,es-US,es_US,Spanish (United States)
+169,Arabic,Sudan,ar-SD,ar_SD,Arabic (Sudan)
+170,English,English,en,en,English
+171,Romanian,Romania,ro-RO,ro_RO,Romanian (Romania)
+172,English,Philippines,en-PH,en_PH,English (Philippines)
+173,Catalan,Catalan,ca,ca,Catalan
+174,Arabic,Tunisia,ar-TN,ar_TN,Arabic (Tunisia)
+175,Serbian,Montenegro,sr-Latn-ME,sr_Latn_ME,Serbian (Latin Montenegro)
+176,Spanish,Guatemala,es-GT,es_GT,Spanish (Guatemala)
+177,Slovenian,Slovenian,sl,sl,Slovenian
+178,Korean,South Korea,ko-KR,ko_KR,Korean (South Korea)
+179,Greek,Cyprus,el-CY,el_CY,Greek (Cyprus)
+180,Spanish,Mexico,es-MX,es_MX,Spanish (Mexico)
+181,Russian,Russia,ru-RU,ru_RU,Russian (Russia)
+182,Spanish,Honduras,es-HN,es_HN,Spanish (Honduras)
+183,Chinese,Hong Kong,zh-HK,zh_HK,Chinese (Hong Kong)
+184,Norwegian,Norway,nn-NO,nn_NO,Norwegian (Norway Nynorsk)
+185,Hungarian,Hungary,hu-HU,hu_HU,Hungarian (Hungary)
+186,Thai,Thailand,th-TH,th_TH,Thai (Thailand)
+187,Arabic,Iraq,ar-IQ,ar_IQ,Arabic (Iraq)
+188,Spanish,Chile,es-CL,es_CL,Spanish (Chile)
+189,Finnish,Finnish,fi,fi,Finnish
+190,Arabic,Morocco,ar-MA,ar_MA,Arabic (Morocco)
+191,Irish,Ireland,ga-IE,ga_IE,Irish (Ireland)
+192,Macedonian,Macedonian,mk,mk,Macedonian
+193,Turkish,Turkey,tr-TR,tr_TR,Turkish (Turkey)
+194,Estonian,Estonia,et-EE,et_EE,Estonian (Estonia)
+195,Arabic,Qatar,ar-QA,ar_QA,Arabic (Qatar)
+196,Serbian,Serbian (Latin),sr-Latn,sr_Latn,Serbian (Latin)
+197,Portuguese,Portugal,pt-PT,pt_PT,Portuguese (Portugal)
+198,French,Luxembourg,fr-LU,fr_LU,French (Luxembourg)
+199,Arabic,Oman,ar-OM,ar_OM,Arabic (Oman)
+200,Thai,Thai,th,th,Thai
+201,Albanian,Albania,sq-AL,sq_AL,Albanian (Albania)
+202,Spanish,Dominican Republic,es-DO,es_DO,Spanish (Dominican Republic)
+203,Spanish,Cuba,es-CU,es_CU,Spanish (Cuba)
+204,Arabic,Arabic,ar,ar,Arabic
+205,Russian,Russian,ru,ru,Russian
+206,English,New Zealand,en-NZ,en_NZ,English (New Zealand)
+207,Serbian,Serbia,sr-RS,sr_RS,Serbian (Serbia)
+208,German,Switzerland,de-CH,de_CH,German (Switzerland)
+209,Spanish,Uruguay,es-UY,es_UY,Spanish (Uruguay)
+210,Malay,Malay,ms,ms,Malay
+211,Greek,Greece,el-GR,el_GR,Greek (Greece)
+212,Hebrew,Israel,he-IL,he_IL,Hebrew (Israel)
+213,English,South Africa,en-ZA,en_ZA,English (South Africa)
+214,Thai,Thailand,th-TH-u-nu-thai-x-lvariant-TH,th_TH_u_nu_thai_x_lvariant_TH,Thai (Thailand TH)
+215,Hindi,Hindi,hi,hi,Hindi
+216,French,France,fr-FR,fr_FR,French (France)
+217,German,Austria,de-AT,de_AT,German (Austria)
+218,Dutch,Dutch,nl,nl,Dutch
+219,Norwegian,Norway,no-NO,no_NO,Norwegian (Norway)
+220,English,Australia,en-AU,en_AU,English (Australia)
+221,Vietnamese,Vietnamese,vi,vi,Vietnamese
+222,Dutch,Netherlands,nl-NL,nl_NL,Dutch (Netherlands)
+223,French,Canada,fr-CA,fr_CA,French (Canada)
+224,Latvian,Latvia,lv-LV,lv_LV,Latvian (Latvia)
+225,German,Luxembourg,de-LU,de_LU,German (Luxembourg)
+226,Spanish,Costa Rica,es-CR,es_CR,Spanish (Costa Rica)
+227,Arabic,Kuwait,ar-KW,ar_KW,Arabic (Kuwait)
+228,Serbian,Serbian,sr,sr,Serbian
+229,Arabic,Libya,ar-LY,ar_LY,Arabic (Libya)
+230,Maltese,Maltese,mt,mt,Maltese
+231,Italian,Switzerland,it-CH,it_CH,Italian (Switzerland)
+232,Danish,Danish,da,da,Danish
+233,German,Germany,de-DE,de_DE,German (Germany)
+234,Arabic,Algeria,ar-DZ,ar_DZ,Arabic (Algeria)
+235,Slovak,Slovakia,sk-SK,sk_SK,Slovak (Slovakia)
+236,Lithuanian,Lithuania,lt-LT,lt_LT,Lithuanian (Lithuania)
+237,Italian,Italy,it-IT,it_IT,Italian (Italy)
+238,English,Ireland,en-IE,en_IE,English (Ireland)
+239,Chinese,Singapore,zh-SG,zh_SG,Chinese (Singapore)
+240,Romanian,Romanian,ro,ro,Romanian
+241,English,Canada,en-CA,en_CA,English (Canada)
+242,Dutch,Belgium,nl-BE,nl_BE,Dutch (Belgium)
+243,Norwegian,Norwegian,no,no,Norwegian
+244,Polish,Polish,pl,pl,Polish
+245,Chinese,China,zh-CN,zh_CN,Chinese (China)
+246,Japanese,Japan,ja-JP,ja_JP,Japanese (Japan)
+247,German,Greece,de-GR,de_GR,German (Greece)
+248,Serbian,Serbia,sr-Latn-RS,sr_Latn_RS,Serbian (Latin Serbia)
+249,Hebrew,Hebrew,he,he,Hebrew
+250,English,India,en-IN,en_IN,English (India)
+251,Arabic,Lebanon,ar-LB,ar_LB,Arabic (Lebanon)
+252,Spanish,Nicaragua,es-NI,es_NI,Spanish (Nicaragua)
+253,Chinese,Chinese,zh,zh,Chinese
+254,Macedonian,Macedonia,mk-MK,mk_MK,Macedonian (Macedonia)
+255,Belarusian,Belarus,be-BY,be_BY,Belarusian (Belarus)
+256,Slovenian,Slovenia,sl-SI,sl_SI,Slovenian (Slovenia)
+257,Spanish,Peru,es-PE,es_PE,Spanish (Peru)
+258,Indonesian,Indonesia,id-ID,id_ID,Indonesian (Indonesia)
+259,English,United Kingdom,en-GB,en_GB,English (United Kingdom)
+301,English,Denmark,en-DK,en_DK,English (Denmark)
+401,English,United Arab Emirates,en-AE,en_AE,English (United Arab Emirates)
+501,English,Saudi Arabia,en-SA,en_SA,English (Saudi Arabia)
+601,English,Norway,en-NO,en_NO,English (Norway)
+701,English,Sweden,en-SE,en_SE,English (Sweden)
+801,English,Kuwait,en-KW,en_KW,English (Kuwait)
+901,English,Poland,en-PL,en_PL,English (Poland)

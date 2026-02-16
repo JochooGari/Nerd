@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NERD - SFCC Technical Dashboard | L'Oréal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066CC;
+            --primary-dark: #004C99;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --border: #e9ecef;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .logo span {
+            color: white;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .realm-selector {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        .date-range {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .page-title h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .page-title .subtitle {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .timezone-badge {
+            background: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            padding: 0;
+            box-shadow: var(--shadow);
+            margin-bottom: 0;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--secondary);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .tab:hover {
+            color: var(--primary);
+            background: rgba(0,102,204,0.05);
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(0,102,204,0.05);
+        }
+
+        /* KPI Cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0 0 8px 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .kpi-card {
+            text-align: center;
+            padding: 1rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .kpi-card:last-child {
+            border-right: none;
+        }
+
+        .kpi-label {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .kpi-value.primary {
+            color: var(--primary);
+        }
+
+        .kpi-change {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        .kpi-change.positive {
+            color: var(--success);
+        }
+
+        .kpi-change.negative {
+            color: var(--danger);
+        }
+
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .chart-card.full-width {
+            grid-column: span 2;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .chart-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-title .info-icon {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--light);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--secondary);
+            cursor: help;
+        }
+
+        .chart-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chart-action-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .chart-action-btn:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .chart-container {
+            position: relative;
+            height: 200px;
+        }
+
+        .chart-container.small {
+            height: 180px;
+        }
+
+        /* Legend */
+        .chart-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--secondary);
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        /* Data Table */
+        .table-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .table-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .table-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-input {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.875rem;
+            width: 250px;
+        }
+
+        .export-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .export-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .data-table th {
+            background: var(--light);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            cursor: pointer;
+        }
+
+        .data-table th:hover {
+            background: #e9ecef;
+        }
+
+        .data-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table tr:hover {
+            background: rgba(0,102,204,0.02);
+        }
+
+        .controller-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .controller-link:hover {
+            text-decoration: underline;
+        }
+
+        .progress-bar {
+            width: 60px;
+            height: 6px;
+            background: var(--border);
+            border-radius: 3px;
+            overflow: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .progress-bar-fill.blue {
+            background: var(--primary);
+        }
+
+        .progress-bar-fill.green {
+            background: var(--success);
+        }
+
+        .progress-bar-fill.yellow {
+            background: var(--warning);
+        }
+
+        .progress-bar-fill.red {
+            background: var(--danger);
+        }
+
+        /* Status indicators */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .status-dot.success { background: var(--success); }
+        .status-dot.warning { background: var(--warning); }
+        .status-dot.danger { background: var(--danger); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Scrollable table container */
+        .table-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .chart-card.full-width {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+            .kpi-card {
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            padding: 0.5rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* Additional Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .info-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card h3 .icon {
+            width: 24px;
+            height: 24px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+        }
+
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .metric-row:last-child {
+            border-bottom: none;
+        }
+
+        .metric-label {
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(90deg, #fff3cd 0%, #ffeeba 100%);
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .alert-banner.danger {
+            background: linear-gradient(90deg, #f8d7da 0%, #f5c6cb 100%);
+            border-left-color: var(--danger);
+        }
+
+        .alert-banner .alert-icon {
+            font-size: 1.5rem;
+        }
+
+        .alert-banner .alert-content {
+            flex: 1;
+        }
+
+        .alert-banner .alert-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .alert-banner .alert-message {
+            font-size: 0.875rem;
+            color: var(--secondary);
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge.danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .badge.info {
+            background: #cce5ff;
+            color: #004085;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">NERD <span>Dashboard</span></div>
+            <nav class="nav-links">
+                <a href="#" class="active">Technical</a>
+                <a href="#">Sales</a>
+                <a href="#">Products</a>
+                <a href="#">Promotions</a>
+                <a href="#">On-Site Search</a>
+                <a href="#">Inventory</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <select class="realm-selector" id="realmSelector">
+                <option value="bdcr">L'Oréal Global (bdcr)</option>
+                <option value="aaqp">L'Oréal EMEA (aaqp)</option>
+                <option value="aafm">L'Oréal AMER (aafm)</option>
+                <option value="aatl">L'Oréal APAC (aatl)</option>
+            </select>
+            <input type="text" class="date-range" value="Oct 8, 2025 - Oct 14, 2025" id="dateRange">
+            <button class="export-btn" onclick="exportData()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Export CSV
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Page Title -->
+        <div class="page-title">
+            <div>
+                <h1>Technical Dashboard</h1>
+                <p class="subtitle">SFCC Technical Metrics - Controller Performance Analysis</p>
+            </div>
+            <span class="timezone-badge">Time Zone: GMT</span>
+        </div>
+
+        <!-- Alert Banner -->
+        <div class="alert-banner" id="alertBanner">
+            <span class="alert-icon">⚠️</span>
+            <div class="alert-content">
+                <div class="alert-title">Performance Alert</div>
+                <div class="alert-message">Cache Hit Rate below target (35% vs 50% target). Consider reviewing cache configuration for Product-Show and Search-Show controllers.</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" data-tab="controller">CONTROLLER</div>
+            <div class="tab" data-tab="include">INCLUDE CONTROLLER</div>
+            <div class="tab" data-tab="ocapi">OCAPI</div>
+            <div class="tab" data-tab="scapi">SCAPI</div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-label"># Requests</div>
+                <div class="kpi-value" id="totalRequests">5,055,190</div>
+                <div class="kpi-change positive">↑ 8.1% vs last period</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label"># Unique Controller Requests</div>
+                <div class="kpi-value" id="uniqueControllers">218</div>
+                <div class="kpi-change positive">↑ 3 new controllers</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Average Response Time</div>
+                <div class="kpi-value primary" id="avgResponseTime">113.21 ms</div>
+                <div class="kpi-change negative">↑ 5.2% slower</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-label">Cache Hit Rate</div>
+                <div class="kpi-value" id="cacheHitRate">34.75%</div>
+                <div class="kpi-change negative">↓ 1.8% vs target</div>
+            </div>
+        </div>
+
+        <!-- Additional Info Cards -->
+        <div class="info-grid">
+            <div class="info-card">
+                <h3><span class="icon">📊</span> Traffic Summary</h3>
+                <div class="metric-row">
+                    <span class="metric-label">Peak Hour Requests</span>
+                    <span class="metric-value">892,450</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Avg Requests/Second</span>
+                    <span class="metric-value">83.4</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Total Response Time</span>
+                    <span class="metric-value">571.2M ms</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Busiest Day</span>
+                    <span class="metric-value">Oct 11, 2025</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><span class="icon">🔴</span> Error Analysis</h3>
+                <div class="metric-row">
+                    <span class="metric-label">Total Errors (4xx+5xx)</span>
+                    <span class="metric-value"><span class="badge danger">127,845</span></span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Error Rate</span>
+                    <span class="metric-value">2.53%</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Most Common Error</span>
+                    <span class="metric-value">404 (65%)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">500 Errors</span>
+                    <span class="metric-value"><span class="badge warning">3,245</span></span>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3><span class="icon">⚡</span> Performance Insights</h3>
+                <div class="metric-row">
+                    <span class="metric-label">P95 Response Time</span>
+                    <span class="metric-value">458 ms</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">P99 Response Time</span>
+                    <span class="metric-value">1,245 ms</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Slowest Controller</span>
+                    <span class="metric-value">Cart-AddAllPro (938ms)</span>
+                </div>
+                <div class="metric-row">
+                    <span class="metric-label">Cache Miss Rate</span>
+                    <span class="metric-value">12.8%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="charts-grid">
+            <!-- Requests Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">
+                            Requests
+                            <span class="info-icon" title="Total number of controller requests per day">?</span>
+                        </div>
+                        <div class="chart-value">5,055,190</div>
+                    </div>
+                    <div class="chart-actions">
+                        <button class="chart-action-btn" title="Download">📥</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="requestsChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Average Response Time Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">
+                            Average Response Time
+                            <span class="info-icon" title="Average response time in milliseconds">?</span>
+                        </div>
+                        <div class="chart-value">113.21 ms average</div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="responseTimeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Cache Hit Ratio Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">
+                            Cache Hit Ratio
+                            <span class="info-icon" title="Distribution of cache hits, misses, and miss+store">?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="cacheHitChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #0066CC;"></span>
+                        Cache Hit
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #00BCD4;"></span>
+                        Cache Miss and Store
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-dot" style="background: #FFC107;"></span>
+                        Cache Miss
+                    </div>
+                </div>
+            </div>
+
+            <!-- Non-2xx Responses Chart -->
+            <div class="chart-card">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">
+                            Non-2xx-level Responses
+                            <span class="info-icon" title="Percentage of non-successful HTTP responses">?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="errorResponseChart"></canvas>
+                </div>
+                <div class="chart-legend">
+                    <div class="legend-item"><span class="legend-dot" style="background: #0066CC;"></span> 301</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #00BCD4;"></span> 302</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #4CAF50;"></span> 400</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FFC107;"></span> 401</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #FF9800;"></span> 403</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #f44336;"></span> 404</div>
+                    <div class="legend-item"><span class="legend-dot" style="background: #9C27B0;"></span> 500</div>
+                </div>
+            </div>
+
+            <!-- Response Time Distribution -->
+            <div class="chart-card full-width">
+                <div class="chart-header">
+                    <div>
+                        <div class="chart-title">
+                            Response Time Distribution
+                            <span class="info-icon" title="Distribution of requests by response time buckets">?</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container" style="height: 250px;">
+                    <canvas id="responseDistributionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Controller Requests Table -->
+        <div class="table-card">
+            <div class="table-header">
+                <div class="table-title">Main Controller Requests</div>
+                <div class="table-actions">
+                    <input type="text" class="search-input" placeholder="Search controllers..." id="searchInput">
+                    <button class="export-btn" onclick="exportTableData()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        CSV
+                    </button>
+                </div>
+            </div>
+            <div class="table-scroll">
+                <table class="data-table" id="controllerTable">
+                    <thead>
+                        <tr>
+                            <th>Controller</th>
+                            <th>Requests ↓</th>
+                            <th>% of Total</th>
+                            <th>Avg. Include Time</th>
+                            <th>Includes</th>
+                            <th>% of Total</th>
+                            <th>Avg. Process Time</th>
+                            <th>Total Process Time</th>
+                            <th>% of Total</th>
+                            <th>Avg. Own Time</th>
+                            <th>Total Own Time</th>
+                            <th>Non-2xx</th>
+                            <th>Hit</th>
+                            <th>Miss</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>NERD Dashboard - L'Oréal SFCC Technical Monitoring | Data refreshed every 24 hours | Last update: Oct 14, 2025 23:59 GMT</p>
+        </div>
+    </div>
+
+    <script>
+        // Sample Data - Replace with actual data from Power BI
+        const controllerData = [
+            { name: "RedirectURL-Start", requests: 1023259, pctTotal: 20.2, avgInclude: 44.9, includes: 45976787, pctIncludes: 0, avgProcess: 65, totalProcess: 66468999, pctProcess: 0, avgOwn: 31, totalOwn: 31222448, nonTwoxx: "70%", hit: "33%", miss: "2%", missStore: "65%" },
+            { name: "__Analytics-Start", requests: 478898, pctTotal: 9.5, avgInclude: 0.0, includes: 0, pctIncludes: 0, avgProcess: 8, totalProcess: 3767072, pctProcess: 0, avgOwn: 8, totalOwn: 3767072, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Product-Show", requests: 455429, pctTotal: 9.0, avgInclude: 75.6, includes: 34425520, pctIncludes: 0, avgProcess: 358, totalProcess: 162928725, pctProcess: 0, avgOwn: 249, totalOwn: 113550113, nonTwoxx: "12%", hit: "55%", miss: "33%", missStore: "12%" },
+            { name: "Home-Show", requests: 426340, pctTotal: 8.4, avgInclude: 49.5, includes: 21115951, pctIncludes: 0, avgProcess: 102, totalProcess: 43281183, pctProcess: 0, avgOwn: 24, totalOwn: 10282679, nonTwoxx: "33%", hit: "60%", miss: "7%", missStore: "33%" },
+            { name: "Page-Show", requests: 385705, pctTotal: 7.6, avgInclude: 81.4, includes: 31414558, pctIncludes: 0, avgProcess: 188, totalProcess: 72526313, pctProcess: 0, avgOwn: 34, totalOwn: 13279347, nonTwoxx: "9%", hit: "73%", miss: "14%", missStore: "14%" },
+            { name: "Page-Resources", requests: 363447, pctTotal: 7.2, avgInclude: 0.0, includes: 0, pctIncludes: 0, avgProcess: 6, totalProcess: 2200061, pctProcess: 0, avgOwn: 6, totalOwn: 2200061, nonTwoxx: "0%", hit: "100%", miss: "0%", missStore: "0%" },
+            { name: "CDSLazyload-comm", requests: 332259, pctTotal: 6.6, avgInclude: 0.0, includes: 4573, pctIncludes: 0, avgProcess: 15, totalProcess: 5115234, pctProcess: 0, avgOwn: 15, totalOwn: 5113434, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Search-Show", requests: 319998, pctTotal: 6.3, avgInclude: 83.5, includes: 26711505, pctIncludes: 0, avgProcess: 413, totalProcess: 132196020, pctProcess: 0, avgOwn: 74, totalOwn: 23600878, nonTwoxx: "12%", hit: "47%", miss: "40%", missStore: "12%" },
+            { name: "CDSLazyload-heads", requests: 316047, pctTotal: 6.3, avgInclude: 1.5, includes: 481227, pctIncludes: 0, avgProcess: 15, totalProcess: 4820593, pctProcess: 0, avgOwn: 15, totalOwn: 4732028, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "CookiesManageme", requests: 247975, pctTotal: 4.9, avgInclude: 0.0, includes: 0, pctIncludes: 0, avgProcess: 14, totalProcess: 3534648, pctProcess: 0, avgOwn: 14, totalOwn: 3534648, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Utils-Csrf", requests: 138753, pctTotal: 2.7, avgInclude: 0.0, includes: 0, pctIncludes: 0, avgProcess: 13, totalProcess: 1738319, pctProcess: 0, avgOwn: 13, totalOwn: 1738319, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "GeoRedirect-Show", requests: 105470, pctTotal: 2.1, avgInclude: 3.0, includes: 316407, pctIncludes: 0, avgProcess: 53, totalProcess: 5578736, pctProcess: 0, avgOwn: 45, totalOwn: 4715180, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Default-Start", requests: 105150, pctTotal: 2.1, avgInclude: 83.1, includes: 8742328, pctIncludes: 0, avgProcess: 245, totalProcess: 25784917, pctProcess: 0, avgOwn: 24, totalOwn: 2557211, nonTwoxx: "0%", hit: "94%", miss: "6%", missStore: "0%" },
+            { name: "SkinDr-GetData", requests: 53122, pctTotal: 1.1, avgInclude: 0.7, includes: 36542, pctIncludes: 0, avgProcess: 426, totalProcess: 22650167, pctProcess: 0, avgOwn: 426, totalOwn: 22638391, nonTwoxx: "36%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Tracking-Track", requests: 36758, pctTotal: 0.7, avgInclude: 0.0, includes: 37, pctIncludes: 0, avgProcess: 15, totalProcess: 551622, pctProcess: 0, avgOwn: 15, totalOwn: 551600, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Robots-Show", requests: 32644, pctTotal: 0.6, avgInclude: 0.0, includes: 0, pctIncludes: 0, avgProcess: 6, totalProcess: 207706, pctProcess: 0, avgOwn: 6, totalOwn: 207706, nonTwoxx: "3%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Search-GetSuggestI", requests: 31322, pctTotal: 0.6, avgInclude: 4.1, includes: 128427, pctIncludes: 0, avgProcess: 248, totalProcess: 7758471, pctProcess: 0, avgOwn: 219, totalOwn: 6862779, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "Facebook-CAPI", requests: 26375, pctTotal: 0.5, avgInclude: 0.0, includes: 37, pctIncludes: 0, avgProcess: 19, totalProcess: 490579, pctProcess: 0, avgOwn: 19, totalOwn: 490564, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "GeoRedirect-Submi", requests: 22886, pctTotal: 0.5, avgInclude: 0.0, includes: 476, pctIncludes: 0, avgProcess: 20, totalProcess: 466713, pctProcess: 0, avgOwn: 20, totalOwn: 466182, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+            { name: "CDSLazyload-comm2", requests: 16317, pctTotal: 0.3, avgInclude: 1.0, includes: 15560, pctIncludes: 0, avgProcess: 51, totalProcess: 835198, pctProcess: 0, avgOwn: 49, totalOwn: 806912, nonTwoxx: "0%", hit: "0%", miss: "0%", missStore: "100%" },
+        ];
+
+        // Chart Configuration
+        const chartColors = {
+            primary: '#0066CC',
+            secondary: '#00BCD4',
+            success: '#4CAF50',
+            warning: '#FFC107',
+            danger: '#f44336',
+            purple: '#9C27B0',
+            orange: '#FF9800'
+        };
+
+        // Initialize Charts
+        function initCharts() {
+            // Requests Chart
+            const requestsCtx = document.getElementById('requestsChart').getContext('2d');
+            new Chart(requestsCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 8', 'Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [{
+                        label: 'Requests',
+                        data: [695000, 710000, 720000, 850000, 680000, 750000, 800000],
+                        borderColor: chartColors.primary,
+                        backgroundColor: 'rgba(0, 102, 204, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: chartColors.primary
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 650000,
+                            ticks: {
+                                callback: value => (value/1000) + 'k'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Response Time Chart
+            const responseCtx = document.getElementById('responseTimeChart').getContext('2d');
+            new Chart(responseCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 8', 'Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [{
+                        label: 'Avg Response Time (ms)',
+                        data: [115, 112, 118, 125, 108, 115, 110],
+                        borderColor: chartColors.primary,
+                        backgroundColor: 'transparent',
+                        tension: 0.4,
+                        pointRadius: 4,
+                        pointBackgroundColor: chartColors.primary
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            min: 100,
+                            max: 130,
+                            ticks: {
+                                callback: value => value + ' ms'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Cache Hit Chart
+            const cacheCtx = document.getElementById('cacheHitChart').getContext('2d');
+            new Chart(cacheCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 8', 'Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [
+                        {
+                            label: 'Cache Hit',
+                            data: [52, 48, 45, 42, 55, 50, 48],
+                            borderColor: chartColors.primary,
+                            backgroundColor: 'transparent',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Cache Miss and Store',
+                            data: [35, 38, 40, 42, 32, 35, 38],
+                            borderColor: chartColors.secondary,
+                            backgroundColor: 'transparent',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Cache Miss',
+                            data: [13, 14, 15, 16, 13, 15, 14],
+                            borderColor: chartColors.warning,
+                            backgroundColor: 'transparent',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 60,
+                            ticks: {
+                                callback: value => value + '%'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Error Response Chart
+            const errorCtx = document.getElementById('errorResponseChart').getContext('2d');
+            new Chart(errorCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [
+                        { label: '301', data: [2, 2.5, 3, 2.8, 2.2, 2], borderColor: chartColors.primary, tension: 0.4, pointRadius: 2 },
+                        { label: '302', data: [1, 1.2, 1.5, 1.3, 1.1, 1], borderColor: chartColors.secondary, tension: 0.4, pointRadius: 2 },
+                        { label: '400', data: [0.5, 0.6, 0.8, 0.7, 0.5, 0.4], borderColor: chartColors.success, tension: 0.4, pointRadius: 2 },
+                        { label: '401', data: [0.3, 0.4, 0.5, 0.4, 0.3, 0.3], borderColor: chartColors.warning, tension: 0.4, pointRadius: 2 },
+                        { label: '404', data: [25, 28, 30, 27, 24, 22], borderColor: chartColors.orange, tension: 0.4, pointRadius: 2 },
+                        { label: '500', data: [0.8, 1, 1.2, 1, 0.9, 0.7], borderColor: chartColors.danger, tension: 0.4, pointRadius: 2 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 35,
+                            ticks: {
+                                callback: value => value + '%'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Response Distribution Chart
+            const distCtx = document.getElementById('responseDistributionChart').getContext('2d');
+            new Chart(distCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['0-499ms', '500-999ms', '1000-1499ms', '1500-1999ms', '2000-2499ms', '2500-2999ms', '3000-3499ms', '3500-3999ms', '4000-4499ms', '4500-4999ms', '5000+ms'],
+                    datasets: [{
+                        label: 'Call Count',
+                        data: [4200000, 3100000, 450000, 180000, 85000, 45000, 25000, 15000, 8000, 5000, 12000],
+                        backgroundColor: chartColors.primary,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: value => {
+                                    if (value >= 1000000) return (value/1000000) + 'M';
+                                    if (value >= 1000) return (value/1000) + 'k';
+                                    return value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Populate Table
+        function populateTable(data) {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            data.forEach(row => {
+                const tr = document.createElement('tr');
+
+                // Determine status based on non-2xx percentage
+                const nonTwoxxValue = parseInt(row.nonTwoxx);
+                let statusClass = 'success';
+                if (nonTwoxxValue > 20) statusClass = 'danger';
+                else if (nonTwoxxValue > 5) statusClass = 'warning';
+
+                tr.innerHTML = `
+                    <td><a href="#" class="controller-link">${row.name}</a></td>
+                    <td><strong>${row.requests.toLocaleString()}</strong></td>
+                    <td>
+                        <span class="progress-bar"><span class="progress-bar-fill blue" style="width: ${row.pctTotal * 5}%"></span></span>
+                        ${row.pctTotal.toFixed(1)}%
+                    </td>
+                    <td>${row.avgInclude.toFixed(1)}</td>
+                    <td>${row.includes.toLocaleString()}</td>
+                    <td>${row.pctIncludes}%</td>
+                    <td>${row.avgProcess} ms</td>
+                    <td>${row.totalProcess.toLocaleString()}</td>
+                    <td>${row.pctProcess}%</td>
+                    <td>${row.avgOwn}</td>
+                    <td>${row.totalOwn.toLocaleString()}</td>
+                    <td><span class="status-dot ${statusClass}"></span>${row.nonTwoxx}</td>
+                    <td>${row.hit}</td>
+                    <td>${row.miss}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = controllerData.filter(row =>
+                row.name.toLowerCase().includes(searchTerm)
+            );
+            populateTable(filteredData);
+        });
+
+        // Tab switching
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                // Update content based on tab
+                const tabName = this.dataset.tab;
+                updateTabContent(tabName);
+            });
+        });
+
+        function updateTabContent(tabName) {
+            // This would update the content based on the selected tab
+            // For now, we'll just show a message
+            console.log('Switched to tab:', tabName);
+        }
+
+        // Export functions
+        function exportData() {
+            alert('Exporting dashboard data to CSV...');
+        }
+
+        function exportTableData() {
+            const headers = ['Controller', 'Requests', '% of Total', 'Avg Include Time', 'Includes', 'Avg Process Time', 'Total Process Time', 'Non-2xx', 'Hit', 'Miss'];
+            let csv = headers.join(',') + '\n';
+
+            controllerData.forEach(row => {
+                csv += `"${row.name}",${row.requests},${row.pctTotal}%,${row.avgInclude},${row.includes},${row.avgProcess}ms,${row.totalProcess},"${row.nonTwoxx}","${row.hit}","${row.miss}"\n`;
+            });
+
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'controller_requests.csv';
+            a.click();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initCharts();
+            populateTable(controllerData);
+        });
+    </script>
+</body>
+</html>

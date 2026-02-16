@@ -1,0 +1,272 @@
+table '1 Mesures B2C'
+	lineageTag: 97845ba3-f784-4eea-968d-060513d369bd
+
+	measure 'Baseline Credits' = 950700000
+		formatString: 0
+		lineageTag: 0fd1f849-827c-4982-b7e5-e51012254938
+
+	measure 'Total Minutes Up' = SUM('Fact ODS'[total_minutes_up])
+		formatString: #,##0
+		lineageTag: 0b3ad8d5-61e1-4ee6-8d0d-9aa9ebe916eb
+
+	measure 'Total Minutes Down' = SUM('Fact ODS'[total_minutes_down])
+		formatString: #,##0
+		lineageTag: fe85c536-2c5e-4b3c-86f6-11435cbac097
+
+	measure 'Minutes XLarge' = SUM('Fact ODS'[minutes_up_by_profile.xlarge])
+		formatString: #,##0
+		lineageTag: dc978bb7-b30a-4bb8-965a-f9a8f12d8440
+
+	measure 'Minutes Large' = SUM('Fact ODS'[minutes_up_by_profile.large])
+		formatString: #,##0
+		lineageTag: 494c6651-210f-4f5b-ae4f-03350e4ef0b3
+
+	measure 'Minutes Medium' = SUM('Fact ODS'[minutes_up_by_profile.medium])
+		formatString: #,##0
+		lineageTag: ad7cb62d-377b-4084-a6f2-e1b1c25fcd34
+
+	measure 'Max ODS' = SUM('Fact ODS'[max_nb_ods])
+		formatString: #,##0
+		lineageTag: 8c38f1a3-802a-40d9-b76f-8d20293322b0
+
+	measure 'Minutes Medium Started' = SUM('Fact Realm'[medium_started])
+		formatString: #,##0
+		lineageTag: d111454f-fd6f-452b-9cb3-2053723c5254
+
+	measure 'Minutes Medium Stopped' = SUM('Fact Realm'[medium_stopped])
+		formatString: #,##0
+		lineageTag: aac4621c-2666-493c-ab76-e7cebde9b9cf
+
+	measure 'Minutes Medium Scheduled' = SUM('Fact Realm'[medium_scheduled])
+		formatString: #,##0
+		lineageTag: d9451013-902e-4c8d-8c3d-8cb99d714982
+
+	measure 'Minutes Large Started' = SUM('Fact Realm'[large_started])
+		formatString: #,##0
+		lineageTag: 2714bfcc-38c1-48e4-a60a-a3723b5432e2
+
+	measure 'Minutes Large Stopped' = SUM('Fact Realm'[large_stopped])
+		formatString: #,##0
+		lineageTag: 4a947c4c-80a2-4043-9dc2-16b19544a0df
+
+	measure 'Minutes Large Scheduled' = SUM('Fact Realm'[large_scheduled])
+		formatString: #,##0
+		lineageTag: 3ad98021-4911-44d7-a6c0-c0d74c7cc8f4
+
+	measure 'Minutes XLarge Started' = SUM('Fact Realm'[xlarge_started])
+		formatString: #,##0
+		lineageTag: 0c2f5137-6883-4fb8-9f7e-167413009394
+
+	measure 'Minutes XLarge Stopped' = SUM('Fact Realm'[xlarge_stopped])
+		formatString: #,##0
+		lineageTag: 7bd47586-0d77-4059-94d9-083b023c6226
+
+	measure 'Minutes XLarge Scheduled' = SUM('Fact Realm'[xlarge_scheduled])
+		formatString: #,##0
+		lineageTag: e93cb31c-4618-4455-99f4-4043d1776357
+
+	measure 'Minutes XXLarge Started' = SUM('Fact Realm'[xxlarge_started])
+		formatString: #,##0
+		lineageTag: 68356cee-7d46-4c49-90c9-8b94c7d31117
+
+	measure 'Minutes XXLarge Stopped' = SUM('Fact Realm'[xxlarge_stopped])
+		formatString: #,##0
+		lineageTag: f980481f-b178-4f41-9c16-a6daab4ae8b0
+
+	measure 'Minutes XXLarge Scheduled' = SUM('Fact Realm'[xxlarge_scheduled])
+		formatString: #,##0
+		lineageTag: e6b6782f-2e9c-4fb8-b5ea-ed26a513e2aa
+
+	measure 'Total Minutes Started' = [Minutes Medium Started] + [Minutes Large Started] + [Minutes XLarge Started] + [Minutes XXLarge Started]
+		formatString: #,##0
+		lineageTag: 7c4bf279-21ac-4947-a3a4-401c740fb1ba
+
+	measure 'Total Minutes Stopped' = [Minutes Medium Stopped] + [Minutes Large Stopped] + [Minutes XLarge Stopped] + [Minutes XXLarge Stopped]
+		formatString: #,##0
+		lineageTag: f1520a5a-ad9c-4bb8-bd1c-5c5f85616d74
+
+	measure 'Total Minutes Scheduled' = [Minutes Medium Scheduled] + [Minutes Large Scheduled] + [Minutes XLarge Scheduled] + [Minutes XXLarge Scheduled]
+		formatString: #,##0
+		lineageTag: 5cde07b1-cf68-4a36-af19-2ce7b4b6d3d5
+
+	measure 'Nb Realms' = DISTINCTCOUNT('Fact Realm'[realm_id])
+		formatString: #,##0
+		lineageTag: ba96f0ac-e5ca-4cf6-b54d-eee2d3ffa375
+
+	measure 'Nb Realms ODS' = DISTINCTCOUNT('Fact ODS'[realm_id])
+		formatString: #,##0
+		lineageTag: 0571d30b-6938-4f5b-a713-a725f2f5b174
+
+	/// Pourcentage de crédits sandbox utilisés (minutes consommées / crédits contractuels max)
+	measure 'Sandbox Credits Used' = DIVIDE([Total Minutes Up], MAX('Fact Static_info'[org_credits]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4955150a-a81b-4a69-afc4-d6b42502090f
+
+	/// Nombre de jours sélectionné par l'utilisateur pour le calcul de la moyenne
+	measure 'Nb Jours Sélectionné' = SELECTEDVALUE('Param Jours Projection'[Nb Jours], 30)
+		formatString: 0
+		lineageTag: 95a58a5b-be3d-4c00-8526-57ea23cba83a
+
+	/// Dernière date avec des données dans Fact ODS
+	measure 'Dernière Date Données' = MAX('Fact ODS'[date])
+		formatString: dd/mm/yyyy
+		lineageTag: 8b257c4d-e0cc-4c49-9a02-2e8bc4d9e565
+
+	/// Pourcentage projeté des crédits utilisés au 31/10/2027
+	measure '% Projection Credits Used' = DIVIDE([Projection Minutes 31-10-2027], MAX('Fact Static_info'[org_credits]), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 2b32ffed-3714-4fcd-accf-65b73c46a144
+
+	/// Nombre de jours restants entre la dernière date de données et le 31/10/2027
+	measure 'Jours Restants Contrat' =
+			VAR DateFinContrat = DATE(2027, 10, 31)
+			VAR DernierJour = [Dernière Date Données]
+			RETURN
+			IF(DernierJour < DateFinContrat, DATEDIFF(DernierJour, DateFinContrat, DAY), 0)
+		formatString: #,##0
+		lineageTag: b89245c7-f065-40c9-b9d0-57f4c9c717fc
+
+	/// Moyenne des minutes consommées par jour sur les N derniers jours
+	measure 'Moyenne Minutes par Jour' =
+			VAR DernierJour = [Dernière Date Données]
+			VAR NbJours = [Nb Jours Sélectionné]
+			VAR PremierJour = DernierJour - NbJours + 1
+			RETURN
+			CALCULATE(
+			    DIVIDE([Total Minutes Up], NbJours, 0),
+			    'Fact ODS'[date] >= PremierJour && 'Fact ODS'[date] <= DernierJour
+			)
+		formatString: #,##0
+		lineageTag: b1a7923a-863a-417f-8e88-b54bcf3cfb6b
+
+	/// Projection linéaire de la consommation totale au 31/10/2027
+	measure 'Projection Minutes 31-10-2027' =
+			VAR ConsommationActuelle = [Total Minutes Up]
+			VAR MoyenneParJour = [Moyenne Minutes par Jour]
+			VAR JoursRestants = [Jours Restants Contrat]
+			RETURN
+			ConsommationActuelle + (MoyenneParJour * JoursRestants)
+		formatString: #,##0
+		lineageTag: 033ba3d1-21df-4561-b9cd-4eae25f22920
+
+	/// Crédits restants = Baseline Credits - Total Minutes Up (consommées)
+	measure 'Total Minutes Restants' = MAX('Fact Static_info'[org_credits]) - [Total Minutes Up]
+		formatString: #,##0
+		lineageTag: 966974f5-3798-4fdc-a9c1-ccb301f47c6d
+
+	/// Cumul des minutes consommées jusqu'à la date courante (données réelles uniquement)
+	measure 'Cumul Minutes Up' =
+			VAR CurrentDate = MAX(dim_Date_Projection[Date])
+			VAR DernierJourDonnees = [Dernière Date Données]
+			RETURN
+			IF(
+			    CurrentDate <= DernierJourDonnees,
+			    CALCULATE(
+			        [Total Minutes Up],
+			        FILTER(
+			            ALL('Fact ODS'),
+			            'Fact ODS'[date] <= CurrentDate
+			        )
+			    ),
+			    BLANK()
+			)
+		formatString: #,##0
+		lineageTag: ba97a571-f442-4d05-9510-3ba25984e349
+
+	/// Projection cumulée des minutes (après dernière date de données)
+	measure 'Cumul Minutes Projection' =
+			VAR CurrentDate = MAX(dim_Date_Projection[Date])
+			VAR DernierJourDonnees = [Dernière Date Données]
+			VAR TotalActuel = CALCULATE(
+			    [Total Minutes Up],
+			    ALL('Fact ODS')
+			)
+			VAR MoyenneJour = [Moyenne Minutes par Jour]
+			VAR JoursDepuisDernier = IF(CurrentDate > DernierJourDonnees, DATEDIFF(DernierJourDonnees, CurrentDate, DAY), 0)
+			RETURN
+			IF(
+			    CurrentDate > DernierJourDonnees,
+			    TotalActuel + (MoyenneJour * JoursDepuisDernier),
+			    BLANK()
+			)
+		formatString: #,##0
+		lineageTag: ab0239bc-225d-440f-ab8e-408744a77cb4
+
+	/// % cumulé des crédits utilisés (données réelles)
+	measure '% Cumul Credits' =
+			VAR CurrentDate = MAX(dim_Date_Projection[Date])
+			VAR DernierJourDonnees = [Dernière Date Données]
+			VAR BaselineCredits = MAX('Fact Static_info'[org_credits])
+			RETURN
+			IF(
+			    CurrentDate <= DernierJourDonnees,
+			    DIVIDE([Cumul Minutes Up], BaselineCredits, 0),
+			    BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 7b28c8b8-982c-4b7e-b05b-17a2af39e3dc
+
+	/// % cumulé projeté des crédits (projection)
+	measure '% Cumul Credits Projection' =
+			VAR CurrentDate = MAX(dim_Date_Projection[Date])
+			VAR DernierJourDonnees = [Dernière Date Données]
+			VAR BaselineCredits = MAX('Fact Static_info'[org_credits])
+			RETURN
+			IF(
+			    CurrentDate > DernierJourDonnees,
+			    DIVIDE([Cumul Minutes Projection], BaselineCredits, 0),
+			    BLANK()
+			)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 99aaf7b6-e2c7-4e21-b563-df7fc870f940
+
+	/// Seuil d'alerte à 85%
+	measure 'Alert Threshold' = 0.85
+		formatString: 0%;-0%;0%
+		lineageTag: 30788fb4-495a-4ed6-95cc-f5b0195ce2a9
+
+	measure 'Compatibility Mode' = BLANK()
+		formatString: 0
+		lineageTag: 5457a86b-53f5-4848-bab7-7d94658d75f7
+
+	measure 'NGLORA Version' = BLANK()
+		formatString: 0
+		lineageTag: 5997ecb7-f7a7-4043-ad06-86c659e0127e
+
+	measure Score = BLANK()
+		formatString: 0
+		lineageTag: 5ae4c4da-36a9-49da-b1aa-65c9e7e8d188
+
+	/// Statut du realm basé sur le % de crédits utilisés: Active (<70%), Warning (70-85%), Critical (>85%)
+	measure 'Statut Realm' =
+			VAR PctUsed = [Sandbox Credits Used]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    PctUsed >= 0.85, "Critical",
+			    PctUsed >= 0.70, "Warning",
+			    "Active"
+			)
+		lineageTag: 8594fada-994f-4d67-9f0e-c5516575f0bb
+
+	column Column1
+		dataType: string
+		lineageTag: ff62717e-0781-4598-9a5f-dffb12a8ba82
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '1 Mesures B2C' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

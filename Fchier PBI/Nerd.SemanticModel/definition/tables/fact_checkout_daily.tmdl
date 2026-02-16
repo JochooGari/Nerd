@@ -1,0 +1,72 @@
+table fact_checkout_daily
+	lineageTag: 5fa9dc10-9649-4264-93dd-83094fe24a99
+
+	column site_id
+		dataType: double
+		lineageTag: 11be50a0-3ac6-44a7-8efa-85f187bc0baa
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column request_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bf7fff2a-caf5-4d61-bd4c-27d0048a7492
+		summarizeBy: none
+		sourceColumn: request_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column checkout_include_requests
+		dataType: double
+		lineageTag: b46d53b1-97f6-4212-b96d-22a9d241b9ac
+		summarizeBy: sum
+		sourceColumn: checkout_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_response_ms
+		dataType: double
+		lineageTag: bcd3d600-02bd-43a8-b261-60195e5dfd84
+		summarizeBy: sum
+		sourceColumn: checkout_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_avg_response_ms
+		dataType: double
+		lineageTag: 4e66006c-ce09-4ddd-a8fb-85ee51f2a196
+		summarizeBy: sum
+		sourceColumn: checkout_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_checkout_daily = m
+		mode: import
+		queryGroup: 'Lot 2'
+		source =
+				let
+				  read_include          = fact_include_controller_daily,
+				  filter_checkout       = Table.SelectRows(read_include, each Text.Contains(Text.Upper([main_controller_name]), "CHECKOUT")),
+				  group_checkout        = Table.Group(filter_checkout, {"site_id","request_date"},
+				                          {{"checkout_include_requests", each List.Sum([total_requests]), type number},
+				                           {"checkout_include_response_ms", each List.Sum([total_response_time_ms]), type number}}),
+				  add_avg_ms            = Table.AddColumn(group_checkout, "checkout_include_avg_response_ms", each if [checkout_include_requests]=0 then 0 else [checkout_include_response_ms]/[checkout_include_requests], type number)
+				in
+				  add_avg_ms
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

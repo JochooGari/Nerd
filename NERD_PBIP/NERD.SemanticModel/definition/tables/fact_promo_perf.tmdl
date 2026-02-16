@@ -1,0 +1,170 @@
+table fact_promo_perf
+	lineageTag: 3f9b6ac9-83d4-452e-a914-53181e9299e5
+
+	column site_id
+		dataType: int64
+		formatString: 0
+		lineageTag: e3e1eaf9-b990-4cf4-9540-3ecb21d9ae72
+		summarizeBy: sum
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8b9c5188-2da7-4c47-bdaf-345d505fc4f1
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column promotions_active
+		dataType: int64
+		formatString: 0
+		lineageTag: c49a0104-934c-47fc-8c13-b9b630bc265e
+		summarizeBy: sum
+		sourceColumn: promotions_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_visits
+		dataType: int64
+		formatString: 0
+		lineageTag: ef3cb31d-a5fc-44de-b634-5fff20492f47
+		summarizeBy: sum
+		sourceColumn: promo_visits
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_activations
+		dataType: int64
+		formatString: 0
+		lineageTag: 213113a0-ddc5-45b1-9330-5aa741651a7b
+		summarizeBy: sum
+		sourceColumn: promo_activations
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_line_items
+		dataType: int64
+		formatString: 0
+		lineageTag: 36e648b4-bd4d-49e2-abc8-fb6d1be9f2c1
+		summarizeBy: sum
+		sourceColumn: promo_line_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column coupon_uses
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fde2ebc-9e01-4e03-b4ab-192210959524
+		summarizeBy: sum
+		sourceColumn: coupon_uses
+
+		annotation SummarizationSetBy = Automatic
+
+	column distinct_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 299a0092-d232-4022-8731-499d0bdbe80e
+		summarizeBy: sum
+		sourceColumn: distinct_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column gm_value
+		dataType: double
+		lineageTag: 83e4a449-79ee-42b5-a2db-03e386f86f73
+		summarizeBy: sum
+		sourceColumn: gm_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_requests
+		dataType: double
+		lineageTag: 1a828be2-72b5-426e-8996-7aed4078ad4b
+		summarizeBy: sum
+		sourceColumn: cart_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_response_ms
+		dataType: double
+		lineageTag: 33f636b0-aa97-4258-81a6-3bb45bd5a844
+		summarizeBy: sum
+		sourceColumn: cart_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_avg_response_ms
+		dataType: double
+		lineageTag: 95b5c53a-e633-4394-a9eb-7f714b43d429
+		summarizeBy: sum
+		sourceColumn: cart_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_requests
+		dataType: double
+		lineageTag: cbd0df3c-5f51-4b4a-b6ff-75874ad893de
+		summarizeBy: sum
+		sourceColumn: checkout_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_response_ms
+		dataType: double
+		lineageTag: 48092cb5-5e68-4ccd-8373-ff720b1b356e
+		summarizeBy: sum
+		sourceColumn: checkout_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_avg_response_ms
+		dataType: double
+		lineageTag: da103fde-3f3a-47d6-8878-11f21634d269
+		summarizeBy: sum
+		sourceColumn: checkout_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_promo_perf = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  read_promo           = fact_promo_daily,
+				  read_cart            = fact_cart_daily,
+				  read_checkout        = try fact_checkout_daily otherwise null,
+				
+				  join_cart            = Table.NestedJoin(read_promo, {"site_id","date"}, read_cart, {"site_id","request_date"}, "cart", JoinKind.LeftOuter),
+				  expand_cart          = Table.ExpandTableColumn(join_cart, "cart", {"cart_include_requests","cart_include_response_ms","cart_include_avg_response_ms"},
+				                                                {"cart_include_requests","cart_include_response_ms","cart_include_avg_response_ms"}),
+				
+				  join_checkout        = if read_checkout=null then expand_cart else Table.NestedJoin(expand_cart, {"site_id","date"}, read_checkout, {"site_id","request_date"}, "checkout", JoinKind.LeftOuter),
+				  expand_checkout      = if read_checkout=null then expand_cart else Table.ExpandTableColumn(join_checkout, "checkout", {"checkout_include_requests","checkout_include_response_ms","checkout_include_avg_response_ms"},
+				                                                {"checkout_include_requests","checkout_include_response_ms","checkout_include_avg_response_ms"})
+				in
+				  expand_checkout
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

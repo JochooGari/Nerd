@@ -1,0 +1,100 @@
+table dim_localisation
+	lineageTag: 86ef4263-c82f-48d5-8906-5b0077654a5e
+
+	column realm_id
+		dataType: string
+		lineageTag: c6fe6e82-9779-41a3-b55d-6ce1e265d971
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone
+		dataType: string
+		lineageTag: 1d4120c9-bb95-4d7f-97bf-bd9db7568fbc
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column capitale
+		dataType: string
+		lineageTag: dceec227-a9c9-4f09-95bc-9df07e97a125
+		summarizeBy: none
+		sourceColumn: capitale
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone_name
+		dataType: string
+		lineageTag: cb1a45eb-3c6c-4a40-b110-29ab56c523ed
+		summarizeBy: none
+		sourceColumn: zone_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column latitude
+		dataType: double
+		lineageTag: a6ec56c1-6204-4cc3-8761-0f1ed804eaba
+		summarizeBy: none
+		sourceColumn: latitude
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column longitude
+		dataType: double
+		lineageTag: a459e871-abda-454f-97b1-59c064108170
+		summarizeBy: none
+		sourceColumn: longitude
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_localisation = m
+		mode: import
+		queryGroup: '2 B2C'
+		source =
+				let
+				    Source = Table.FromRows({
+				        {"aafm", "amer", "Washington", "Americas", 38.9072, -77.0369},
+				        {"aang", "amer", "Washington", "Americas", 38.9072, -77.0369},
+				        {"aatl", "amer", "São Paulo", "Americas", -23.5505, -46.6333},
+				        {"bjrm", "amer", "Washington", "Americas", 38.9072, -77.0369},
+				        {"aaqp", "emea", "Paris", "Europe", 48.8566, 2.3522},
+				        {"bhhx", "emea", "Paris", "Europe", 48.8566, 2.3522},
+				        {"bdcr", "global", "Paris", "Global", 48.8566, 2.3522},
+				        {"aarm", "na-sapmena", "Beijing", "NA SAPMENA", 39.9042, 116.4074},
+				        {"bckq", "na-sapmena", "Tokyo", "NA SAPMENA", 35.6762, 139.6503},
+				        {"bgsj", "na-sapmena", "Tokyo", "NA SAPMENA", 35.6762, 139.6503},
+				        {"bfzm", "na-sapmena", "Singapore", "NA SAPMENA", 1.3521, 103.8198},
+				        {"aawh", "na-sapmena", "Singapore", "NA SAPMENA", 1.3521, 103.8198},
+				        {"canada-loreal", "amer", "Quebec", "Americas", 46.8139, -71.2080},
+				        {"latam-loreal", "amer", "São Paulo", "Americas", -23.5505, -46.6333},
+				        {"na01-saloncentric", "amer", "Washington", "Americas", 38.9072, -77.0369},
+				        {"emea-loreal", "emea", "Paris", "Europe", 48.8566, 2.3522},
+				        {"eu15-lorealsa", "emea", "Paris", "Europe", 48.8566, 2.3522},
+				        {"eu03-lorealsa", "global", "Paris", "Global", 48.8566, 2.3522},
+				        {"cn-loreal", "na-sapmena", "Beijing", "NA SAPMENA", 39.9042, 116.4074},
+				        {"jp-loreal", "na-sapmena", "Tokyo", "NA SAPMENA", 35.6762, 139.6503},
+				        {"eu11-lorealsa", "na-sapmena", "Paris", "NA SAPMENA", 48.8566, 2.3522},
+				        {"ap12-lorealsa", "na-sapmena", "Singapore", "NA SAPMENA", 1.3521, 103.8198},
+				        {"apac-loreal", "na-sapmena", "Singapore", "NA SAPMENA", 1.3521, 103.8198}
+				    }, {"realm_id", "zone", "capitale", "zone_name", "latitude", "longitude"}),
+				    TypedTable = Table.TransformColumnTypes(Source, {
+				        {"realm_id", type text},
+				        {"zone", type text},
+				        {"capitale", type text},
+				        {"zone_name", type text},
+				        {"latitude", type number},
+				        {"longitude", type number}
+				    })
+				in
+				    TypedTable
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

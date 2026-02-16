@@ -1,0 +1,126 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "d86bd8ad29781f46df22",
+  "position": {
+    "x": 140,
+    "y": 231.25,
+    "z": 0,
+    "height": 445,
+    "width": 933.75,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "autoSelectVisualType": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "date"
+                }
+              },
+              "queryRef": "F_ODS Daily.date",
+              "nativeQueryRef": "date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "credits_down"
+                }
+              },
+              "queryRef": "F_ODS Daily.credits_down",
+              "nativeQueryRef": "credits_down"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "credits_up"
+                }
+              },
+              "queryRef": "F_ODS Daily.credits_up",
+              "nativeQueryRef": "credits_up"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "max_nb_ods"
+                }
+              },
+              "queryRef": "F_ODS Daily.max_nb_ods",
+              "nativeQueryRef": "max_nb_ods"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "total_minutes_down"
+                }
+              },
+              "queryRef": "F_ODS Daily.total_minutes_down",
+              "nativeQueryRef": "total_minutes_down"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_ODS Daily"
+                    }
+                  },
+                  "Property": "total_minutes_up"
+                }
+              },
+              "queryRef": "F_ODS Daily.total_minutes_up",
+              "nativeQueryRef": "total_minutes_up"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_ODS Daily"
+                  }
+                },
+                "Property": "date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

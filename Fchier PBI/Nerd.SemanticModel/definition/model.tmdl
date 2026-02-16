@@ -1,0 +1,64 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: fr-FR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from F_ODS Daily'
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup 'Transform File from F_ODS Daily\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Lot 2'
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Lot 1'
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup 'Lot 1 v2'
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["pSPSite","pFolderPath","0  Measures","pRealmsFile","pODSFile","pStartDate","Fact_Realms Daily","fact_ODS Daily","fact_ODS Minutes By Profile","fact_Realm","dim_Date","dim_Realm","demo_up_to_date_environnements","demo_Practices","Sample File","Parameter1","Transform Sample File","Transform File","pFolderPath_lot_2","Data_Source","FX_ReadCsv","dim_site","fact_controller_daily","fact_site_daily","fact_include_controller_daily","fact_include_cache_daily","fact_api_daily OCAPI + SCAPI","fact_api_resource_daily","fact_promo_daily","fact_cart_daily","fact_promo_perf","fact_promo_perf_simulation","fact_checkout_daily","dim_ngl_release_calendar","dim_ngl_version_score","0 Mesure technical monitoring"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'Fact_Realms Daily'
+ref table 'fact_ODS Daily'
+ref table 'fact_ODS Minutes By Profile'
+ref table fact_Realm
+ref table dim_Date
+ref table '0  Measures'
+ref table dim_Realm
+ref table demo_up_to_date_environnements
+ref table demo_Practices
+ref table fact_controller_daily
+ref table fact_site_daily
+ref table fact_include_controller_daily
+ref table fact_include_cache_daily
+ref table 'fact_api_daily OCAPI + SCAPI'
+ref table fact_api_resource_daily
+ref table fact_promo_daily
+ref table fact_cart_daily
+ref table fact_promo_perf
+ref table fact_promo_perf_simulation
+ref table fact_checkout_daily
+ref table dim_site
+ref table dim_ngl_release_calendar
+ref table dim_ngl_version_score
+ref table '0 Mesure technical monitoring'
+ref table 'Slicer period'
+ref table SRC_Ods
+ref table SRC_Realm
+
+ref cultureInfo en-US
+

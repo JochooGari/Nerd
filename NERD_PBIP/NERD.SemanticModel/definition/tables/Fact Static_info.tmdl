@@ -1,0 +1,45 @@
+table 'Fact Static_info'
+	lineageTag: 61691c6a-8037-4370-b232-e7e466b0c6fb
+
+	column realm_id
+		dataType: string
+		lineageTag: 74c609e5-682a-4cb7-9d7d-d299fe71a58a
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_ods
+		dataType: int64
+		formatString: 0
+		lineageTag: 263be168-e98f-4e32-8988-48d1e25e681a
+		summarizeBy: sum
+		sourceColumn: active_ods
+
+		annotation SummarizationSetBy = Automatic
+
+	column org_credits
+		dataType: double
+		lineageTag: f2018569-a622-4365-a2e4-f559b2af8987
+		summarizeBy: sum
+		sourceColumn: org_credits
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Fact Static_info' = m
+		mode: import
+		queryGroup: '2 B2C'
+		source = ```
+				let
+				    Source = SRC_Static
+				    
+				in
+				    Source
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

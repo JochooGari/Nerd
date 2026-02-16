@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8a9c82b5b67920234269",
+  "position": {
+    "x": 15.555555555555555,
+    "y": 163.33333333333334,
+    "z": 7000,
+    "height": 198.88888888888889,
+    "width": 1268.8888888888889,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_controller_daily"
+                    }
+                  },
+                  "Property": "request_date"
+                }
+              },
+              "queryRef": "fact_controller_daily.request_date",
+              "nativeQueryRef": "request_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "2 Mesure technical monitoring"
+                    }
+                  },
+                  "Property": "Nb request (controller)"
+                }
+              },
+              "queryRef": "0 Mesure technical monitoring.Nb request (controller)",
+              "nativeQueryRef": "Nb request (controller)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_controller_daily"
+                  }
+                },
+                "Property": "request_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

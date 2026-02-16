@@ -1,0 +1,60 @@
+table dim_Realm
+	lineageTag: ceacb9b1-9017-4360-a86b-db042b08886f
+
+	column realm_id
+		dataType: string
+		lineageTag: eb8ab12d-a760-4ec2-9678-f4a57c5172e6
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column zone
+		dataType: string
+		lineageTag: 6d6c7a45-5caa-4a46-8580-ed04dfcd0f53
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 1bd730a4-0aff-4942-b935-77149f2df208
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 28f4253d-35ea-4934-9846-02a40684f1bb
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 7eba5c42-958a-4259-bb7a-f20d2bfb4ba6
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_Realm = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				  Realms = #"Fact_Realms Daily",
+				    #"Removed Columns" = Table.RemoveColumns(Realms,{"nb_promotions", "nb_active_promotions", "nb_coupons", "nb_active_coupons"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Removed Columns",{"quotas", "nb_sites", "sites"}),
+				    #"Grouped Rows" = Table.Group(#"Removed Columns1", {"realm_id", "zone", "region", "country", "city"}, {{"Count", each Table.RowCount(_), Int64.Type}}),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Grouped Rows",{"Count"})
+				in
+				    #"Removed Columns2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

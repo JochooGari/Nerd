@@ -1,0 +1,120 @@
+table dim_Date
+	lineageTag: 3e495117-bb17-43ed-bb50-eb96cf669027
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e79465af-1028-416a-895b-dac57d3c6b8d
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 3c25a1e2-c23e-4b77-879f-406e461f797b
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthNo
+		dataType: int64
+		formatString: 0
+		lineageTag: 5e9b7e52-ee4d-4e60-a557-0c4ba62d0745
+		summarizeBy: sum
+		sourceColumn: MonthNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 44ed87bb-d075-4860-9d05-153810567d2f
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: 885ce2f6-75ed-4a42-85b8-09384f2e8975
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: d0f092a0-d302-41f9-ba4c-3352b2a5c2df
+		summarizeBy: sum
+		sourceColumn: ISO Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Week'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 10b7c538-73fd-445c-8302-4db325811fc6
+		summarizeBy: none
+		sourceColumn: Start Week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'rank month year' = ```
+			
+			Var month_year = FORMAT(dim_Date[Date],"YYYYMM")
+			RETURN 
+			CONVERT(month_year,INTEGER)
+			```
+		formatString: 0
+		lineageTag: 56a8a28f-d320-47b8-a539-5c2d64292e88
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'month year' = FORMAT(dim_Date[Date],"mmm-yy")
+		lineageTag: 9b300c8f-e3e8-4a12-ace2-957e0784ab9d
+		summarizeBy: none
+		sortByColumn: 'rank month year'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'week start' = FORMAT(dim_Date[Start Week],"dd/mm")
+		lineageTag: e6d701bf-3404-4cba-89a0-24079bb9f29c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_Date = m
+		mode: import
+		queryGroup: 'Lot 1'
+		source =
+				let
+				  StartDate = try pStartDate otherwise #date(2018, 1, 1),
+				  EndDate = Date.From(DateTime.LocalNow()),
+				  DayCount = Duration.Days(EndDate - StartDate) + 1,
+				  DateList = List.Transform({0..DayCount-1}, each Date.AddDays(StartDate, _)),
+				  #"To Table" = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				  #"Changed Type" = Table.TransformColumnTypes(#"To Table",{{"Date", type date}}),
+				  Year = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date]), Int64.Type),
+				  MonthNo = Table.AddColumn(Year, "MonthNo", each Date.Month([Date]), Int64.Type),
+				  Month = Table.AddColumn(MonthNo, "Month", each Date.ToText([Date], "MMM")),
+				  Quarter = Table.AddColumn(Month, "Quarter", each "Q" & Number.ToText(Date.QuarterOfYear([Date])), type text),
+				  Week = Table.AddColumn(Quarter, "ISO Week", each Date.WeekOfYear([Date], Day.Monday), Int64.Type),
+				    #"Duplicated Column" = Table.DuplicateColumn(Week, "Date", "Start Week"),
+				    #"Calculated Start of Week" = Table.TransformColumns(#"Duplicated Column",{{"Start Week", Date.StartOfWeek, type date}})
+				in
+				  #"Calculated Start of Week"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

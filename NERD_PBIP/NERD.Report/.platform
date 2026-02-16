@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "NERD"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "60ac31e5-1f0a-4972-8e17-17e009164c19"
+  }
+}

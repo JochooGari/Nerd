@@ -1,0 +1,65 @@
+/// Dimension table listing realms and their geographical location based on first site timezone
+table dim_localisation
+	lineageTag: baa2f23d-7a4c-49d9-91f4-c3e65a7e5104
+
+	column realm_id
+		dataType: string
+		lineageTag: d53ca262-da11-4060-86e9-1baeb1859a1c
+		sourceColumn: realm_id
+
+	column timezone
+		dataType: string
+		lineageTag: 58c70934-1c29-4292-a034-ca79e3da977d
+		sourceColumn: timezone
+
+	column currency
+		dataType: string
+		lineageTag: e49d8fcb-20e9-4b73-b9d3-0a7b7cf329ca
+		sourceColumn: currency
+
+	column realm_timezone
+		dataType: string
+		lineageTag: 5eba2b58-ab78-4760-be7c-3f7071aeafb5
+		sourceColumn: realm_timezone
+
+	partition dim_localisation = m
+		mode: import
+		source = ```
+				let
+				    // Read CSV from Azure Blob Storage: nerd-dev/JDBC/ccdw_dim_site.csv
+				    Source = AzureStorage.Blobs(pAzureBlobUrl),
+				    FilterFolder = Table.SelectRows(Source, each [Name] = "nerd-dev"),
+				    ExpandData = FilterFolder{0}[Data],
+				    FilterFile = Table.SelectRows(ExpandData, each Text.StartsWith([Name], "JDBC/") and Text.EndsWith([Name], ".csv")),
+				    Content = FilterFile{0}[Content],
+				    CsvContent = Csv.Document(Content, [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    PromotedHeaders = Table.PromoteHeaders(CsvContent, [PromoteAllScalars=true]),
+				    
+				    // Select relevant columns
+				    SelectColumns = Table.SelectColumns(PromotedHeaders, {"nrealm_id", "site_sitezone", "realm_currency", "realm_timezone"}),
+				    
+				    // Rename columns
+				    RenamedColumns = Table.RenameColumns(SelectColumns, {
+				        {"nrealm_id", "realm_id"},
+				        {"site_sitezone", "timezone"},
+				        {"realm_currency", "currency"}
+				    }),
+				    
+				    // Type the columns
+				    TypedTable = Table.TransformColumnTypes(RenamedColumns, {
+				        {"realm_id", type text},
+				        {"timezone", type text},
+				        {"currency", type text},
+				        {"realm_timezone", type text}
+				    }),
+				    
+				    // Group by realm_id and take first value for each field
+				    Grouped = Table.Group(TypedTable, {"realm_id"}, {
+				        {"timezone", each List.First([timezone]), type text},
+				        {"currency", each List.First([currency]), type text},
+				        {"realm_timezone", each List.First([realm_timezone]), type text}
+				    })
+				in
+				    Grouped
+				```
+

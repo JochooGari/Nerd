@@ -1,0 +1,101 @@
+table dim_site
+	lineageTag: 37173f7e-f8f9-418b-a61c-ac2427528fda
+
+	column site_id
+		dataType: double
+		lineageTag: 26048e68-de80-4308-be70-77557f86fed5
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column site_description
+		dataType: string
+		lineageTag: 6420d400-812e-4ccf-93bd-e7c752147c81
+		summarizeBy: none
+		sourceColumn: site_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column nsite_id
+		dataType: string
+		lineageTag: 132581d9-de3c-4a4e-bc1b-58d7850f1e98
+		summarizeBy: none
+		sourceColumn: nsite_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column site_display_name
+		dataType: string
+		lineageTag: ff03f09d-a2ef-465b-bf96-1012db2910d2
+		summarizeBy: none
+		sourceColumn: site_display_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column nrealm_id
+		dataType: string
+		lineageTag: c28115c8-423b-461b-92a0-b7b3599be95c
+		summarizeBy: none
+		sourceColumn: nrealm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_site = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  // 1_read_dim_site: lit la dimension site SFCC
+				  read_dim_site = FX_ReadCsv("ccdw_dim_site_aaqp_prd.csv"),
+				
+				  // 2_select_cols: garde les colonnes utiles
+				  select_cols = Table.SelectColumns(
+				                  read_dim_site,
+				                  {"site_id","nsite_id","site_display_name","nrealm_id"}
+				                ),
+				
+				  // 3_typecast_cols: types explicites
+				  typecast_cols = Table.TransformColumns(
+				                    select_cols,
+				                    {
+				                      {"site_id", each try Number.From(_) otherwise null, type number},
+				                      {"nsite_id", each Text.From(_), type text},
+				                      {"site_display_name", each Text.From(_), type text},
+				                      {"nrealm_id", each Text.From(_), type text}
+				                    }
+				                  ),
+				
+				  // 4_add_description: construit un libellé lisible
+				  // Format: <nsite_id> | <site_display_name> (realm <nrealm_id>)
+				  add_description = Table.AddColumn(
+				                      typecast_cols,
+				                      "site_description",
+				                      each Text.Combine(
+				                             {
+				                               [nsite_id],
+				                               " | ",
+				                               [site_display_name],
+				                               " (realm ",
+				                               [nrealm_id],
+				                               ")"
+				                             },
+				                             ""
+				                           ),
+				                      type text
+				                    ),
+				
+				  // 5_reorder_output: ordonne et expose les colonnes
+				  reorder_output = Table.SelectColumns(
+				                     add_description,
+				                     {"site_id","site_description","nsite_id","site_display_name","nrealm_id"}
+				                   )
+				in
+				  reorder_output
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

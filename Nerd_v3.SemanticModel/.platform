@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Nerd_v3"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "400a0db6-afb6-474a-a9c2-2688130f03bf"
+  }
+}

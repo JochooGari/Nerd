@@ -1,0 +1,167 @@
+table SRC_Realm
+	lineageTag: 11223344-5566-7788-99aa-bbccddeeff00
+
+	column realm_id
+		dataType: string
+		lineageTag: 22334455-6677-8899-aabb-ccddeeff0011
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 33445566-7788-99aa-bbcc-ddeeff001122
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column zone
+		dataType: string
+		lineageTag: 44556677-8899-aabb-ccdd-eeff00112233
+		summarizeBy: none
+		sourceColumn: zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 55667788-99aa-bbcc-ddee-ff0011223344
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 66778899-aabb-ccdd-eeff-001122334455
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 778899aa-bbcc-ddee-ff00-112233445566
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column compatibility_mode
+		dataType: string
+		lineageTag: 8899aabb-ccdd-eeff-0011-223344556677
+		summarizeBy: none
+		sourceColumn: compatibility_mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column cartridges
+		dataType: string
+		lineageTag: 99aabbcc-ddee-ff00-1122-334455667788
+		summarizeBy: none
+		sourceColumn: cartridges
+
+		annotation SummarizationSetBy = Automatic
+
+	column ngl_version
+		dataType: string
+		lineageTag: aabbccdd-eeff-0011-2233-445566778899
+		summarizeBy: none
+		sourceColumn: ngl_version
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_sites
+		dataType: int64
+		formatString: 0
+		lineageTag: bbccddee-ff00-1122-3344-5566778899aa
+		summarizeBy: sum
+		sourceColumn: nb_sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column sites
+		dataType: string
+		lineageTag: ccddeeff-0011-2233-4455-66778899aabb
+		summarizeBy: none
+		sourceColumn: sites
+
+		annotation SummarizationSetBy = Automatic
+
+	column quotas
+		dataType: string
+		lineageTag: ddeeff00-1122-3344-5566-778899aabbcc
+		summarizeBy: none
+		sourceColumn: quotas
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: eeff0011-2233-4455-6677-8899aabbccdd
+		summarizeBy: sum
+		sourceColumn: nb_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_promotions
+		dataType: int64
+		formatString: 0
+		lineageTag: ff001122-3344-5566-7788-99aabbccddee
+		summarizeBy: sum
+		sourceColumn: nb_active_promotions
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 00112233-4455-6677-8899-aabbccddeeff
+		summarizeBy: sum
+		sourceColumn: nb_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column nb_active_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: 11223344-5566-7788-99aa-bbccddeeff11
+		summarizeBy: sum
+		sourceColumn: nb_active_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SRC_Realm = m
+		mode: import
+		queryGroup: 'Lot 1 v2'
+		source =
+				let
+				    Source = FX_ReadJsonFromBlob("realms.json"),
+				    Tbl = Table.FromRecords(Source),
+				    TypedTable = Table.TransformColumnTypes(Tbl, {
+				        {"realm_id", type text}, {"date", type date}, {"zone", type text},
+				        {"region", type text}, {"country", type text}, {"city", type text},
+				        {"compatibility_mode", type text}, {"ngl_version", type text}, {"nb_sites", Int64.Type}
+				    }),
+				    AddQuotasRec = Table.AddColumn(TypedTable, "quotas_rec", each try [quotas] otherwise null),
+				    ExpandQuotas = Table.ExpandRecordColumn(AddQuotasRec, "quotas_rec",
+				        {"nb_promotions","nb_active_promotions","nb_coupons","nb_active_coupons"},
+				        {"nb_promotions","nb_active_promotions","nb_coupons","nb_active_coupons"}),
+				    FillMissingQuotas = Table.TransformColumns(ExpandQuotas, {
+				        {"nb_promotions", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_active_promotions", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_coupons", each if _ = null then 0 else _, Int64.Type},
+				        {"nb_active_coupons", each if _ = null then 0 else _, Int64.Type}
+				    })
+				in
+				    FillMissingQuotas
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,13 @@
+business_channel_id,business_type,order_channel
+1,__UNKNOWN__,__UNKNOWN__
+2,B2B,Storefront
+3,B2B,CallCenter
+4,B2B,Marketplace
+5,B2B,DSS
+6,B2B,Store
+7,B2C,Storefront
+8,B2C,CallCenter
+9,B2C,Marketplace
+10,B2C,DSS
+11,B2C,Store
+21,B2C,CUSTOMERSERVICECENTER

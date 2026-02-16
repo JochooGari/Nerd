@@ -1,0 +1,128 @@
+table SRC_Ods
+	lineageTag: d4e5f6a7-b8c9-0123-def0-234567890123
+
+	column realm_id
+		dataType: string
+		lineageTag: e5f6a7b8-c9d0-1234-ef01-345678901234
+		summarizeBy: none
+		sourceColumn: realm_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6a7b8c9-d0e1-2345-f012-456789012345
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column limits_enabled
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a7b8c9d0-e1f2-3456-0123-567890123456
+		summarizeBy: none
+		sourceColumn: limits_enabled
+
+		annotation SummarizationSetBy = Automatic
+
+	column max_nb_ods
+		dataType: int64
+		formatString: 0
+		lineageTag: b8c9d0e1-f2a3-4567-1234-678901234567
+		summarizeBy: none
+		sourceColumn: max_nb_ods
+
+		annotation SummarizationSetBy = User
+
+	column 'minutes_up_by_profile.xlarge'
+		dataType: int64
+		formatString: 0
+		lineageTag: c9d0e1f2-a3b4-5678-2345-789012345678
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.xlarge
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.large'
+		dataType: int64
+		formatString: 0
+		lineageTag: d0e1f2a3-b4c5-6789-3456-890123456789
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.large
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'minutes_up_by_profile.medium'
+		dataType: int64
+		formatString: 0
+		lineageTag: e1f2a3b4-c5d6-7890-4567-901234567890
+		summarizeBy: sum
+		sourceColumn: minutes_up_by_profile.medium
+
+		annotation SummarizationSetBy = Automatic
+
+	column total_minutes_up
+		dataType: int64
+		formatString: 0
+		lineageTag: f2a3b4c5-d6e7-8901-5678-012345678901
+		summarizeBy: none
+		sourceColumn: total_minutes_up
+
+		annotation SummarizationSetBy = User
+
+	column total_minutes_down
+		dataType: int64
+		formatString: 0
+		lineageTag: a3b4c5d6-e7f8-9012-6789-123456789012
+		summarizeBy: none
+		sourceColumn: total_minutes_down
+
+		annotation SummarizationSetBy = User
+
+	column credits_up
+		dataType: int64
+		lineageTag: b4c5d6e7-f8a9-0123-7890-234567890123
+		summarizeBy: none
+		sourceColumn: credits_up
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column credits_down
+		dataType: double
+		lineageTag: c5d6e7f8-a9b0-1234-8901-345678901234
+		summarizeBy: none
+		sourceColumn: credits_down
+
+		annotation SummarizationSetBy = User
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition SRC_Ods = m
+		mode: import
+		queryGroup: 'Lot 1 v2'
+		source =
+				let
+				    Source = FX_ReadJsonFromBlob("ods.json"),
+				    Tbl = Table.FromRecords(Source),
+				    ExpandProfiles = Table.ExpandRecordColumn(Tbl, "minutes_up_by_profile",
+				        {"xlarge", "large", "medium"},
+				        {"minutes_up_by_profile.xlarge", "minutes_up_by_profile.large", "minutes_up_by_profile.medium"}),
+				    TypedTable = Table.TransformColumnTypes(ExpandProfiles, {
+				        {"realm_id", type text}, {"date", type date}, {"limits_enabled", type logical},
+				        {"max_nb_ods", Int64.Type}, {"minutes_up_by_profile.xlarge", Int64.Type},
+				        {"minutes_up_by_profile.large", Int64.Type}, {"minutes_up_by_profile.medium", Int64.Type},
+				        {"total_minutes_up", Int64.Type}, {"total_minutes_down", Int64.Type},
+				        {"credits_up", Int64.Type}, {"credits_down", type number}
+				    })
+				in
+				    TypedTable
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table

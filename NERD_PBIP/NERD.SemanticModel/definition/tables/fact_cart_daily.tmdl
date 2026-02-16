@@ -1,0 +1,72 @@
+table fact_cart_daily
+	lineageTag: 86c4a02d-e506-41bf-86cd-388a2a63ee0b
+
+	column site_id
+		dataType: double
+		lineageTag: 77b08c6e-110f-4403-8a4f-54750adf3c84
+		summarizeBy: none
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column request_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e4c87464-a74e-4ab3-9f74-450818e4c521
+		summarizeBy: none
+		sourceColumn: request_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column cart_include_requests
+		dataType: double
+		lineageTag: a7532bba-188c-42b9-8a74-3418315b1a6d
+		summarizeBy: sum
+		sourceColumn: cart_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_response_ms
+		dataType: double
+		lineageTag: 13c63263-8892-481e-b7b5-2e8988125ef7
+		summarizeBy: sum
+		sourceColumn: cart_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_avg_response_ms
+		dataType: double
+		lineageTag: af362802-45c7-4178-884b-a72ef67a3495
+		summarizeBy: sum
+		sourceColumn: cart_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_cart_daily = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  read_include        = fact_include_controller_daily,
+				  filter_cart         = Table.SelectRows(read_include, each Text.Upper([main_controller_name])="CART-SHOW"),
+				  group_cart          = Table.Group(filter_cart, {"site_id","request_date"},
+				                        {{"cart_include_requests", each List.Sum([total_requests]), type number},
+				                         {"cart_include_response_ms", each List.Sum([total_response_time_ms]), type number}}),
+				  add_avg_ms          = Table.AddColumn(group_cart, "cart_include_avg_response_ms", each if [cart_include_requests]=0 then 0 else [cart_include_response_ms]/[cart_include_requests], type number)
+				in
+				  add_avg_ms
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

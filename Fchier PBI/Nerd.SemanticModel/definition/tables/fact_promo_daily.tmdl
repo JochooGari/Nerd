@@ -1,0 +1,152 @@
+table fact_promo_daily
+	lineageTag: 6224f8b0-8d0a-4712-bb27-9878c6d93d5d
+
+	column site_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 47516ade-a342-4a27-979e-7ac445eda281
+		summarizeBy: sum
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3d520b7b-a4be-4e27-94ee-88b535566e13
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column promotions_active
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a570861-eb55-454b-9101-b76ed7f95bdd
+		summarizeBy: sum
+		sourceColumn: promotions_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_visits
+		dataType: int64
+		formatString: 0
+		lineageTag: 61ecce3e-1509-4541-8de9-d8e03db8ca5d
+		summarizeBy: sum
+		sourceColumn: promo_visits
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_activations
+		dataType: int64
+		formatString: 0
+		lineageTag: 25fe8089-81a3-43e5-bc97-609b4d6fa1d7
+		summarizeBy: sum
+		sourceColumn: promo_activations
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_line_items
+		dataType: int64
+		formatString: 0
+		lineageTag: e0bcf3ac-6826-4ef6-80be-f2f7684125ed
+		summarizeBy: sum
+		sourceColumn: promo_line_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column coupon_uses
+		dataType: int64
+		formatString: 0
+		lineageTag: 168c41b4-22fc-4dba-b02b-4320240f87da
+		summarizeBy: sum
+		sourceColumn: coupon_uses
+
+		annotation SummarizationSetBy = Automatic
+
+	column distinct_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: ba753208-7591-4743-a2d3-1118c36fcac1
+		summarizeBy: sum
+		sourceColumn: distinct_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column gm_value
+		dataType: double
+		lineageTag: 6ba9246d-13ad-44bb-bcf7-1829f25c1859
+		summarizeBy: sum
+		sourceColumn: gm_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_promo_daily = m
+		mode: import
+		queryGroup: 'Lot 2'
+		source =
+				let
+				  read_activations = FX_ReadCsv("ccdw_aggr_promotion_activation_aaqp_prd.csv"),
+				  typecast_activations = Table.TransformColumns(read_activations,{
+				      {"site_id", each try Number.From(_) otherwise null, type number},
+				      {"activation_date", each Date.From(DateTime.From(_)), type date},
+				      {"promotion_id", each try Number.From(_) otherwise null, type number},
+				      {"num_visits", each try Number.From(_) otherwise 0, type number},
+				      {"num_activations", each try Number.From(_) otherwise 0, type number}
+				  }),
+				  group_activations = Table.Group(typecast_activations, {"site_id","activation_date"},
+				    {
+				      {"promotions_active", each List.NonNullCount(List.Distinct([promotion_id])), type number},
+				      {"promo_visits", each List.Sum([num_visits]), type number},
+				      {"promo_activations", each List.Sum([num_activations]), type number}
+				    }
+				  ),
+				
+				  read_lineitems = FX_ReadCsv("ccdw_fact_promotion_line_item_aaqp_prd.csv"),
+				  typecast_lineitems = Table.TransformColumns(read_lineitems,{
+				      {"site_id", each try Number.From(_) otherwise null, type number},
+				      {"utc_submit_timestamp", each Date.From(DateTime.From(_)), type date},
+				      {"coupon_id", each try Number.From(_) otherwise null, type number},
+				      {"std_li_gross_merchandise_value", each try Number.From(_) otherwise 0, type number}
+				  }),
+				  group_lineitems = Table.Group(typecast_lineitems, {"site_id","utc_submit_timestamp"},
+				    {
+				      {"promo_line_items", each Table.RowCount(_), Int64.Type},
+				      {"coupon_uses", each List.NonNullCount([coupon_id]), Int64.Type},
+				      {"distinct_coupons", each List.NonNullCount(List.Distinct([coupon_id])), Int64.Type},
+				      {"gm_value", each List.Sum([std_li_gross_merchandise_value]), type number}
+				    }
+				  ),
+				  rename_line_date = Table.RenameColumns(group_lineitems, {{"utc_submit_timestamp","date_line"}}),
+				
+				  join_left = Table.NestedJoin(group_activations, {"site_id","activation_date"}, rename_line_date, {"site_id","date_line"}, "li", JoinKind.FullOuter),
+				  expand_li = Table.ExpandTableColumn(join_left, "li", {"site_id","date_line","promo_line_items","coupon_uses","distinct_coupons","gm_value"}, {"_site_id","date_line","promo_line_items","coupon_uses","distinct_coupons","gm_value"}),
+				
+				  fill_nulls = Table.TransformColumns(expand_li,{
+				      {"promotions_active", each _ ?? 0, Int64.Type},
+				      {"promo_visits", each _ ?? 0, Int64.Type},
+				      {"promo_activations", each _ ?? 0, Int64.Type},
+				      {"promo_line_items", each _ ?? 0, Int64.Type},
+				      {"coupon_uses", each _ ?? 0, Int64.Type},
+				      {"distinct_coupons", each _ ?? 0, Int64.Type},
+				      {"gm_value", each _ ?? 0.0, type number}
+				  }),
+				
+				  coalesce_site = Table.AddColumn(fill_nulls, "site_id_final", each if [site_id] <> null then [site_id] else [_site_id], Int64.Type),
+				  coalesce_date = Table.AddColumn(coalesce_site, "date", each if [date_line] <> null then [date_line] else [activation_date], type date),
+				
+				  cleanup_cols = Table.RemoveColumns(coalesce_date, {"_site_id","date_line","activation_date","site_id"}),
+				  rename_cols = Table.RenameColumns(cleanup_cols, {{"site_id_final","site_id"}}),
+				
+				  select_cols = Table.SelectColumns(rename_cols, {"site_id","date","promotions_active","promo_visits","promo_activations","promo_line_items","coupon_uses","distinct_coupons","gm_value"})
+				in
+				  select_cols
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

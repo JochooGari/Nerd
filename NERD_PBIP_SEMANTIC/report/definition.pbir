@@ -1,0 +1,14 @@
+{
+  "version": "0.1",
+  "datasetReference": {
+    "byName": {
+      "datasetName": "NERD_SemanticModel_1550_SP"
+    }
+  },
+  "expressions": {
+    "visuals": []
+  },
+  "config": {
+    "themePalette": "Custom"
+  }
+}

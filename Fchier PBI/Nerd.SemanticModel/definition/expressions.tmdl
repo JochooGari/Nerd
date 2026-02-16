@@ -1,0 +1,170 @@
+expression pSPSite = "https://loreal.sharepoint.com/sites/-FR-GLOBALD2CITTEAM" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: e75824c1-073e-47d5-b753-399539fe7c71
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression pFolderPath = "/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data/" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 2367feee-55bf-45e9-81d0-b6a987fca982
+	queryGroup: 'Lot 1'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+
+expression pRealmsFile = "realms.json" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 724a610b-2e07-4e4c-b968-96d4a7f96bb2
+	queryGroup: 'Lot 1'
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression pODSFile = "ods.json" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: f32a3683-6027-4947-abd9-c17e9d046100
+	queryGroup: 'Lot 1'
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+
+expression pStartDate = #date(2024, 2, 1) meta [IsParameterQuery=true, Type="Date", IsParameterQueryRequired=true]
+	lineageTag: 10efa5a1-24ff-439f-88de-a0029ad9c394
+	queryGroup: 'Lot 1'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 1a8af776-364d-4be9-8ee0-03ebac28db87
+	queryGroup: 'Transform File from F_ODS Daily\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Sample File' =
+		let
+		    Site = pSPSite,
+		    Folder = pFolderPath,
+		    FileName = pODSFile,
+		    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+		    #"Filtered Rows2" = Table.SelectRows(AllFiles, each Text.Contains([Name], "ods")),
+		    Navigation1 = #"Filtered Rows2"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 09119faf-14bf-4a45-88f1-bb343c422523
+	queryGroup: 'Transform File from F_ODS Daily\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Json.Document(Parameter1),
+		    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+		    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"realm_id", "date", "limits_enabled", "max_nb_ods", "minutes_up_by_profile", "total_minutes_up", "total_minutes_down", "credits_up", "credits_down"}, {"realm_id", "date", "limits_enabled", "max_nb_ods", "minutes_up_by_profile", "total_minutes_up", "total_minutes_down", "credits_up", "credits_down"}),
+		    #"Expanded minutes_up_by_profile" = Table.ExpandRecordColumn(#"Expanded Column1", "minutes_up_by_profile", {"xlarge", "large", "medium"}, {"minutes_up_by_profile.xlarge", "minutes_up_by_profile.large", "minutes_up_by_profile.medium"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded minutes_up_by_profile",{{"realm_id", type text}, {"date", type date}, {"limits_enabled", type logical}, {"max_nb_ods", Int64.Type}, {"minutes_up_by_profile.xlarge", Int64.Type}, {"minutes_up_by_profile.large", Int64.Type}, {"minutes_up_by_profile.medium", Int64.Type}, {"total_minutes_up", Int64.Type}, {"total_minutes_down", Int64.Type}, {"credits_up", Int64.Type}, {"credits_down", type number}})
+		in
+		    #"Changed Type"
+	lineageTag: 974bfd21-f140-4866-aa3c-317d8d7bc314
+	queryGroup: 'Transform File from F_ODS Daily'
+
+	annotation PBI_ResultType = List
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Json.Document(Parameter1),
+		    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+		    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"realm_id", "date", "limits_enabled", "max_nb_ods", "minutes_up_by_profile", "total_minutes_up", "total_minutes_down", "credits_up", "credits_down"}, {"realm_id", "date", "limits_enabled", "max_nb_ods", "minutes_up_by_profile", "total_minutes_up", "total_minutes_down", "credits_up", "credits_down"}),
+		    #"Expanded minutes_up_by_profile" = Table.ExpandRecordColumn(#"Expanded Column1", "minutes_up_by_profile", {"xlarge", "large", "medium"}, {"minutes_up_by_profile.xlarge", "minutes_up_by_profile.large", "minutes_up_by_profile.medium"}),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Expanded minutes_up_by_profile",{{"realm_id", type text}, {"date", type date}, {"limits_enabled", type logical}, {"max_nb_ods", Int64.Type}, {"minutes_up_by_profile.xlarge", Int64.Type}, {"minutes_up_by_profile.large", Int64.Type}, {"minutes_up_by_profile.medium", Int64.Type}, {"total_minutes_up", Int64.Type}, {"total_minutes_down", Int64.Type}, {"credits_up", Int64.Type}, {"credits_down", type number}})
+		in
+		    #"Changed Type"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File""}" ]
+	lineageTag: de0f68d6-83c6-4049-a6db-4156fa12fee0
+	queryGroup: 'Transform File from F_ODS Daily\Helper Queries'
+
+	annotation PBI_ResultType = Function
+
+expression pFolderPath_lot_2 = "/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data Lot 2/Souce data" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 9a4b0fed-f028-447e-9b27-fde95488c884
+	queryGroup: 'Lot 2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression FX_ReadCsv =
+		(fileName as text) as table =>
+		let
+		    Rows     = Table.SelectRows(Data_Source, each [Name] = fileName),
+		    FirstRow = if Table.RowCount(Rows) = 0
+		               then error ("File not found: " & fileName)
+		               else Rows{0},
+		    Content  = FirstRow[Content],
+		    Csv      = Csv.Document(Content, [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+		    Promoted = Table.PromoteHeaders(Csv, [PromoteAllScalars=true])
+		in
+		    Promoted
+	lineageTag: b43996ee-f559-4499-a2ef-2415ec0ffa25
+	queryGroup: 'Lot 2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression Data_Source =
+		let
+		    Site = pSPSite,
+		    Folder = pFolderPath_lot_2,
+		    AllFiles = SharePoint.Files(Site, [ApiVersion = 15]),
+		    Filter_Folder = Table.SelectRows(AllFiles, each [Folder Path] = "https://loreal.sharepoint.com/sites/-FR-GLOBALD2CITTEAM/Documents partages/General/04. TRANSVERSAL PROJECTS/20. NERD -  NGL Environments Reliability Dashboard/Data Lot 2/Source data/")
+		in
+		    Filter_Folder
+	lineageTag: 7665bb56-3511-4382-b3fe-6104c37e5f67
+	queryGroup: 'Lot 2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression pEnvironment = "nerd" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+	queryGroup: 'Lot 1 v2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression pAzureBlobUrl = "https://nerdsa.blob.core.windows.net/nerd-data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: b2c3d4e5-f6a7-8901-bcde-f12345678901
+	queryGroup: 'Lot 1 v2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression FX_ReadJsonFromBlob =
+		(fileName as text) as list =>
+		let
+		    Source = AzureStorage.Blobs(pAzureBlobUrl),
+		    FilterFolder = Table.SelectRows(Source, each [Name] = pEnvironment),
+		    ExpandData = FilterFolder{0}[Data],
+		    FilterFile = Table.SelectRows(ExpandData, each [Name] = "B2C/" & fileName),
+		    Content = FilterFile{0}[Content],
+		    JsonContent = Json.Document(Content)
+		in
+		    JsonContent
+	lineageTag: c3d4e5f6-a7b8-9012-cdef-123456789012
+	queryGroup: 'Lot 1 v2'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

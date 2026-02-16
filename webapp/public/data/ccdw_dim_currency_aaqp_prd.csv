@@ -1,0 +1,222 @@
+currency_id,alpha_code,display_name,numeric_code,symbol,default_fraction_digits
+1,XXX,Unknown Currency,999,XXX,-1
+101,BZD,Belize Dollar,84,BZD,2
+102,BGN,Bulgarian Lev,975,BGN,2
+103,BMD,Bermudan Dollar,60,BMD,2
+104,RWF,Rwandan Franc,646,RWF,0
+105,TOP,Tongan Paʻanga,776,TOP,2
+106,COP,Colombian Peso,170,COP,2
+107,VUV,Vanuatu Vatu,548,VUV,0
+108,TND,Tunisian Dinar,788,TND,3
+109,CZK,Czech Republic Koruna,203,CZK,2
+110,BSD,Bahamian Dollar,44,BSD,2
+111,MWK,Malawian Kwacha,454,MWK,2
+112,AED,United Arab Emirates Dirham,784,AED,2
+113,ROL,Romanian Leu (1952-2006),946,ROL,2
+114,DKK,Danish Krone,208,DKK,2
+115,RSD,Serbian Dinar,941,RSD,2
+116,LAK,Laotian Kip,418,LAK,2
+117,LSL,Lesotho Loti,426,LSL,2
+118,IEP,Irish Pound,372,IEP,2
+119,SHP,Saint Helena Pound,654,SHP,2
+120,BAM,Bosnia-Herzegovina Convertible Mark,977,BAM,2
+121,BHD,Bahraini Dinar,48,BHD,3
+122,RON,Romanian Leu,946,RON,2
+123,XPT,Platinum,962,XPT,-1
+124,CHF,Swiss Franc,756,CHF,2
+125,MVR,Maldivian Rufiyaa,462,MVR,2
+126,SSP,South Sudanese Pound,728,SSP,2
+127,TMT,Turkmenistani Manat,934,TMT,2
+128,SOS,Somali Shilling,706,SOS,2
+129,GHC,Ghanaian Cedi (1979-2007),288,GHC,2
+130,ETB,Ethiopian Birr,230,ETB,2
+131,NAD,Namibian Dollar,516,NAD,2
+132,VEF,Venezuelan Bolívar,937,VEF,2
+133,SRG,Surinamese Guilder,740,SRG,2
+134,CRC,Costa Rican Colón,188,CRC,2
+135,IDR,Indonesian Rupiah,360,IDR,2
+136,ZMW,ZMW,967,ZMW,2
+137,IQD,Iraqi Dinar,368,IQD,3
+138,CNY,Chinese Yuan,156,CNY,2
+139,USS,US Dollar (Same day),998,USS,2
+140,BIF,Burundian Franc,108,BIF,0
+141,RUR,Russian Ruble (1991-1998),810,RUR,2
+142,HTG,Haitian Gourde,332,HTG,2
+143,MYR,Malaysian Ringgit,458,MYR,2
+144,BEF,Belgian Franc,56,BEF,0
+145,KMF,Comorian Franc,174,KMF,0
+146,OMR,Omani Rial,512,OMR,3
+147,NIO,Nicaraguan Córdoba,558,NIO,2
+148,USN,US Dollar (Next day),997,USN,2
+149,XBB,European Monetary Unit,956,XBB,-1
+150,JOD,Jordanian Dinar,400,JOD,3
+151,PHP,Philippine Peso,608,PHP,2
+152,NGN,Nigerian Naira,566,NGN,2
+153,XFU,French UIC-Franc,0,XFU,-1
+154,FJD,Fijian Dollar,242,FJD,2
+155,ZWD,Zimbabwean Dollar (1980-2008),716,ZWD,2
+156,GYD,Guyanaese Dollar,328,GYD,2
+157,GIP,Gibraltar Pound,292,GIP,2
+158,EEK,Estonian Kroon,233,EEK,2
+159,CSD,Serbian Dinar (2002-2006),891,CSD,2
+160,SYP,Syrian Pound,760,SYP,2
+161,STD,São Tomé and Príncipe Dobra,678,STD,2
+162,SVC,Salvadoran Colón,222,SVC,2
+163,ISK,Icelandic Króna,352,ISK,0
+164,AFA,Afghan Afghani (1927-2002),4,AFA,2
+165,AZM,Azerbaijani Manat (1993-2006),31,AZM,2
+166,MGA,Malagasy Ariary,969,MGA,2
+167,JPY,Japanese Yen,392,JPY,0
+168,XOF,CFA Franc BCEAO,952,XOF,0
+169,XSU,Sucre,994,XSU,-1
+170,MXN,Mexican Peso,484,MXN,2
+171,GBP,British Pound Sterling,826,GBP,2
+172,BWP,Botswanan Pula,72,BWP,2
+173,JMD,Jamaican Dollar,388,JMD,2
+174,KYD,Cayman Islands Dollar,136,KYD,2
+175,SZL,Swazi Lilangeni,748,SZL,2
+176,NOK,Norwegian Krone,578,NOK,2
+177,HKD,Hong Kong Dollar,344,HKD,2
+178,XPF,CFP Franc,953,XPF,0
+179,XFO,French Gold Franc,0,XFO,-1
+180,ILS,Israeli New Sheqel,376,ILS,2
+181,XDR,Special Drawing Rights,960,XDR,-1
+182,AWG,Aruban Florin,533,AWG,2
+183,CAD,Canadian Dollar,124,CAD,2
+184,ALL,Albanian Lek,8,ALL,2
+185,MAD,Moroccan Dirham,504,MAD,2
+186,SBD,Solomon Islands Dollar,90,SBD,2
+187,TJS,Tajikistani Somoni,972,TJS,2
+188,KRW,South Korean Won,410,KRW,0
+189,PAB,Panamanian Balboa,590,PAB,2
+190,GHS,Ghanaian Cedi,936,GHS,2
+191,AZN,Azerbaijani Manat,944,AZN,2
+192,BND,Brunei Dollar,96,BND,2
+193,NZD,New Zealand Dollar,554,NZD,2
+194,PEN,Peruvian Nuevo Sol,604,PEN,2
+195,GEL,Georgian Lari,981,GEL,2
+196,MTL,Maltese Lira,470,MTL,2
+197,UGX,Ugandan Shilling,800,UGX,0
+198,GRD,Greek Drachma,300,GRD,0
+199,AFN,Afghan Afghani,971,AFN,2
+200,BOV,Bolivian Mvdol,984,BOV,2
+201,TWD,New Taiwan Dollar,901,TWD,2
+202,LYD,Libyan Dinar,434,LYD,3
+203,CLF,Chilean Unit of Account (UF),990,CLF,0
+204,ZMK,Zambian Kwacha,894,ZMK,2
+205,AMD,Armenian Dram,51,AMD,2
+206,THB,Thai Baht,764,THB,2
+207,IRR,Iranian Rial,364,IRR,2
+208,XBD,European Unit of Account (XBD),958,XBD,-1
+209,CYP,Cypriot Pound,196,CYP,2
+210,ESP,Spanish Peseta,724,ESP,0
+211,MMK,Myanma Kyat,104,MMK,2
+212,BBD,Barbadian Dollar,52,BBD,2
+213,DJF,Djiboutian Franc,262,DJF,0
+214,DOP,Dominican Peso,214,DOP,2
+215,VEB,Venezuelan Bolívar (1871-2008),862,VEB,2
+216,TRL,Turkish Lira (1922-2005),792,TRL,0
+217,MXV,Mexican Investment Unit,979,MXV,2
+218,CLP,Chilean Peso,152,CLP,0
+219,YER,Yemeni Rial,886,YER,2
+220,SAR,Saudi Riyal,682,SAR,2
+221,TTD,Trinidad and Tobago Dollar,780,TTD,2
+222,AYM,AYM,945,AYM,2
+223,ADP,Andorran Peseta,20,ADP,0
+224,MNT,Mongolian Tugrik,496,MNT,2
+225,SLL,Sierra Leonean Leone,694,SLL,2
+226,SCR,Seychellois Rupee,690,SCR,2
+227,ITL,Italian Lira,380,ITL,0
+228,NPR,Nepalese Rupee,524,NPR,2
+229,SKK,Slovak Koruna,703,SKK,2
+230,BYB,Belarusian New Ruble (1994-1999),112,BYB,0
+231,XUA,ADB Unit of Account,965,XUA,-1
+232,GTQ,Guatemalan Quetzal,320,GTQ,2
+233,SRD,Surinamese Dollar,968,SRD,2
+234,WST,Samoan Tala,882,WST,2
+235,DEM,German Mark,276,DEM,2
+236,BDT,Bangladeshi Taka,50,BDT,2
+237,INR,Indian Rupee,356,INR,2
+238,UZS,Uzbekistan Som,860,UZS,2
+239,NLG,Dutch Guilder,528,NLG,2
+240,EGP,Egyptian Pound,818,EGP,2
+241,MDL,Moldovan Leu,498,MDL,2
+242,SIT,Slovenian Tolar,705,SIT,2
+243,LBP,Lebanese Pound,422,LBP,2
+244,XTS,Testing Currency Code,963,XTS,-1
+245,AOA,Angolan Kwanza,973,AOA,2
+246,AUD,Australian Dollar,36,AUD,2
+247,EUR,Euro,978,EUR,2
+248,TPE,Timorese Escudo,626,TPE,0
+249,KES,Kenyan Shilling,404,KES,2
+250,ZWN,ZWN,942,ZWN,2
+251,LUF,Luxembourgian Franc,442,LUF,0
+252,HRK,Croatian Kuna,191,HRK,2
+253,SDD,Sudanese Dinar (1992-2007),736,SDD,2
+254,GWP,Guinea-Bissau Peso,624,GWP,2
+255,KGS,Kyrgystani Som,417,KGS,2
+256,ANG,Netherlands Antillean Guilder,532,ANG,2
+257,XPD,Palladium,964,XPD,-1
+258,SDG,Sudanese Pound,938,SDG,2
+259,BRL,Brazilian Real,986,BRL,2
+260,MUR,Mauritian Rupee,480,MUR,2
+261,ZAR,South African Rand,710,ZAR,2
+262,ATS,Austrian Schilling,40,ATS,2
+263,VND,Vietnamese Dong,704,VND,0
+264,XBC,European Unit of Account (XBC),957,XBC,-1
+265,KZT,Kazakhstani Tenge,398,KZT,2
+266,XBA,European Composite Unit,955,XBA,-1
+267,DZD,Algerian Dinar,12,DZD,2
+268,SEK,Swedish Krona,752,SEK,2
+269,TMM,Turkmenistani Manat (1993-2009),795,TMM,2
+270,TZS,Tanzanian Shilling,834,TZS,2
+271,FIM,Finnish Markka,246,FIM,2
+272,LTL,Lithuanian Litas,440,LTL,2
+273,HUF,Hungarian Forint,348,HUF,2
+274,QAR,Qatari Rial,634,QAR,2
+275,MKD,Macedonian Denar,807,MKD,2
+276,MZM,Mozambican Metical (1980-2006),508,MZM,2
+277,HNL,Honduran Lempira,340,HNL,2
+278,KPW,North Korean Won,408,KPW,2
+279,TRY,Turkish Lira,949,TRY,2
+280,BYR,Belarusian Ruble,974,BYR,0
+281,BGL,Bulgarian Hard Lev,100,BGL,2
+282,UYU,Uruguayan Peso,858,UYU,2
+283,PYG,Paraguayan Guarani,600,PYG,0
+284,UAH,Ukrainian Hryvnia,980,UAH,2
+285,GMD,Gambian Dalasi,270,GMD,2
+286,PKR,Pakistani Rupee,586,PKR,2
+287,XAF,CFA Franc BEAC,950,XAF,0
+288,LVL,Latvian Lats,428,LVL,2
+289,XAU,Gold,959,XAU,-1
+290,XCD,East Caribbean Dollar,951,XCD,2
+291,PTE,Portuguese Escudo,620,PTE,0
+292,LRD,Liberian Dollar,430,LRD,2
+293,BTN,Bhutanese Ngultrum,64,BTN,2
+294,KHR,Cambodian Riel,116,KHR,2
+295,FKP,Falkland Islands Pound,238,FKP,2
+296,ZWR,Zimbabwean Dollar (2008),935,ZWR,2
+297,ZWL,Zimbabwean Dollar (2009),932,ZWL,2
+298,RUB,Russian Ruble,643,RUB,2
+299,LKR,Sri Lankan Rupee,144,LKR,2
+300,CUC,Cuban Convertible Peso,931,CUC,2
+301,XAG,Silver,961,XAG,-1
+302,KWD,Kuwaiti Dinar,414,KWD,3
+303,PLN,Polish Zloty,985,PLN,2
+304,MZN,Mozambican Metical,943,MZN,2
+305,YUM,Yugoslavian New Dinar (1994-2002),891,YUM,2
+306,BOB,Bolivian Boliviano,68,BOB,2
+307,MRO,Mauritanian Ouguiya,478,MRO,2
+308,MOP,Macanese Pataca,446,MOP,2
+309,SGD,Singapore Dollar,702,SGD,2
+310,FRF,French Franc,250,FRF,2
+311,CVE,Cape Verdean Escudo,132,CVE,2
+312,ERN,Eritrean Nakfa,232,ERN,2
+313,PGK,Papua New Guinean Kina,598,PGK,2
+314,ARS,Argentine Peso,32,ARS,2
+315,CUP,Cuban Peso,192,CUP,2
+316,GNF,Guinean Franc,324,GNF,0
+317,MGF,Malagasy Franc,450,MGF,0
+318,USD,US Dollar,840,$,2
+319,CDF,Congolese Franc,976,CDF,2
+401,BYN,Belarusian ruble,933,br,2

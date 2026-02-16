@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "3d26706f830c6e8cdb3b",
+  "position": {
+    "x": 15.555555555555555,
+    "y": 445.55555555555554,
+    "z": 8000,
+    "height": 197.77777777777777,
+    "width": 613.33333333333337,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_controller_daily"
+                    }
+                  },
+                  "Property": "request_date"
+                }
+              },
+              "queryRef": "fact_controller_daily.request_date",
+              "nativeQueryRef": "request_date",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "0 Mesure technical monitoring"
+                    }
+                  },
+                  "Property": "Average response time (controller)"
+                }
+              },
+              "queryRef": "0 Mesure technical monitoring.Average response time (controller)",
+              "nativeQueryRef": "Average response time (controller)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_controller_daily"
+                  }
+                },
+                "Property": "request_date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

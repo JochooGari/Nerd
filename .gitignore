@@ -1,0 +1,39 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Virtual environment
+.venv/
+
+# Large files
+*.pbix
+*.mp4
+*.abf
+
+# Cache and temp
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Backup folders
+Backup/
+TMDL_Backup/
+
+# Data folders (too large)
+data_SFCC/
+data lot 1/
+perf_dataset/
+sample json/
+json model/
+
+# Node modules
+node_modules/
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+
+# Old versions
+A Organiser/
+2026_02_16/

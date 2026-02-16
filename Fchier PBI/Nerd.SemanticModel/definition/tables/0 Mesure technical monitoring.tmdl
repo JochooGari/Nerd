@@ -1,0 +1,122 @@
+table '0 Mesure technical monitoring'
+	lineageTag: b925cdc4-5322-43b8-9036-8c50ec169683
+
+	measure 'Nb controller' = DISTINCTCOUNT(fact_controller_daily[controller_name])
+		formatString: 0
+		lineageTag: de1c4658-6cf2-4ceb-89ee-0f4274ec4e8b
+
+	measure 'Nb request (controller)' = SUM(fact_controller_daily[total_requests])
+		lineageTag: 6f0a9ffc-a0d6-4eb2-8652-c170bfe80853
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average response time (controller)' = AVERAGE(fact_controller_daily[avg_response_time_ms])
+		lineageTag: e884f7b6-33e5-4927-9556-dc8bb04accfd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average cache hit rate' = AVERAGE(fact_controller_daily[cache_hit_rate])
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 290030bb-28fe-48f9-83b6-f1e0202f6b20
+
+	/// KPIs principaux - Site Level
+	measure 'Total Requests (Site)' = SUM(fact_site_daily[total_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567801
+
+	measure 'Total Error Requests' = SUM(fact_controller_daily[error_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567802
+
+	measure 'Error Rate' = DIVIDE(SUM(fact_controller_daily[error_requests]), SUM(fact_controller_daily[total_requests]), 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567803
+
+	measure 'Cache Hit Requests' = SUM(fact_controller_daily[cache_hit_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567804
+
+	measure 'Cache Hit Rate (Weighted)' = DIVIDE(SUM(fact_controller_daily[cache_hit_requests]), SUM(fact_controller_daily[total_requests]), 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567805
+
+	/// Include Controllers Measures
+	measure 'Nb Include Controllers' = DISTINCTCOUNT(fact_include_controller_daily[controller_name])
+		formatString: 0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567806
+
+	measure 'Total Include Requests' = SUM(fact_include_controller_daily[total_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567807
+
+	measure 'Avg Include Response Time' = AVERAGE(fact_include_controller_daily[avg_response_time_ms])
+		formatString: 0.00
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567808
+
+	measure 'Include Cache Hits' = SUM(fact_include_controller_daily[cache_hit_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567809
+
+	/// Cache Detailed Measures
+	measure 'Cache Miss Requests' = SUM(fact_include_cache_daily[cache_miss_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567810
+
+	measure 'Cache Miss And Store Requests' = SUM(fact_include_cache_daily[cache_miss_and_store_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567811
+
+	measure 'Cache Miss Rate' = DIVIDE(SUM(fact_include_cache_daily[cache_miss_requests]), SUM(fact_include_cache_daily[total_requests]), 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567812
+
+	measure 'Cache Miss And Store Rate' = DIVIDE(SUM(fact_include_cache_daily[cache_miss_and_store_requests]), SUM(fact_include_cache_daily[total_requests]), 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567813
+
+	/// API Measures (OCAPI + SCAPI)
+	measure 'Total API Requests' = SUM('fact_api_daily OCAPI + SCAPI'[total_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567814
+
+	measure 'API Error Requests' = SUM('fact_api_daily OCAPI + SCAPI'[error_requests])
+		formatString: #,##0
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567815
+
+	measure 'API Error Rate' = DIVIDE([API Error Requests], [Total API Requests], 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567816
+
+	measure 'API Avg Response Time' = AVERAGE('fact_api_daily OCAPI + SCAPI'[avg_response_time_ms])
+		formatString: 0.00
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567817
+
+	/// Advanced Measures
+	measure '% of Total Requests' =
+		DIVIDE(
+			[Nb request (controller)],
+			CALCULATE([Nb request (controller)], ALL(fact_controller_daily)),
+			0
+		)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: a1b2c3d4-e5f6-7890-abcd-ef1234567818
+
+	column Column1
+		dataType: string
+		lineageTag: ca1c44ff-c14b-44ef-944a-da265f31201f
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '0 Mesure technical monitoring' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,222 @@
+table fact_promo_perf_simulation
+	lineageTag: f52a9909-0489-43d9-a446-aad584531b92
+
+	column site_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d8e5bdf3-6400-426e-bd01-56adb1e372f3
+		summarizeBy: sum
+		sourceColumn: site_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_visits
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c8913e5-9197-4ae5-8406-e8c8f50461a3
+		summarizeBy: sum
+		sourceColumn: promo_visits
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_activations
+		dataType: int64
+		formatString: 0
+		lineageTag: 4702c6ec-8eb5-4e89-8ad3-179e633d66a9
+		summarizeBy: sum
+		sourceColumn: promo_activations
+
+		annotation SummarizationSetBy = Automatic
+
+	column promo_line_items
+		dataType: int64
+		formatString: 0
+		lineageTag: 10161d70-e3df-4c58-9a8a-048dff5ae78a
+		summarizeBy: sum
+		sourceColumn: promo_line_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column coupon_uses
+		dataType: int64
+		formatString: 0
+		lineageTag: 41693a21-198d-4d4a-b5f0-60d00d202535
+		summarizeBy: sum
+		sourceColumn: coupon_uses
+
+		annotation SummarizationSetBy = Automatic
+
+	column distinct_coupons
+		dataType: int64
+		formatString: 0
+		lineageTag: da53e3ea-4517-449e-a257-2babe496ad3e
+		summarizeBy: sum
+		sourceColumn: distinct_coupons
+
+		annotation SummarizationSetBy = Automatic
+
+	column gm_value
+		dataType: double
+		lineageTag: a575fcf3-66b8-4af6-9dff-f0f62b2706cb
+		summarizeBy: sum
+		sourceColumn: gm_value
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_requests
+		dataType: double
+		lineageTag: 60038218-9456-445c-8eef-c367003e3131
+		summarizeBy: sum
+		sourceColumn: cart_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_response_ms
+		dataType: double
+		lineageTag: 91dfcfbb-f0de-482a-887c-342fd99fceb3
+		summarizeBy: sum
+		sourceColumn: cart_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cart_include_avg_response_ms
+		dataType: double
+		lineageTag: baf431ee-6887-4c29-9889-f44e9c56a619
+		summarizeBy: sum
+		sourceColumn: cart_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_requests
+		dataType: double
+		lineageTag: 601a651c-5d4c-41b6-8c53-1a6aa0215e60
+		summarizeBy: sum
+		sourceColumn: checkout_include_requests
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_response_ms
+		dataType: double
+		lineageTag: cb89b7ce-9835-45df-bb2a-23f16c6ef051
+		summarizeBy: sum
+		sourceColumn: checkout_include_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column checkout_include_avg_response_ms
+		dataType: double
+		lineageTag: efedb1bc-5b6a-40d7-bf6a-c25fd182383a
+		summarizeBy: sum
+		sourceColumn: checkout_include_avg_response_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3420bd0d-b7e5-4d39-8f2c-514ff9920ac5
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column promotions_active
+		dataType: int64
+		formatString: 0
+		lineageTag: ee41436b-db08-4088-810f-fa6922f165e1
+		summarizeBy: sum
+		sourceColumn: promotions_active
+
+		annotation SummarizationSetBy = Automatic
+
+	column sim_cart_latency_ms
+		dataType: double
+		lineageTag: f74fa993-5d7b-4f7c-8454-d39f877cd39b
+		summarizeBy: sum
+		sourceColumn: sim_cart_latency_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column sim_checkout_latency_ms
+		dataType: double
+		lineageTag: fcc98afd-b3c0-46ce-9ae3-77fec6a80e76
+		summarizeBy: sum
+		sourceColumn: sim_checkout_latency_ms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_promo_perf_simulation = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  read_source              = fact_promo_perf,
+				
+				  add_date_final           = Table.AddColumn(read_source, "date_final",
+				                              each if List.Contains(Record.FieldNames(_), "date") and [date] <> null
+				                                   then Date.From([date])
+				                                   else if List.Contains(Record.FieldNames(_), "request_date")
+				                                   then Date.From([request_date])
+				                                   else null, type date),
+				
+				  fill_promotions_active   = Table.AddColumn(add_date_final, "promotions_active_filled",
+				                              each try Number.From([promotions_active]) otherwise 0, Int64.Type),
+				
+				  compute_medians          = [
+				                              cart = try List.Median(List.RemoveNulls(Table.Column(read_source,"cart_include_avg_response_ms"))) otherwise 250.0,
+				                              chk  = try List.Median(List.RemoveNulls(Table.Column(read_source,"checkout_include_avg_response_ms"))) otherwise 300.0
+				                             ],
+				
+				  add_key                  = Table.AddColumn(fill_promotions_active, "_k",
+				                              each Number.From(Text.Replace(Date.ToText([date_final], "yyyyMMdd"), "-", ""))
+				                                   + Number.From(try [site_id] otherwise 0), Int64.Type),
+				
+				  add_noise                = Table.AddColumn(add_key, "_noise",
+				                              each (Number.Mod([_k], 13) * 3 - 18) * 1.0, type number),
+				
+				  sim_cart                 = Table.AddColumn(add_noise, "sim_cart_latency_ms",
+				                              each compute_medians[cart] + 8.0  * Number.From([promotions_active_filled]) + [_noise], type number),
+				
+				  sim_checkout             = Table.AddColumn(sim_cart, "sim_checkout_latency_ms",
+				                              each compute_medians[chk]  + 12.0 * Number.From([promotions_active_filled]) + [_noise], type number),
+				
+				  cleanup_temp             = Table.RemoveColumns(sim_checkout, {"_k","_noise"}),
+				
+				  drop_old_date_cols       = let cols = List.Select({"date","request_date"}, each List.Contains(Table.ColumnNames(cleanup_temp), _))
+				                             in  Table.RemoveColumns(cleanup_temp, cols),
+				
+				  drop_old_promo_col       = if List.Contains(Table.ColumnNames(drop_old_date_cols), "promotions_active")
+				                             then Table.RemoveColumns(drop_old_date_cols, {"promotions_active"})
+				                             else drop_old_date_cols,
+				
+				  rename_final             = Table.RenameColumns(drop_old_promo_col, {
+				                              {"date_final","date"},
+				                              {"promotions_active_filled","promotions_active"}
+				                            })
+				in
+				  rename_final
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

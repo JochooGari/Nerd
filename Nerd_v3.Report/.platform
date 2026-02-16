@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Nerd_v3"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "c03916ab-f555-499d-996d-f5801e9b78e5"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "44a7323d6c5a2cac0c33",
+  "position": {
+    "x": 688.88888888888891,
+    "y": 453.33333333333331,
+    "z": 9000,
+    "height": 182.22222222222223,
+    "width": 613.33333333333337,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Basic'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

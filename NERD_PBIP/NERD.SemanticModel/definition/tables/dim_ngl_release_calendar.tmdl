@@ -1,0 +1,61 @@
+table dim_ngl_release_calendar
+	lineageTag: 6e74f25b-8a8e-4b44-854e-adb16222ba6f
+
+	column version
+		dataType: string
+		lineageTag: a272d434-92a3-4b37-ba06-d8e3f982723a
+		summarizeBy: none
+		sourceColumn: version
+
+		annotation SummarizationSetBy = Automatic
+
+	column date_debut
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0da24c88-1359-4f0a-b2c4-45f5deeccf63
+		summarizeBy: none
+		sourceColumn: date_debut
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column date_fin
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 39a67a47-a3cd-4a13-9c30-cdc1530827e7
+		summarizeBy: none
+		sourceColumn: date_fin
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_ngl_release_calendar = m
+		mode: import
+		queryGroup: '3 JDBC'
+		source =
+				let
+				  // create_records: liste des releases (à éditer)
+				  create_records = {
+				    [version="78.0.0", date_debut=#date(2025,03,01), date_fin=#date(2025,04,30)],
+				    [version="79.0.0", date_debut=#date(2025,05,01), date_fin=#date(2025,06,30)],
+				    [version="80.0.0", date_debut=#date(2025,07,01), date_fin=#date(2025,09,14)],
+				    [version="81.0.0", date_debut=#date(2025,09,15), date_fin=#date(2025,12,31)]
+				  },
+				
+				  // to_table: conversion en table typée
+				  to_table = Table.FromRecords(
+				    create_records,
+				    type table [version=text, date_debut=date, date_fin=nullable date]
+				  ),
+				
+				  // sort_version: tri par version (texte) ou par date si tu préfères
+				  sort_version = Table.Sort(to_table, {{"version", Order.Ascending}})
+				in
+				  sort_version
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

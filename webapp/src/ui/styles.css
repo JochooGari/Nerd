@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: #ea5a28;
+  --color-primary-light: #fef3f0;
+  --color-primary-dark: #d44718;
+  --color-secondary: #1f2937;
+  --color-background: #f8f9fa;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --radius: 8px;
+}
+
+* {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-secondary);
+  line-height: 1.6;
+}
+
+.card {
+  @apply bg-white rounded-lg border border-gray-200 shadow-sm p-6;
+}
+
+.kpi {
+  @apply card flex flex-col gap-2;
+}
+
+.kpi-label {
+  @apply text-gray-500 text-sm font-medium uppercase tracking-wide;
+}
+
+.kpi-value {
+  @apply text-2xl font-bold text-gray-900;
+}
+
+.btn-primary {
+  @apply bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded-lg transition-colors;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium px-4 py-2 rounded-lg transition-colors;
+}
+
+.status-indicator {
+  @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+}
+
+.status-good {
+  @apply bg-green-100 text-green-800;
+}
+
+.status-warning {
+  @apply bg-orange-100 text-orange-800;
+}
+
+.status-critical {
+  @apply bg-red-100 text-red-800;
+}
+
+.metric-card {
+  @apply bg-white rounded-lg p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow;
+}
+
+.tab-active {
+  @apply border-orange-500 text-orange-600 bg-orange-50;
+}
+
+.tab-inactive {
+  @apply border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300;
+}
+
+

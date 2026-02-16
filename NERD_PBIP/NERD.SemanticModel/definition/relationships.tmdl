@@ -1,0 +1,96 @@
+relationship AutoDetected_1c9a1d69-5445-4c45-b35d-a0e92143ae7b
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: demo_Practices.Zone
+	toColumn: demo_up_to_date_environnements.Zone
+
+relationship aed06115-8ad0-188e-c1b1-269e83f1eb71
+	fromColumn: fact_api_resource_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship 8e296c85-25b7-49df-5f1f-cc92c1fece5d
+	fromColumn: 'fact_api_daily OCAPI + SCAPI'.request_date
+	toColumn: dim_Date.Date
+
+relationship 3983bba3-49d8-01c9-6631-ddf8e39cbb84
+	fromColumn: fact_cart_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship 67a44956-8ac0-ba88-298b-981a5c9b06e0
+	fromColumn: fact_checkout_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship 0ee72630-0568-3b8e-1a1b-cee095fd806c
+	fromColumn: fact_controller_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship 4ec9ac09-c753-9a25-60cb-c529e57f5617
+	fromColumn: fact_include_cache_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship f2b0eeaf-313e-dd6e-fce5-40972f916d37
+	fromColumn: fact_include_controller_daily.request_date
+	toColumn: dim_Date.Date
+
+relationship cc214dc0-53c8-f8cd-6ceb-b4c661379064
+	fromColumn: fact_promo_daily.date
+	toColumn: dim_Date.Date
+
+relationship 54bdd36a-670c-30bd-e67c-f3a7397452f8
+	fromColumn: fact_promo_perf.date
+	toColumn: dim_Date.Date
+
+relationship 82b3f686-7b16-2428-cca3-d8ec940a9c22
+	fromColumn: fact_promo_perf_simulation.date
+	toColumn: dim_Date.Date
+
+relationship AutoDetected_140318bb-043f-4120-a7c3-7b5a6e8535d7
+	fromColumn: fact_controller_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_3d5a47d5-50be-49fc-889b-4fd5936167a2
+	fromColumn: fact_site_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_1eb973c2-b09b-4196-bb94-a0a958c4e4fd
+	fromColumn: fact_include_controller_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_a46041e9-c1cf-40f6-8fbd-aab2652046d5
+	fromColumn: fact_include_cache_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_de2fefce-b7d3-41d0-8609-d51bd6404926
+	fromColumn: fact_cart_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_07ea08b3-61fc-461e-a1d2-2f72265212bb
+	fromColumn: fact_checkout_daily.site_id
+	toColumn: dim_site.site_id
+
+relationship AutoDetected_f0acc248-271f-491d-b880-8cffc48f3a2a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: dim_ngl_version_score.version
+	toColumn: dim_ngl_release_calendar.version
+
+relationship AutoDetected_b13d0981-9be3-4344-bd1b-eedd8c7d9150
+	fromColumn: 'Fact ODS'.realm_id
+	toColumn: dim_localisation.realm_id
+
+relationship AutoDetected_1d066cfc-2873-4ac5-a80c-fa38e97e699f
+	fromColumn: 'Fact Realm'.realm_id
+	toColumn: dim_localisation.realm_id
+
+relationship AutoDetected_ca485e52-5d1b-4d45-a714-1d31725c43af
+	fromColumn: dim_localisation.zone_name
+	toColumn: demo_up_to_date_environnements.Zone
+
+relationship AutoDetected_1f9df1dd-dce4-4e1e-89fb-d2c42d389677
+	fromColumn: 'Fact Static_info'.realm_id
+	toColumn: dim_localisation.realm_id
+
+relationship 0a2a4001-c12b-de8b-17d9-6956289357a1
+	fromColumn: 'Fact ODS'.date
+	toColumn: dim_Date.Date
+

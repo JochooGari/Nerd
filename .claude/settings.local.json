@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__powerbi-modeling-mcp__connection_operations",
+      "mcp__powerbi-modeling-mcp__table_operations",
+      "mcp__powerbi-modeling-mcp__relationship_operations",
+      "mcp__powerbi-modeling-mcp__measure_operations",
+      "mcp__powerbi-modeling-mcp__column_operations",
+      "mcp__powerbi-modeling-mcp__partition_operations",
+      "mcp__powerbi-modeling-mcp__named_expression_operations",
+      "Bash(ls:*)",
+      "mcp__filesystem__list_directory",
+      "mcp__filesystem__directory_tree",
+      "mcp__powerbi-modeling-mcp__batch_measure_operations",
+      "mcp__powerbi-modeling-mcp__batch_column_operations",
+      "mcp__filesystem__read_text_file"
+    ]
+  }
+}

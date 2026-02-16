@@ -1,0 +1,186 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8d97718a76e883003e48",
+  "position": {
+    "x": 17.27272727272727,
+    "y": 607.27272727272725,
+    "z": 3000,
+    "height": 404.5454545454545,
+    "width": 1122.7272727272727,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_api_resource_daily"
+                    }
+                  },
+                  "Property": "api_name"
+                }
+              },
+              "queryRef": "fact_api_resource_daily.api_name",
+              "nativeQueryRef": "api_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_api_resource_daily"
+                    }
+                  },
+                  "Property": "site_id"
+                }
+              },
+              "queryRef": "fact_api_resource_daily.site_id",
+              "nativeQueryRef": "site_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_api_resource_daily"
+                    }
+                  },
+                  "Property": "avg_response_time_ms"
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.avg_response_time_ms)",
+              "nativeQueryRef": "avg_response_time_ms1",
+              "displayName": "avg_response_time_ms"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_0_499"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_0_499)",
+              "nativeQueryRef": "bucket_0_499",
+              "displayName": "bucket_0_499"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_500_999"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_500_999)",
+              "nativeQueryRef": "bucket_500_999",
+              "displayName": "bucket_500_999"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_1000_1499"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_1000_1499)",
+              "nativeQueryRef": "bucket_1000_1499",
+              "displayName": "bucket_1000_1499"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_1500_1999"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_1500_1999)",
+              "nativeQueryRef": "bucket_1500_1999",
+              "displayName": "bucket_1500_1999"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "bucket_2000_plus"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.bucket_2000_plus)",
+              "nativeQueryRef": "bucket_2000_plus",
+              "displayName": "bucket_2000_plus"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fact_api_resource_daily"
+                        }
+                      },
+                      "Property": "error_requests"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fact_api_resource_daily.error_requests)",
+              "nativeQueryRef": "Sum of error_requests"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
