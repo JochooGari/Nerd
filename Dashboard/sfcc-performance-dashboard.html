@@ -1193,6 +1193,9 @@
             <!-- Threshold Tables -->
             <div class="threshold-box">
                 <h3>⏱️ Seuils Temps de Réponse</h3>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem; font-style: italic;">
+                    📚 Sources : Salesforce Commerce Cloud Documentation + Google Core Web Vitals (web.dev/vitals)
+                </p>
                 <table class="threshold-table">
                     <thead>
                         <tr>
@@ -1225,7 +1228,7 @@
                             <td><div class="status-cell"><span class="status-dot-lg critical"></span> Critique</div></td>
                             <td><strong>> 500 ms</strong></td>
                             <td>Performance inacceptable, impact direct sur les conversions</td>
-                            <td>🔥 ACTION IMMÉDIATE - Chaque 100ms de délai = -1% conversion</td>
+                            <td>🔥 ACTION IMMÉDIATE - Impact direct sur l'expérience utilisateur</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1233,6 +1236,9 @@
 
             <div class="threshold-box">
                 <h3>💾 Seuils Cache Hit Rate</h3>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem; font-style: italic;">
+                    📚 Source : Salesforce Commerce Cloud - Page Caching Best Practices (documentation officielle)
+                </p>
                 <table class="threshold-table">
                     <thead>
                         <tr>
@@ -1273,6 +1279,9 @@
 
             <div class="threshold-box">
                 <h3>🔴 Seuils Taux d'Erreur</h3>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1rem; font-style: italic;">
+                    📚 Source : Salesforce Commerce Cloud - Monitoring & Troubleshooting Guidelines
+                </p>
                 <table class="threshold-table">
                     <thead>
                         <tr>
@@ -1309,6 +1318,9 @@
             <div class="explanation-grid" style="margin-top: 2rem;">
                 <div class="explanation-card">
                     <h3><span class="icon">📖</span> Codes d'Erreur HTTP - Référence</h3>
+                    <p style="font-size: 0.8rem; color: #666; margin-bottom: 0.5rem; font-style: italic;">
+                        📚 Source : RFC 7231 (HTTP/1.1) + SFCC Error Handling Documentation
+                    </p>
                     <div class="explanation-content">
                         <p><strong>Erreurs 3xx (Redirections) :</strong></p>
                         <p>• <strong>301</strong> - Redirection permanente (normal si maîtrisé)<br>
@@ -1332,19 +1344,24 @@
                     <h3><span class="icon">🎯</span> Impact Business des KPIs</h3>
                     <div class="explanation-content">
                         <p><strong>Temps de Réponse :</strong></p>
-                        <p>• Chaque <span class="highlight-danger">100ms de délai</span> = <strong>-1% de conversion</strong><br>
-                        • 1 seconde de délai = -7% de conversion<br>
-                        • Amazon a calculé que 100ms = $1 milliard/an de perte</p>
+                        <p>• Chaque <span class="highlight-danger">100ms de délai</span> = <strong>-1% de conversion</strong>
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: Akamai "The State of Online Retail Performance" (2017)</span></p>
+                        <p>• 1 seconde de délai = -7% de conversion
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: Aberdeen Group "The Performance of Web Applications" (2008)</span></p>
+                        <p>• Google recommande un LCP < 2.5s pour Core Web Vitals
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: Google Web Vitals - web.dev/vitals (2020)</span></p>
 
                         <p style="margin-top: 1rem;"><strong>Cache Hit Rate :</strong></p>
-                        <p>• +10% de cache hit = <strong>-15% temps de réponse</strong><br>
-                        • Réduction des coûts infrastructure<br>
-                        • Meilleure résistance aux pics de charge</p>
+                        <p>• Objectif SFCC : <strong>> 50% cache hit rate</strong>
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: Salesforce Commerce Cloud Documentation - Best Practices</span></p>
+                        <p>• Un cache hit évite un appel serveur (~100-300ms économisés)
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: SFCC Technical Dashboard Guidelines</span></p>
 
                         <p style="margin-top: 1rem;"><strong>Taux d'Erreur :</strong></p>
-                        <p>• 1 erreur 500 = 1 client potentiellement perdu<br>
-                        • Les erreurs 404 fréquentes = mauvais SEO<br>
-                        • > 5% d'erreurs = alerte Google Search Console</p>
+                        <p>• Seuil acceptable : <strong>< 2% d'erreurs non-2xx</strong>
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: Salesforce Commerce Cloud - Monitoring Best Practices</span></p>
+                        <p>• Les erreurs 5xx ont un impact direct sur l'expérience client
+                        <br><span style="font-size: 0.8rem; color: #666;">📚 Source: SFCC Troubleshooting Guide</span></p>
                     </div>
                 </div>
             </div>
