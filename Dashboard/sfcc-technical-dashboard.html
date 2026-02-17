@@ -333,6 +333,49 @@
             border-radius: 50%;
         }
 
+        /* Controller Health Table */
+        .controller-health-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .controller-health-table th {
+            background: var(--light);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--secondary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .controller-health-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .controller-health-table tr:hover {
+            background: rgba(0,102,204,0.02);
+        }
+
+        .health-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .health-indicator.excellent { background: #d1fae5; color: #065f46; }
+        .health-indicator.good { background: #dbeafe; color: #1e40af; }
+        .health-indicator.attention { background: #fef3c7; color: #92400e; }
+        .health-indicator.critical { background: #fee2e2; color: #991b1b; }
+
         /* Data Table */
         .table-card {
             background: white;
@@ -904,6 +947,142 @@
                 <div class="chart-container" style="height: 250px;">
                     <canvas id="responseDistributionChart"></canvas>
                 </div>
+            </div>
+        </div>
+
+        <!-- Top 15 Controllers par Volume - Health Status Table -->
+        <div class="table-card" style="margin-bottom: 1.5rem;">
+            <div class="table-header">
+                <div class="table-title">🔝 Top 15 Controllers par Volume</div>
+            </div>
+            <div class="table-scroll">
+                <table class="controller-health-table">
+                    <thead>
+                        <tr>
+                            <th>Controller</th>
+                            <th>Requests</th>
+                            <th>Temps Réponse</th>
+                            <th>Statut Temps</th>
+                            <th>Cache Hit</th>
+                            <th>Statut Cache</th>
+                            <th>Non-2xx</th>
+                            <th>Statut Erreurs</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>RedirectURL-Start</strong></td>
+                            <td>879,614</td>
+                            <td>50 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>35%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>70%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔍 Analyser redirections</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product-Show</strong></td>
+                            <td>484,115</td>
+                            <td>408 ms</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>55%</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>11%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>⚡ Optimiser performance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>__Analytics-Start</strong></td>
+                            <td>449,731</td>
+                            <td>7 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Home-Show</strong></td>
+                            <td>403,077</td>
+                            <td>100 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>57%</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>37%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔍 Vérifier erreurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Search-Show</strong></td>
+                            <td>342,188</td>
+                            <td>398 ms</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>47%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>10%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>🔥 Priorité haute</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Page-Show</strong></td>
+                            <td>337,576</td>
+                            <td>176 ms</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>72%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>13%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>👀 Surveiller erreurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Page-Resources</strong></td>
+                            <td>333,494</td>
+                            <td>6 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>97%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>2%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CDSLazyload-comm</strong></td>
+                            <td>291,919</td>
+                            <td>15 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CookiesManagement</strong></td>
+                            <td>225,426</td>
+                            <td>14 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cart-AddAllPro</strong></td>
+                            <td>25</td>
+                            <td>938 ms</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>100%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔥 ACTION URGENTE</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
