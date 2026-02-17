@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NERD - SFCC Performance Dashboard | L'Oréal</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0066CC;
+            --primary-dark: #004C99;
+            --secondary: #6c757d;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --border: #e9ecef;
+            --shadow: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+            --excellent: #10b981;
+            --good: #3b82f6;
+            --attention: #f59e0b;
+            --critical: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f5f7fa;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #00d4ff;
+        }
+
+        .logo span {
+            color: white;
+            font-weight: 300;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .realm-selector, .date-range {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* Main Tabs Navigation */
+        .main-tabs {
+            display: flex;
+            gap: 0;
+            background: white;
+            border-radius: 8px 8px 0 0;
+            box-shadow: var(--shadow);
+            margin-bottom: 0;
+        }
+
+        .main-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--secondary);
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-tab:hover {
+            color: var(--primary);
+            background: rgba(0,102,204,0.05);
+        }
+
+        .main-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+            background: rgba(0,102,204,0.05);
+        }
+
+        .main-tab .tab-icon {
+            font-size: 1.1rem;
+        }
+
+        .main-tab .tab-badge {
+            background: var(--danger);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.4rem;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            background: white;
+            border-radius: 0 0 8px 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Page Title */
+        .page-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+        }
+
+        .page-title h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .page-title .subtitle {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Status Legend */
+        .status-legend {
+            display: flex;
+            gap: 1.5rem;
+            background: var(--light);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .status-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .status-dot-lg {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .status-dot-lg.excellent { background: var(--excellent); }
+        .status-dot-lg.good { background: var(--good); }
+        .status-dot-lg.attention { background: var(--attention); }
+        .status-dot-lg.critical { background: var(--critical); }
+
+        /* KPI Health Cards */
+        .health-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .health-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .health-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+
+        .health-card.excellent { border-left-color: var(--excellent); }
+        .health-card.good { border-left-color: var(--good); }
+        .health-card.attention { border-left-color: var(--attention); }
+        .health-card.critical { border-left-color: var(--critical); }
+
+        .health-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .health-card-title {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .health-status-badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .health-status-badge.excellent { background: #d1fae5; color: #065f46; }
+        .health-status-badge.good { background: #dbeafe; color: #1e40af; }
+        .health-status-badge.attention { background: #fef3c7; color: #92400e; }
+        .health-status-badge.critical { background: #fee2e2; color: #991b1b; }
+
+        .health-card-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .health-card.excellent .health-card-value { color: var(--excellent); }
+        .health-card.good .health-card-value { color: var(--good); }
+        .health-card.attention .health-card-value { color: var(--attention); }
+        .health-card.critical .health-card-value { color: var(--critical); }
+
+        .health-card-target {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .health-card-target strong {
+            color: var(--dark);
+        }
+
+        /* Threshold Explanation Box */
+        .threshold-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .threshold-box h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .threshold-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .threshold-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--border);
+        }
+
+        .threshold-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .threshold-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .threshold-table .status-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Explanation Cards */
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .explanation-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .explanation-card h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--dark);
+        }
+
+        .explanation-card h3 .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .explanation-content {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+
+        .explanation-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .explanation-content strong {
+            color: var(--dark);
+        }
+
+        .explanation-content .highlight {
+            background: #fef3c7;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+        }
+
+        .explanation-content .highlight-success {
+            background: #d1fae5;
+        }
+
+        .explanation-content .highlight-danger {
+            background: #fee2e2;
+        }
+
+        /* What to do boxes */
+        .action-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .action-box.warning {
+            background: #fffbeb;
+            border-color: #fde68a;
+        }
+
+        .action-box.danger {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .action-box h4 {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-box ul {
+            margin-left: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .action-box li {
+            margin-bottom: 0.25rem;
+        }
+
+        /* Controller Health Table */
+        .controller-health-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .controller-health-table th {
+            background: var(--light);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.75rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .controller-health-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.85rem;
+        }
+
+        .controller-health-table tr:hover {
+            background: rgba(0,102,204,0.02);
+        }
+
+        .health-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .health-indicator.excellent { background: #d1fae5; color: #065f46; }
+        .health-indicator.good { background: #dbeafe; color: #1e40af; }
+        .health-indicator.attention { background: #fef3c7; color: #92400e; }
+        .health-indicator.critical { background: #fee2e2; color: #991b1b; }
+
+        /* Progress bar with threshold */
+        .threshold-progress {
+            position: relative;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: visible;
+            margin: 0.5rem 0;
+        }
+
+        .threshold-progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .threshold-marker {
+            position: absolute;
+            top: -4px;
+            width: 2px;
+            height: 16px;
+            background: var(--dark);
+        }
+
+        .threshold-marker::after {
+            content: attr(data-label);
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.65rem;
+            white-space: nowrap;
+            color: var(--secondary);
+        }
+
+        /* Alert Summary */
+        .alert-summary {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .alert-summary-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .alert-summary-count {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .alert-summary-card.excellent .alert-summary-count { color: var(--excellent); }
+        .alert-summary-card.good .alert-summary-count { color: var(--good); }
+        .alert-summary-card.attention .alert-summary-count { color: var(--attention); }
+        .alert-summary-card.critical .alert-summary-count { color: var(--critical); }
+
+        .alert-summary-label {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 0.25rem;
+        }
+
+        /* Gauge Chart Container */
+        .gauge-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            position: relative;
+        }
+
+        /* Charts Grid */
+        .perf-charts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .perf-chart-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .perf-chart-card h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chart-container {
+            height: 200px;
+            position: relative;
+        }
+
+        /* Recommendations Section */
+        .recommendations-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .recommendations-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .recommendation-card {
+            background: rgba(255,255,255,0.15);
+            border-radius: 8px;
+            padding: 1.25rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .recommendation-card h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .recommendation-card p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .recommendation-priority {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.75rem;
+        }
+
+        .recommendation-priority.high { background: #fecaca; color: #991b1b; }
+        .recommendation-priority.medium { background: #fef3c7; color: #92400e; }
+        .recommendation-priority.low { background: #d1fae5; color: #065f46; }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .quick-reference h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .quick-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .quick-ref-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .metric-name {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-ref-item .metric-threshold {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .quick-ref-item .metric-status {
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .health-grid, .quick-ref-grid, .alert-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .explanation-grid, .perf-charts-grid {
+                grid-template-columns: 1fr;
+            }
+            .recommendations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .health-grid, .quick-ref-grid, .alert-summary {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .main-tabs {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* Tooltip */
+        .tooltip-trigger {
+            cursor: help;
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+        /* Print styles */
+        @media print {
+            .header, .main-tabs {
+                position: static;
+            }
+            .tab-content {
+                display: block !important;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-left">
+            <div class="logo">NERD <span>Performance Monitor</span></div>
+        </div>
+        <div class="header-right">
+            <select class="realm-selector" id="realmSelector">
+                <option value="bdcr">L'Oréal Global (bdcr)</option>
+                <option value="aaqp">L'Oréal EMEA (aaqp)</option>
+                <option value="aafm">L'Oréal AMER (aafm)</option>
+                <option value="aatl">L'Oréal APAC (aatl)</option>
+            </select>
+            <input type="text" class="date-range" value="Oct 8, 2025 - Oct 14, 2025" id="dateRange">
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Main Tabs -->
+        <div class="main-tabs">
+            <div class="main-tab" data-tab="technical">
+                <span class="tab-icon">📊</span>
+                Technical Dashboard
+            </div>
+            <div class="main-tab active" data-tab="performance">
+                <span class="tab-icon">⚡</span>
+                Performance Monitor
+                <span class="tab-badge">2</span>
+            </div>
+            <div class="main-tab" data-tab="controllers">
+                <span class="tab-icon">🎛️</span>
+                Controllers Health
+            </div>
+            <div class="main-tab" data-tab="guide">
+                <span class="tab-icon">📚</span>
+                Guide & Seuils
+            </div>
+        </div>
+
+        <!-- ==================== PERFORMANCE TAB ==================== -->
+        <div class="tab-content active" id="performance-content">
+
+            <!-- Page Title -->
+            <div class="page-title">
+                <div>
+                    <h1>🎯 Tableau de Bord Performance</h1>
+                    <p class="subtitle">Vue d'ensemble de la santé de votre plateforme SFCC - Mise à jour: 14 Oct 2025</p>
+                </div>
+            </div>
+
+            <!-- Status Legend -->
+            <div class="status-legend">
+                <div class="status-legend-item">
+                    <span class="status-dot-lg excellent"></span>
+                    <span><strong>Excellent</strong> - Aucune action requise</span>
+                </div>
+                <div class="status-legend-item">
+                    <span class="status-dot-lg good"></span>
+                    <span><strong>Bon</strong> - Surveillance normale</span>
+                </div>
+                <div class="status-legend-item">
+                    <span class="status-dot-lg attention"></span>
+                    <span><strong>Attention</strong> - À surveiller</span>
+                </div>
+                <div class="status-legend-item">
+                    <span class="status-dot-lg critical"></span>
+                    <span><strong>Critique</strong> - Action immédiate requise</span>
+                </div>
+            </div>
+
+            <!-- Alert Summary -->
+            <div class="alert-summary">
+                <div class="alert-summary-card excellent">
+                    <div class="alert-summary-count">1</div>
+                    <div class="alert-summary-label">KPI Excellent</div>
+                </div>
+                <div class="alert-summary-card good">
+                    <div class="alert-summary-count">1</div>
+                    <div class="alert-summary-label">KPI Bon</div>
+                </div>
+                <div class="alert-summary-card attention">
+                    <div class="alert-summary-count">1</div>
+                    <div class="alert-summary-label">KPI Attention</div>
+                </div>
+                <div class="alert-summary-card critical">
+                    <div class="alert-summary-count">1</div>
+                    <div class="alert-summary-label">KPI Critique</div>
+                </div>
+            </div>
+
+            <!-- Health Cards -->
+            <div class="health-grid">
+                <!-- Response Time Card -->
+                <div class="health-card good">
+                    <div class="health-card-header">
+                        <span class="health-card-title">⏱️ Temps de Réponse Moyen</span>
+                        <span class="health-status-badge good">BON</span>
+                    </div>
+                    <div class="health-card-value">113.2 ms</div>
+                    <div class="health-card-target">
+                        🎯 Objectif: <strong>< 200 ms</strong>
+                    </div>
+                    <div class="threshold-progress">
+                        <div class="threshold-progress-fill" style="width: 56.6%; background: var(--good);"></div>
+                        <div class="threshold-marker" style="left: 50%;" data-label="100ms"></div>
+                        <div class="threshold-marker" style="left: 100%;" data-label="200ms"></div>
+                    </div>
+                </div>
+
+                <!-- Cache Hit Rate Card -->
+                <div class="health-card critical">
+                    <div class="health-card-header">
+                        <span class="health-card-title">💾 Taux de Cache Hit</span>
+                        <span class="health-status-badge critical">CRITIQUE</span>
+                    </div>
+                    <div class="health-card-value">34.75%</div>
+                    <div class="health-card-target">
+                        🎯 Objectif: <strong>> 50%</strong>
+                    </div>
+                    <div class="threshold-progress">
+                        <div class="threshold-progress-fill" style="width: 34.75%; background: var(--critical);"></div>
+                        <div class="threshold-marker" style="left: 35%;" data-label="35%"></div>
+                        <div class="threshold-marker" style="left: 50%;" data-label="50%"></div>
+                    </div>
+                </div>
+
+                <!-- Error Rate Card -->
+                <div class="health-card attention">
+                    <div class="health-card-header">
+                        <span class="health-card-title">🔴 Taux d'Erreur</span>
+                        <span class="health-status-badge attention">ATTENTION</span>
+                    </div>
+                    <div class="health-card-value">2.53%</div>
+                    <div class="health-card-target">
+                        🎯 Objectif: <strong>< 2%</strong>
+                    </div>
+                    <div class="threshold-progress">
+                        <div class="threshold-progress-fill" style="width: 50.6%; background: var(--attention);"></div>
+                        <div class="threshold-marker" style="left: 40%;" data-label="2%"></div>
+                        <div class="threshold-marker" style="left: 100%;" data-label="5%"></div>
+                    </div>
+                </div>
+
+                <!-- P95 Response Time Card -->
+                <div class="health-card excellent">
+                    <div class="health-card-header">
+                        <span class="health-card-title">📈 P95 Temps de Réponse</span>
+                        <span class="health-status-badge excellent">EXCELLENT</span>
+                    </div>
+                    <div class="health-card-value">458 ms</div>
+                    <div class="health-card-target">
+                        🎯 Objectif: <strong>< 500 ms</strong>
+                    </div>
+                    <div class="threshold-progress">
+                        <div class="threshold-progress-fill" style="width: 91.6%; background: var(--excellent);"></div>
+                        <div class="threshold-marker" style="left: 100%;" data-label="500ms"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Explanation Cards -->
+            <div class="explanation-grid">
+                <div class="explanation-card">
+                    <h3><span class="icon">⏱️</span> Temps de Réponse - C'est quoi ?</h3>
+                    <div class="explanation-content">
+                        <p>Le <strong>temps de réponse</strong> mesure combien de temps met votre site à répondre à une demande utilisateur.</p>
+                        <p>💡 <strong>En langage simple :</strong> C'est le temps entre le clic d'un client et l'affichage de la page.</p>
+                        <p>
+                            <span class="highlight-success">< 100ms</span> = Ultra rapide (excellent)<br>
+                            <span class="highlight">100-200ms</span> = Rapide (bon)<br>
+                            <span class="highlight-danger">> 500ms</span> = Trop lent (impact sur les ventes)
+                        </p>
+                    </div>
+                    <div class="action-box">
+                        <h4>✅ Que faire si c'est trop lent ?</h4>
+                        <ul>
+                            <li>Vérifier les controllers les plus lents</li>
+                            <li>Optimiser le cache des pages</li>
+                            <li>Contacter l'équipe technique pour audit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="explanation-card">
+                    <h3><span class="icon">💾</span> Cache Hit Rate - C'est quoi ?</h3>
+                    <div class="explanation-content">
+                        <p>Le <strong>taux de cache hit</strong> indique combien de pages sont servies depuis le cache (mémoire rapide) plutôt que recalculées.</p>
+                        <p>💡 <strong>En langage simple :</strong> Plus ce taux est élevé, moins le serveur travaille et plus le site est rapide.</p>
+                        <p>
+                            <span class="highlight-success">> 60%</span> = Excellent<br>
+                            <span class="highlight">50-60%</span> = Objectif atteint<br>
+                            <span class="highlight-danger">< 35%</span> = Problème de cache
+                        </p>
+                    </div>
+                    <div class="action-box danger">
+                        <h4>⚠️ Action requise - Cache trop bas !</h4>
+                        <ul>
+                            <li>Revoir la configuration du cache SFCC</li>
+                            <li>Analyser les pages Product-Show et Search-Show</li>
+                            <li>Augmenter le TTL (durée de vie) du cache</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="explanation-card">
+                    <h3><span class="icon">🔴</span> Taux d'Erreur - C'est quoi ?</h3>
+                    <div class="explanation-content">
+                        <p>Le <strong>taux d'erreur</strong> représente le pourcentage de requêtes qui échouent (erreurs 4xx et 5xx).</p>
+                        <p>💡 <strong>En langage simple :</strong> C'est le % de fois où un client voit une page d'erreur au lieu du contenu attendu.</p>
+                        <p>
+                            <span class="highlight-success">< 2%</span> = Normal<br>
+                            <span class="highlight">2-5%</span> = À surveiller<br>
+                            <span class="highlight-danger">> 5%</span> = Impact business significatif
+                        </p>
+                    </div>
+                    <div class="action-box warning">
+                        <h4>👀 À surveiller</h4>
+                        <ul>
+                            <li>Analyser les erreurs 404 (pages non trouvées)</li>
+                            <li>Vérifier les erreurs 500 (bugs serveur)</li>
+                            <li>Mettre en place des redirections si nécessaire</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="explanation-card">
+                    <h3><span class="icon">📈</span> P95 / P99 - C'est quoi ?</h3>
+                    <div class="explanation-content">
+                        <p>Le <strong>P95</strong> (percentile 95) indique que 95% des requêtes sont plus rapides que cette valeur.</p>
+                        <p>💡 <strong>En langage simple :</strong> Seuls 5% des utilisateurs ont une expérience plus lente que ce temps.</p>
+                        <p>
+                            <strong>Pourquoi c'est important ?</strong><br>
+                            La moyenne peut cacher des problèmes. Si P95 est très élevé, certains clients ont une très mauvaise expérience.
+                        </p>
+                    </div>
+                    <div class="action-box">
+                        <h4>📊 Comment interpréter ?</h4>
+                        <ul>
+                            <li>P95 < 500ms = Très bien</li>
+                            <li>P95 > 1000ms = Investiguer les cas lents</li>
+                            <li>P99 > 2000ms = Certains users ont des problèmes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations Section -->
+            <div class="recommendations-section">
+                <h2>🎯 Recommandations Prioritaires</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card">
+                        <h4>🔥 Améliorer le Cache Hit Rate</h4>
+                        <p>Votre taux de cache (34.75%) est en dessous de l'objectif (50%). Cela signifie que le serveur recalcule trop souvent les mêmes pages.</p>
+                        <span class="recommendation-priority high">PRIORITÉ HAUTE</span>
+                    </div>
+                    <div class="recommendation-card">
+                        <h4>🔍 Analyser les Erreurs 404</h4>
+                        <p>65% de vos erreurs sont des 404 (pages non trouvées). Vérifiez les liens cassés et les produits supprimés.</p>
+                        <span class="recommendation-priority medium">PRIORITÉ MOYENNE</span>
+                    </div>
+                    <div class="recommendation-card">
+                        <h4>⚡ Optimiser Search-Show</h4>
+                        <p>Le controller de recherche a un temps de réponse élevé (398ms). L'optimisation impactera directement les conversions.</p>
+                        <span class="recommendation-priority high">PRIORITÉ HAUTE</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="perf-charts-grid">
+                <div class="perf-chart-card">
+                    <h3>📈 Évolution du Temps de Réponse (7 jours)</h3>
+                    <div class="chart-container">
+                        <canvas id="responseTimeEvolution"></canvas>
+                    </div>
+                </div>
+                <div class="perf-chart-card">
+                    <h3>💾 Évolution du Cache Hit Rate (7 jours)</h3>
+                    <div class="chart-container">
+                        <canvas id="cacheHitEvolution"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== CONTROLLERS TAB ==================== -->
+        <div class="tab-content" id="controllers-content">
+            <div class="page-title">
+                <div>
+                    <h1>🎛️ Santé des Controllers</h1>
+                    <p class="subtitle">Analyse détaillée de chaque controller par rapport aux seuils recommandés</p>
+                </div>
+            </div>
+
+            <!-- Quick Reference -->
+            <div class="quick-reference">
+                <h3>📋 Seuils de Référence Rapide</h3>
+                <div class="quick-ref-grid">
+                    <div class="quick-ref-item">
+                        <div class="metric-name">Temps de Réponse</div>
+                        <div class="metric-threshold">< 200 ms</div>
+                        <div class="metric-status" style="color: var(--success);">✓ Objectif</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="metric-name">Cache Hit Rate</div>
+                        <div class="metric-threshold">> 50%</div>
+                        <div class="metric-status" style="color: var(--success);">✓ Objectif</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="metric-name">Taux d'Erreur</div>
+                        <div class="metric-threshold">< 5%</div>
+                        <div class="metric-status" style="color: var(--success);">✓ Par controller</div>
+                    </div>
+                    <div class="quick-ref-item">
+                        <div class="metric-name">Includes Max</div>
+                        <div class="metric-threshold">< 50</div>
+                        <div class="metric-status" style="color: var(--success);">✓ Best practice</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controllers Table -->
+            <div style="background: white; border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow);">
+                <h3 style="margin-bottom: 1rem;">🔝 Top 15 Controllers par Volume</h3>
+                <table class="controller-health-table">
+                    <thead>
+                        <tr>
+                            <th>Controller</th>
+                            <th>Requests</th>
+                            <th>Temps Réponse</th>
+                            <th>Statut Temps</th>
+                            <th>Cache Hit</th>
+                            <th>Statut Cache</th>
+                            <th>Non-2xx</th>
+                            <th>Statut Erreurs</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>RedirectURL-Start</strong></td>
+                            <td>879,614</td>
+                            <td>50 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>35%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>70%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔍 Analyser redirections</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Product-Show</strong></td>
+                            <td>484,115</td>
+                            <td>408 ms</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>55%</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>11%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>⚡ Optimiser performance</td>
+                        </tr>
+                        <tr>
+                            <td><strong>__Analytics-Start</strong></td>
+                            <td>449,731</td>
+                            <td>7 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Home-Show</strong></td>
+                            <td>403,077</td>
+                            <td>100 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>57%</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>37%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔍 Vérifier erreurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Search-Show</strong></td>
+                            <td>342,188</td>
+                            <td>398 ms</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>47%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>10%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>🔥 Priorité haute</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Page-Show</strong></td>
+                            <td>337,576</td>
+                            <td>176 ms</td>
+                            <td><span class="health-indicator good">✓ Bon</span></td>
+                            <td>72%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>13%</td>
+                            <td><span class="health-indicator attention">⚠ Attention</span></td>
+                            <td>👀 Surveiller erreurs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Page-Resources</strong></td>
+                            <td>333,494</td>
+                            <td>6 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>97%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>2%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CDSLazyload-comm</strong></td>
+                            <td>291,919</td>
+                            <td>15 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CookiesManagement</strong></td>
+                            <td>225,426</td>
+                            <td>14 ms</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator excellent">✓ Excellent</span></td>
+                            <td>✅ OK</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cart-AddAllPro</strong></td>
+                            <td>25</td>
+                            <td>938 ms</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>0%</td>
+                            <td><span class="health-indicator good">N/A</span></td>
+                            <td>100%</td>
+                            <td><span class="health-indicator critical">✗ Critique</span></td>
+                            <td>🔥 ACTION URGENTE</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ==================== GUIDE TAB ==================== -->
+        <div class="tab-content" id="guide-content">
+            <div class="page-title">
+                <div>
+                    <h1>📚 Guide des Seuils & Bonnes Pratiques</h1>
+                    <p class="subtitle">Référence complète pour comprendre et interpréter les métriques SFCC</p>
+                </div>
+            </div>
+
+            <!-- Threshold Tables -->
+            <div class="threshold-box">
+                <h3>⏱️ Seuils Temps de Réponse</h3>
+                <table class="threshold-table">
+                    <thead>
+                        <tr>
+                            <th>Niveau</th>
+                            <th>Seuil</th>
+                            <th>Signification</th>
+                            <th>Action Requise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg excellent"></span> Excellent</div></td>
+                            <td><strong>< 100 ms</strong></td>
+                            <td>Performance optimale, les utilisateurs ne perçoivent aucun délai</td>
+                            <td>Aucune action - Maintenir ce niveau</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg good"></span> Bon</div></td>
+                            <td><strong>100 - 200 ms</strong></td>
+                            <td>Performance acceptable, légère perception de délai</td>
+                            <td>Surveillance normale</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg attention"></span> Attention</div></td>
+                            <td><strong>200 - 500 ms</strong></td>
+                            <td>Performance dégradée, les utilisateurs perçoivent un ralentissement</td>
+                            <td>Analyser les controllers concernés, planifier optimisation</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg critical"></span> Critique</div></td>
+                            <td><strong>> 500 ms</strong></td>
+                            <td>Performance inacceptable, impact direct sur les conversions</td>
+                            <td>🔥 ACTION IMMÉDIATE - Chaque 100ms de délai = -1% conversion</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="threshold-box">
+                <h3>💾 Seuils Cache Hit Rate</h3>
+                <table class="threshold-table">
+                    <thead>
+                        <tr>
+                            <th>Niveau</th>
+                            <th>Seuil</th>
+                            <th>Signification</th>
+                            <th>Action Requise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg excellent"></span> Excellent</div></td>
+                            <td><strong>> 60%</strong></td>
+                            <td>Configuration cache optimale, serveur peu sollicité</td>
+                            <td>Aucune action - Configuration idéale</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg good"></span> Bon</div></td>
+                            <td><strong>50 - 60%</strong></td>
+                            <td>Objectif Salesforce atteint</td>
+                            <td>Maintenir, possibilité d'amélioration</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg attention"></span> Attention</div></td>
+                            <td><strong>35 - 50%</strong></td>
+                            <td>Cache sous-optimal, serveur sollicité inutilement</td>
+                            <td>Revoir stratégie de cache, augmenter TTL</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg critical"></span> Critique</div></td>
+                            <td><strong>< 35%</strong></td>
+                            <td>Problème majeur de cache, surcharge serveur</td>
+                            <td>🔥 AUDIT CACHE URGENT - Impact performance et coûts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="threshold-box">
+                <h3>🔴 Seuils Taux d'Erreur</h3>
+                <table class="threshold-table">
+                    <thead>
+                        <tr>
+                            <th>Niveau</th>
+                            <th>Seuil</th>
+                            <th>Signification</th>
+                            <th>Action Requise</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg excellent"></span> Normal</div></td>
+                            <td><strong>< 2%</strong></td>
+                            <td>Niveau d'erreur acceptable pour un site e-commerce</td>
+                            <td>Surveillance standard</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg attention"></span> Attention</div></td>
+                            <td><strong>2 - 5%</strong></td>
+                            <td>Niveau d'erreur élevé, certains utilisateurs impactés</td>
+                            <td>Investiguer les erreurs 4xx (404 notamment)</td>
+                        </tr>
+                        <tr>
+                            <td><div class="status-cell"><span class="status-dot-lg critical"></span> Critique</div></td>
+                            <td><strong>> 5%</strong></td>
+                            <td>Impact business significatif, perte de clients</td>
+                            <td>🔥 ESCALADE IMMÉDIATE - Analyser erreurs 5xx en priorité</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Error Codes Reference -->
+            <div class="explanation-grid" style="margin-top: 2rem;">
+                <div class="explanation-card">
+                    <h3><span class="icon">📖</span> Codes d'Erreur HTTP - Référence</h3>
+                    <div class="explanation-content">
+                        <p><strong>Erreurs 3xx (Redirections) :</strong></p>
+                        <p>• <strong>301</strong> - Redirection permanente (normal si maîtrisé)<br>
+                        • <strong>302</strong> - Redirection temporaire</p>
+
+                        <p style="margin-top: 1rem;"><strong>Erreurs 4xx (Client) :</strong></p>
+                        <p>• <strong>400</strong> - Mauvaise requête (problème front)<br>
+                        • <strong>401</strong> - Non autorisé (session expirée)<br>
+                        • <strong>403</strong> - Interdit (droits insuffisants)<br>
+                        • <strong>404</strong> - Page non trouvée (liens cassés)</p>
+
+                        <p style="margin-top: 1rem;"><strong>Erreurs 5xx (Serveur) - CRITIQUES :</strong></p>
+                        <p>• <strong>500</strong> - Erreur serveur interne (bug code)<br>
+                        • <strong>502</strong> - Bad Gateway<br>
+                        • <strong>503</strong> - Service indisponible<br>
+                        • <strong>504</strong> - Timeout (délai dépassé)</p>
+                    </div>
+                </div>
+
+                <div class="explanation-card">
+                    <h3><span class="icon">🎯</span> Impact Business des KPIs</h3>
+                    <div class="explanation-content">
+                        <p><strong>Temps de Réponse :</strong></p>
+                        <p>• Chaque <span class="highlight-danger">100ms de délai</span> = <strong>-1% de conversion</strong><br>
+                        • 1 seconde de délai = -7% de conversion<br>
+                        • Amazon a calculé que 100ms = $1 milliard/an de perte</p>
+
+                        <p style="margin-top: 1rem;"><strong>Cache Hit Rate :</strong></p>
+                        <p>• +10% de cache hit = <strong>-15% temps de réponse</strong><br>
+                        • Réduction des coûts infrastructure<br>
+                        • Meilleure résistance aux pics de charge</p>
+
+                        <p style="margin-top: 1rem;"><strong>Taux d'Erreur :</strong></p>
+                        <p>• 1 erreur 500 = 1 client potentiellement perdu<br>
+                        • Les erreurs 404 fréquentes = mauvais SEO<br>
+                        • > 5% d'erreurs = alerte Google Search Console</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Best Practices Summary -->
+            <div class="quick-reference" style="margin-top: 2rem;">
+                <h3>✅ Checklist Monitoring Quotidien</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1rem;">
+                    <div>
+                        <h4 style="margin-bottom: 0.75rem; color: var(--primary);">🌅 Chaque Matin</h4>
+                        <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                            <li>Vérifier les 4 KPIs principaux (vert = OK)</li>
+                            <li>Regarder s'il y a des alertes critiques</li>
+                            <li>Comparer avec la veille (tendance)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.75rem; color: var(--primary);">📅 Chaque Semaine</h4>
+                        <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                            <li>Analyser le Top 10 controllers les plus lents</li>
+                            <li>Vérifier l'évolution du cache hit rate</li>
+                            <li>Identifier les nouvelles erreurs 404</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.75rem; color: var(--primary);">📆 Chaque Mois</h4>
+                        <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                            <li>Rapport de performance complet</li>
+                            <li>Comparer MoM (mois vs mois)</li>
+                            <li>Planifier les optimisations</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.75rem; color: var(--danger);">🚨 En cas d'Alerte Critique</h4>
+                        <ul style="margin-left: 1.5rem; font-size: 0.9rem;">
+                            <li>Identifier le KPI en cause</li>
+                            <li>Vérifier depuis quand (trend)</li>
+                            <li>Escalader à l'équipe technique</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TECHNICAL TAB (Placeholder) ==================== -->
+        <div class="tab-content" id="technical-content">
+            <div class="page-title">
+                <div>
+                    <h1>📊 Technical Dashboard</h1>
+                    <p class="subtitle">Vue technique détaillée - Voir sfcc-technical-dashboard.html pour la version complète</p>
+                </div>
+            </div>
+            <div style="text-align: center; padding: 3rem;">
+                <p style="font-size: 1.1rem; color: var(--secondary);">
+                    Pour la vue technique complète avec tous les graphiques et données,<br>
+                    consultez le fichier <strong>sfcc-technical-dashboard.html</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>NERD Performance Dashboard - L'Oréal SFCC | Basé sur les Best Practices Salesforce Commerce Cloud</p>
+            <p style="margin-top: 0.5rem;">Dernière mise à jour: 14 Oct 2025 | Version 2.0</p>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        document.querySelectorAll('.main-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active from all tabs
+                document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked tab
+                this.classList.add('active');
+                const tabId = this.dataset.tab + '-content';
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Response Time Evolution Chart
+            const rtCtx = document.getElementById('responseTimeEvolution').getContext('2d');
+            new Chart(rtCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 8', 'Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [{
+                        label: 'Temps de Réponse (ms)',
+                        data: [115, 112, 118, 125, 108, 115, 113],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#3b82f6'
+                    }, {
+                        label: 'Seuil Attention (200ms)',
+                        data: [200, 200, 200, 200, 200, 200, 200],
+                        borderColor: '#f59e0b',
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false
+                    }, {
+                        label: 'Seuil Critique (500ms)',
+                        data: [500, 500, 500, 500, 500, 500, 500],
+                        borderColor: '#ef4444',
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { size: 11 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 600,
+                            ticks: {
+                                callback: value => value + ' ms'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Cache Hit Evolution Chart
+            const chCtx = document.getElementById('cacheHitEvolution').getContext('2d');
+            new Chart(chCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Oct 8', 'Oct 9', 'Oct 10', 'Oct 11', 'Oct 12', 'Oct 13', 'Oct 14'],
+                    datasets: [{
+                        label: 'Cache Hit Rate (%)',
+                        data: [36, 35, 33, 32, 35, 36, 34.75],
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#ef4444'
+                    }, {
+                        label: 'Objectif (50%)',
+                        data: [50, 50, 50, 50, 50, 50, 50],
+                        borderColor: '#10b981',
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false
+                    }, {
+                        label: 'Seuil Critique (35%)',
+                        data: [35, 35, 35, 35, 35, 35, 35],
+                        borderColor: '#f59e0b',
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { font: { size: 11 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 70,
+                            ticks: {
+                                callback: value => value + '%'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
